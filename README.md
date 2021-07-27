@@ -4,6 +4,8 @@
 
 视频预览 https://www.bilibili.com/video/BV1ch411z7Cy/
 
+html预览 https://adkinsm2020.github.io/AdonS   (请全屏)
+
 ## 主要实现
 
 indexedDB存用户名
