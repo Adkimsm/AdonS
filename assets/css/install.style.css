@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    overflow: hidden;
+    width: 960px;
+    height: 720px;
+}
+
+.Screen {
+    width: 100%;
+    margin: 10px;
+    height: 100%;
+}
+
+li {
+    font: menu;
+    margin: 20px;
+    font-size: x-large;
+    list-style: none;
+}
+
+.Screen aside {
+    text-align: center;
+    background-color: #FAF9F8;
+    height: 100%;
+    padding-top: 3rem;
+    width: 283px;
+}
+
+.Screen aside ul {
+    padding-top: 3rem;
+}
+
+.Screen aside ul li {
+    transition: all ease .3s;
+    font-size: x-large;
+    padding-top: 23px;
+    height: 6vw;
+    width: 85%;
+}
+
+.Screen aside ul li.focus::after {
+    margin-left: 100px;
+    font-size: xx-large;
+    content: "|";
+}
+
+.Screen aside ul li.focus {
+    font-weight: 200;
+    color: rgb(124, 157, 255);
+}
+
+.Screen .install {
+    padding: 1rem;
+    background-color: #FFFFFF;
+    object-fit: cover;
+    height: 100%;
+    width: 660px;
+}
+
+.Screen header {
+    margin-top: 1rem;
+}
+
+.Screen header h1 {
+    font-size: xx-large;
+    margin-bottom: 10px;
+    font-weight: 200;
+}
+
+.Screen section {
+    margin-top: 30px;
+    margin-left: 330px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 720px;
+}
+
+.Screen section p {
+    font-size: 2vw;
+    font-weight: 200;
+    margin-bottom: 5px;
+}
+
+.Screen section footer {
+    margin-right: 0;
+    top: 630px;
+    position: fixed;
+    height: 40px;
+    width: 470px;
+    bottom: 10px;
+    right: 190px;
+}
+
+.Screen section footer button {
+    right: 0;
+    width: 660px;
+    background-color: seashell;
+    padding: 5px;
+    transition: all ease .3s;
+    border: solid rgba(0, 0, 0, 0.933) 1px;
+    font-size: large;
+}
+
+.Screen section footer button:hover {
+    background-color: rgb(12, 12, 12);
+    color: seashell;
+}
+
+.Screen .install input {
+    border: transparent solid 2px;
+    border-radius: 5px;
+    background-color: #424242;
+    color: #FAF9F8;
+    padding: 5px;
+    font-size: large;
+}

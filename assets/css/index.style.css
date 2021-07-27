@@ -1,0 +1,297 @@
+/* 再也不用normize了... */
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	/* 变量写在了 html的head 中 */
+	color: var(--theme_text_color);
+	overflow: hidden;
+}
+
+.Screen {
+	width: 100%;
+	height: 100%;
+}
+
+.Finder {
+	/* flex 真香 */
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: calc(5% + 2vw);
+	backdrop-filter: blur(30px);
+	padding: 7px;
+	align-items: center;
+}
+
+.Finder span {
+	font-weight: 900;
+}
+
+/* 幸亏我急中生智想起了有个东西叫通配符 */
+
+.Finder * {
+	margin-left: 25px;
+}
+
+.Finder :first-child {
+	margin-left: 15px;
+}
+
+.Menu li {
+	margin: 0;
+	display: block;
+	list-style: none;
+	width: auto;
+	width: 100%;
+}
+
+.Menu {
+	border: rgb(255, 255, 255) solid;
+	width: 20%;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.Normal img#bgScr {
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	object-fit: cover;
+	width: 100%;
+	z-index: -999;
+}
+
+/* dock 居然还看得下去 */
+
+.Dock {
+	padding: 5px;
+	position: fixed;
+	border: transparent solid;
+	border-radius: 8px;
+	margin-left: 25%;
+	width: 50%;
+	height: 3rem;
+	background-color: rgba(223, 223, 223, 0.459);
+}
+
+/* 本来打算照抄某本工具书，没想到啊没想到... */
+
+/* 算了，自己写个吧 */
+
+.Dock .Dock_Item img {
+	transition: all cubic-bezier(0.1, 2.1, 0, -1.19);
+}
+
+@keyframes trdff {
+	0% {
+		transform: scale(1, 1);
+	}
+	50% {
+		transform: scale(2, 2);
+	}
+	100% {
+		transform: scale(3, 3);
+	}
+}
+
+.Dock .Dock_Item {
+	display: inline-flex;
+	width: 60px;
+}
+
+.Dock .Dock_Item:hover {
+	animation: trdff 0.5s linear;
+}
+
+/* InterNet 真是个好东西 */
+
+.searchMenuItem {
+	padding-left: 20px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	font-size: 11px;
+	transition: all 0.25s;
+	background-color: rgb(0, 0, 0);
+	color: white;
+}
+
+.searchMenuItem:hover {
+	background-color: white;
+	color: black;
+}
+
+#LogoMenu {
+	display: none;
+	opacity: 0;
+	transform: scale(0.5);
+	position: absolute;
+	width: 160px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 2px 10px;
+	transition: all 0.25s;
+	overflow: hidden;
+}
+
+#LogoMenu {
+	z-index: 99;
+	background-color: #fff;
+}
+
+.alert {
+	position: fixed;
+	top: -50px;
+	left: 50%;
+	padding: 20px;
+	transform: translateX(-50%);
+	background-color: rgba(30, 30, 30);
+	border-radius: 50px;
+	text-align: center;
+	font-size: 15px;
+	opacity: 1;
+	z-index: 999;
+	transition-duration: 0.35s;
+}
+
+/* 自己写的 pop 真是丑到极致... */
+
+.apps {
+	width: 960px;
+	height: 720px;
+}
+
+.app {
+	display: none;
+	position: absolute;
+	z-index: 999;
+	margin-left: 200px;
+	margin-top: 5px;
+	width: 560px;
+}
+
+.app header {
+	background-color: wheat;
+	height: 50px;
+	border: transparent solid 1px;
+	border-radius: 5px;
+	width: 100%;
+	box-sizing: border-box;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	margin-bottom: -1px;
+}
+
+.app header .popTitle {
+	color: rgb(0, 0, 0);
+	position: absolute;
+	left: 250px;
+	top: 15px;
+}
+
+.app header .appHeaderButton {
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+.app header .appHeaderButton .redCircle {
+	display: inline-block;
+	width: 17px;
+	height: 17px;
+	cursor: pointer;
+	border-radius: 50%;
+	margin-right: 5px;
+	background-color: #ff493f;
+}
+
+.app header .appHeaderButton .redCircle::after {
+	margin-left: 2px;
+	content: "\00d7";
+}
+
+iframe {
+	height: 500px;
+	width: 100%;
+	box-sizing: border-box;
+	border: transparent solid 1px;
+	border-radius: 5px;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 0px;
+}
+
+/* 就这个 backdrop 的 cover 耗了我1个小时的时间 */
+
+#AppCover {
+	display: none;
+	top: 0;
+	left: 0;
+	z-index: 990;
+	/* 逼我用 fixed 是吧???绝对值还不让我用了？！？！？ */
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: saturate(200%) blur(30px);
+	transition: all ease 0.2s;
+}
+
+@keyframes FadeIn {
+	/* 是的，最简单的 keyframes */
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/* 懒得写ToDo... */
+
+/* 算了，早写晚写都得写，还不如快写... */
+
+/* wc，突然想起来我不会写日历块 */
+
+/* 那就留给大佬或者1000年后在北极发现我GitHub代码的高级智慧生物解决吧... */
+
+/* todo不会写，我可以写 LaunchPad. */
+
+.launchPad {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(43, 43, 43, 0.774);
+}
+
+.launchPad .Item .c {
+	width: 80px;
+	height: 80px;
+	background-color: salmon;
+	border: transparent solid;
+	border-radius: 5px;
+}
+
+.launchPad .Item span {
+	margin-left: 28px;
+}
+
+.launchPad .Item {	
+	margin: 50px;
+}
+
+.launchPad button.CloseLaunchPad {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 30px;
+	width: 30px;
+	background-color: salmon;
+	color: white;
+}
+
+/* 接着写closing页面。详见 closing.style.css */
