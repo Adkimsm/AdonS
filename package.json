@@ -1,0 +1,15 @@
+{
+  "name": "xhos",
+  "version": "1.5.0",
+  "description": "XHOS 1.5 Pro Plus NS Is Not From HaoHao,It Is From Adkinsm.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adkinsm",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "electron": "^13.2.2"
+  }
+}
