@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Adkinsm",
-  "license": "UNLICENSED",
+  "license": "Mozilla Public License 2.0",
   "dependencies": {
     "electron": "^13.2.2"
   }
