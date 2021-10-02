@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Socpdy AdonS SA</title>
+		<link rel="stylesheet" href="style.css" />
+		<script defer src="./renderer.js"></script>
+		<script src="./pxmu.js"></script>
+	</head>
+
+	<body>
+		<div id="onStart">
+			<h1>AdonS Socpdy</h1>
+			<img src="./89b192c6a03e051b30b2d370d9c21479.png" alt="" />
+			<br />
+			<small>Build 12135.129</small>
+		</div>
+		<!-- 可视区域 -->
+		<div id="outScreen">
+			<!-- Y 轴 Dock 栏（只有一个图标） -->
+			<div id="dock_y">
+				<div class="item">
+					<img id="sysIco" src="./xh-48.png" onclick="showLauPad()" />
+				</div>
+			</div>
+			<!-- X 轴 Dock 栏 -->
+			<div id="dock_x">
+				<div class="item">
+					<img id="avatar" src="./xh-48.png" alt="" />
+				</div>
+				<div class="item">
+					<img id="avatar" src="./xh-48.png" alt="" />
+				</div>
+				<div class="item">
+					<img id="avatar" src="./xh-48.png" alt="" />
+				</div>
+				<div class="item"></div>
+			</div>
+			<div id="dock_time">
+				<span id="dockDate" style="margin-right: 8px">ggg</span>
+				<span id="dockTime">ggg</span>
+			</div>
+		</div>
+
+		<div id="he-plugin-standard"></div>
+		<script>
+			WIDGET = {
+				CONFIG: {
+					layout: "2",
+					width: "200",
+					height: "200",
+					background: "3",
+					dataColor: "FFFFFF",
+					borderRadius: "20",
+					modules: "10",
+					key: "e223a4c3407042dc9db7505464cc03d3",
+				},
+			};
+			console.log(
+				"%cAdonS Primedy Version PA 1.02.34.12",
+				"font-size: 1.5rem;color: #e6e6e6;background-color: #2a2a2a;border-radius: 10px;margin: 10px; padding: 10px;"
+			);
+		</script>
+		<script
+			async
+			src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"
+		></script>
+
+		<!-- 如果用户想打开启动台，就把这个div的display设为block -->
+		<div id="laupad" style="display: none">
+			<h2 id="laupadTitle">Applications</h2>
+			<div class="icons">
+				<div class="icon_top">
+					<img src="windows-explorer.png" />
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						x="0px"
+						y="0px"
+						width="48"
+						height="48"
+						viewBox="0 0 48 48"
+						style="fill: #000000"
+						onclick="showTodoList()"
+					>
+						<path
+							fill="#185abd"
+							d="M24.48,29.316l-9.505,9.505L1.588,25.434c-0.784-0.784-0.784-2.054,0-2.838l6.667-6.667	c0.784-0.784,2.054-0.784,2.838,0L24.48,29.316z"
+						></path>
+						<linearGradient
+							id="5qKAcydctVb3hkGT27jhwa_HpPqCqynotVp_gr1"
+							x1="14.572"
+							x2="43.188"
+							y1="38.199"
+							y2="9.583"
+							gradientUnits="userSpaceOnUse"
+						>
+							<stop offset="0" stop-color="#4191fd"></stop>
+							<stop offset="1" stop-color="#55acfd"></stop>
+						</linearGradient>
+						<path
+							fill="url(#5qKAcydctVb3hkGT27jhwa_HpPqCqynotVp_gr1)"
+							d="M17.797,41.642l-6.667-6.667c-0.784-0.784-0.784-2.054,0-2.838L36.907,6.358	c0.784-0.784,2.054-0.784,2.838,0l6.667,6.667c0.784,0.784,0.784,2.054,0,2.838L20.634,41.642	C19.851,42.425,18.58,42.425,17.797,41.642z"
+						></path>
+					</svg>
+				</div>
+				<div class="icon_bottom">
+					<img src="./xh-48.png" alt="" onclick="hideLauPad()" />
+					<div class="alignRight">
+						<img id="shutdown_btn" src="./shutdown.png" />
+						<img onclick="showLockScr()" src="./keyhole-shield.png" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="LockScreen" style="display: none" onclick="hideLockScr()">
+			<div class="con">
+				<h2 id="LockTime">time..</h2>
+			</div>
+		</div>
+		<div id="TodoList" style="display: none">
+			<div class="container">
+				<div class="wrapper">
+					<span id="todo_btnClose" onclick="hideTodoList()">×</span>
+					<h2>To Do</h2>
+					<p></p>
+					<ul class="plates">
+						<li>待添加事项</li>
+					</ul>
+					<form class="add-items">
+						<input type="text" name="item" placeholder="Item Name" required />
+						<input
+							type="submit"
+							id="sumit_todo"
+							value="添                      加"
+						/>
+					</form>
+					<div class="buttons">
+						<button data-action="clear">删除所有任务</button>
+						<button data-action="clearCheck">删除已完成的</button>
+						<button data-action="check">全部选中</button>
+						<button data-action="uncheck">全部不选中</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right-menu" id="right-menu">
+			<div class="list">
+				<div onclick="let evt = document.createEvent('MouseEvents');evt.initEvent('click', true, true);document.getElementById('shutdown_btn').dispatchEvent(evt);">退出</div>
+			</div>
+		</div>
+	</body>
+</html>

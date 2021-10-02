@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+node_modules/
+.env
+.env.build
+.vercel
+.vercelignore
+desktop.ini
+out/
+.vscode/

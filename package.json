@@ -1,0 +1,23 @@
+{
+  "name": "xhos",
+  "version": "1.5.0",
+  "description": "XHOS 1.5 Pro Plus NS Is Not From HaoHao,It Is From Adkinsm.",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "hx": "gulp",
+    "pack": "electron-packager ./ AdonS --platform=win32 --arch=x64 --out=./out --asar --app-version=3.0.2 --electron-zip=./electron-v13.2.2-win32-x64.zip",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adkinsm",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "13.2.2",
+    "gulp": "^3.9.1",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "vinyl-sourcemaps-apply": "^0.2.1"
+  },
+  "dependencies": {
+  }
+}
