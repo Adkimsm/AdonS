@@ -1,0 +1,19 @@
+let pName = "HelloWorld";
+		let StringContent = `
+            <div class="popUp" id="pop${pName}">
+                <span class="btnClose" onclick="closePop(pop${pName})"></span>
+                <div class="pTitle">${pName}</div>
+                <div class="pContent">
+                ${content}
+                </div>
+            </div>`;
+        document.querySelector('#cover1.cover1').append(StringContent);
+
+		let image = document.createElement("image");
+		document.querySelector("#laupad .icons .icon_top").append(image);
+
+		image.src = "https://img.icons8.com/material-two-tone/48/000000/screensharing.png";
+		image.alt = pName;
+		image.addEventListener("click", () => {
+      showPop("pop" + pName);
+    });
