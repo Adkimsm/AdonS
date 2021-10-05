@@ -4,7 +4,7 @@ let pName = "HelloWorld";
                 <span class="btnClose" onclick="closePop(pop${pName})"></span>
                 <div class="pTitle">${pName}</div>
                 <div class="pContent">
-                ${content}
+                hi
                 </div>
             </div>`;
         document.querySelector('#cover1.cover1').append(StringContent);
