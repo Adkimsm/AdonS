@@ -7,9 +7,11 @@ let pName = "HelloWorld";
                 hi
                 </div>
             </div>`;
-        document.querySelector('#cover1.cover1').append(StringContent);
+let con = document.createElement("div");
+con.innerHTML = StringContent;
+        document.querySelector('#cover1.cover1').append(con);
 
-		let image = document.createElement("image");
+		let image = document.createElement("img");
 		document.querySelector("#laupad .icons .icon_top").append(image);
 
 		image.src = "https://img.icons8.com/material-two-tone/48/000000/screensharing.png";
