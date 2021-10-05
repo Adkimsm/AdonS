@@ -2,5 +2,5 @@
   "name": "HelloWorld",
   "version": ".0.0",
   "description": "A Plugin Demo For AdonS",
-  "main": "https://cdn.jsdelivr.net/gh/Uazira/AdonS/plugin/HelloWorld.js"
+  "main": "https://cdn.jsdelivr.net/gh/Uazira/AdonS@main/plugin/HelloWorld.js"
 }
