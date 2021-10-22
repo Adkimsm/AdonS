@@ -1,9 +1,6 @@
 # Welcome to Easier 👋
-[![License: GNU General Public License v3.0](https://img.shields.io/badge/License-GNU General Public License v3.0-yellow.svg)](https://github.com/Uazira/AdonS/blob/main/LICENSE)
 
 > AdonS is Inside Core of Easier.
-
-### 🏠 [Homepage](https://github.com/Uazira/AdonS)
 
 ## Install
 
@@ -13,7 +10,7 @@ npm install
 
 ## Author
 
-👤 **Adkinsm and Uazira's everyone**
+👤 **Adkinsm** and Uazira's everyone
 
 * Website: https://blog.adkimsm.asia/
 * Github: [@Uazira](https://github.com/Uazira)
