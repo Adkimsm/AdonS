@@ -1,6 +1,6 @@
 # Welcome to Easier 👋
 
-[License: GNU General Public License v3.0](https://img.shields.io/badge/License-GNU General Public License v3.0-yellow.svg)]
+![License: GNU General Public License v3.0](https://img.shields.io/badge/License-GNU General Public License v3.0-yellow.svg)]
 
 > AdonS is Inside Core of Easier.
 
