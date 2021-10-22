@@ -17,7 +17,8 @@
     "electron": "13.2.2",
     "gulp": "^3.9.1",
     "gulp-javascript-obfuscator": "^1.1.6",
-    "vinyl-sourcemaps-apply": "^0.2.1"
+    "vinyl-sourcemaps-apply": "^0.2.1",
+    "electron-builder": "^22.13.1"
   },
   "dependencies": {
   },
