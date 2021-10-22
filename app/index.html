@@ -6,6 +6,13 @@
 		<link rel="stylesheet" href="style.css" />
 		<script defer src="./renderer.js"></script>
 		<script src="./pxmu.js"></script>
+		<script src="./localforage.min.js"></script>
+		<meta
+			http-equiv="Cache-Control"
+			content="no-cache, no-store, must-revalidate"
+		/>
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 	</head>
 
 	<body>
@@ -71,7 +78,7 @@
 			<h2 id="laupadTitle">Applications</h2>
 			<div class="icons">
 				<div class="icon_top">
-					<img src="windows-explorer.png" />
+					<img onclick="showPop(popFeedback)" src="windows-explorer.png" />
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
@@ -145,8 +152,14 @@
 		</div>
 		<div class="right-menu" id="right-menu">
 			<div class="list">
-				<div onclick="let evt = document.createEvent('MouseEvents');evt.initEvent('click', true, true);document.getElementById('shutdown_btn').dispatchEvent(evt);">退出</div>
+				<div
+					onclick="let evt = document.createEvent('MouseEvents');evt.initEvent('click', true, true);document.getElementById('shutdown_btn').dispatchEvent(evt);"
+				>
+					退出
+				</div>
 			</div>
+		</div>
+		<div class="cover1" id="cover1">
 		</div>
 	</body>
 </html>

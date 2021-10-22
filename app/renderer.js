@@ -285,3 +285,121 @@ document.addEventListener("DOMContentLoaded", () => {
 		setTimeout(() => (forRight.style.display = "none"), 250);
 	};
 });
+
+/**
+ * PopUp.
+ */
+
+function showPop(thePopUp) {
+	cover1.style.display = "block";
+	thePopUp.style.display = "block";
+	thePopUp.style.transform = "scale(1.1)";
+	setTimeout(() => {
+		cover1.style.opacity = "1";
+		thePopUp.style.opacity = "1";
+		setTimeout(() => {
+			thePopUp.style.transform = "scale(1.0)";
+		}, 100);
+	}, 50);
+}
+
+function closePop(obj) {
+	cover1.style.opacity = "0";
+	obj.style.opacity = "0";
+	obj.style.transform = "scale(1.1)";
+	setTimeout(() => {
+		cover1.style.display = "none";
+		obj.style.display = "none";
+		obj.style.transform = "scale(0.6)";
+		setTimeout(() => {
+			obj.style.transform = "scale(1.1)";
+		}, 350);
+	}, 350);
+}
+
+/**
+ * Plugin Support.
+ */
+
+const { ipcRenderer } = require("electron");
+
+ipcRenderer.on("Plugin-Content", (_event, path, content) => {
+	if (content && path) {
+		console.log(content);
+		let contentObj = JSON.parse(content);
+		let mainJsPathInJson = contentObj.main;
+		let items = JSON.parse(localStorage.getItem("InstalledPlugins")) || [];
+		let item = {
+			name: path,
+			main: mainJsPathInJson,
+		};
+		items.push(item);
+		localStorage.setItem("InstalledPlugins", JSON.stringify(items));
+	}
+});
+
+
+ipcRenderer.on("Plugin-Uninstall-All", (_event, mess) => {
+	if (mess === "checked") {
+		pxmu
+			.diaglog({
+				title: {
+					text: "警告！",
+					color: "red",
+					fontsize: 20,
+					fontweight: "bold",
+					center: false,
+				},
+				content: {
+					text: "您确定要删除所有插件吗？",
+					color: "#444",
+					fontsize: 14,
+					fontweight: "normal",
+				},
+				line: {
+					solid: 1,
+					color: "#eee",
+				},
+				btn: {
+					left: {
+						text: "取消",
+						bg: "#fff",
+						solidcolor: "#fff",
+						color: "#444",
+					},
+					right: {
+						text: "确定",
+						bg: "#fff",
+						solidcolor: "#fff",
+						color: "red",
+					},
+				},
+				congif: {
+					animation: "fade",
+				},
+			})
+			.then(function (res) {
+				if (res.btn == "right") {
+					localStorage.removeItem("InstalledPlugins");
+				}
+			});
+	}
+});
+
+if (localStorage.getItem("InstalledPlugins")) {
+	window.addEventListener("load", () => {
+		let InstalledPluginsObj = JSON.parse(
+			localStorage.getItem("InstalledPlugins")
+		);
+		InstalledPluginsObj.forEach((obj) => {
+			let elementObj = document.createElement("script");
+			obj.main
+				? (elementObj.src = obj.main)
+				: console.log(
+						"Pth 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
+				  );
+			elementObj.defer = true;
+			document.querySelector("body").append(elementObj);
+		});
+	});
+}

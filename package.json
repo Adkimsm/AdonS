@@ -7,7 +7,8 @@
   "scripts": {
     "start": "electron .",
     "hx": "gulp",
-    "pack": "electron-packager ./ AdonS --platform=win32 --arch=x64 --out=./out --asar --app-version=3.0.2 --electron-zip=./electron-v13.2.2-win32-x64.zip",
+    "build": "electron-builder --win",
+    "pack": "electron-packager ./ AdonS --platform=win32 --overwrite --arch=x64 --out=./out --asar --app-version=3.1.2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Adkinsm",
@@ -19,5 +20,31 @@
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "dependencies": {
+  },
+  "build": {
+    "productName":"AdonS",
+    "appId": "com.uazira.adons", 
+    "copyright":"Uazira Inc.",
+    "directories": {
+      "output": "build"
+    }, 
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
+    }
   }
+
 }

@@ -3,7 +3,7 @@
 	src: url("./AlibabaPuHuiTi-2-65-Medium.ttf");
 }
 
-body {
+html {
 	overflow: hidden;
 	height: 618px;
 	width: 1000px;
@@ -305,6 +305,129 @@ h2#laupadTitle {
 	color: black;
 	font-size: 11px;
 	transition: all 0.1s linear;
+}
+
+.cover1 {
+	z-index: 99;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.35);
+	display: none;
+	opacity: 0;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	transition: all 0.25s;
+	perspective: 1000px;
+}
+
+.popUp {
+	position: absolute;
+	z-index: 100;
+	width: 600px;
+	height: 500px;
+	top: 50%;
+	margin-top: -250px;
+	left: 50%;
+	margin-left: -300px;
+	background-color: #fff;
+	font-size: small;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: rgba(0, 0, 0, 0.05) 0 10px 20px;
+	transform: scale(1.1);
+	transition: all 0.25s;
+	display: none;
+}
+
+.btnClose {
+	z-index: 99;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 40px;
+	right: 40px;
+	cursor: pointer;
+}
+
+.btnClose::before {
+	content: "";
+	position: absolute;
+	height: 2px;
+	width: 100%;
+	top: 50%;
+	left: 0;
+	margin-top: -1px;
+	background-color: #b4b4b4;
+	transition: all 0.25s;
+}
+
+.btnClose:hover::before {
+	background-color: #70c000;
+}
+
+.btnClose:active::before {
+	background-color: rgba(112, 192, 0, 0.5);
+}
+
+.pTitle {
+	position: relative;
+	left: 70px;
+	top: 40px;
+	font-size: 25px;
+	font-family: microsoft yahei bold, microsoft yahei, Helvetica, sans-serif,
+		等线;
+}
+
+.pTitle.centerAligned {
+	width: 100%;
+	left: 0;
+	top: 70px;
+	text-align: center;
+}
+
+.pContent {
+	padding-top: 10px;
+	position: relative;
+	left: 70px;
+	top: 60px;
+	width: 460px;
+	scrollbar-color: rgba(0, 0, 0, 0.1) #fff;
+}
+
+.pContent.centerAligned {
+	width: 80%;
+	left: 10%;
+	top: 65px;
+	text-align: center;
+}
+
+.pContent::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
+		inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+	background-clip: padding-box;
+	background-color: gray;
+	min-height: 40px;
+	padding-top: 100px;
+	border-radius: 4px;
+}
+
+.pContent::-webkit-scrollbar-thumb:hover,
+.pContent::-webkit-scrollbar-thumb:active {
+	background-color: #b3b3b3;
+}
+
+.pContent::-webkit-scrollbar {
+	height: 8px;
+	width: 8px;
+}
+
+#contentBg,
+#contentFeedback {
+	height: 350px;
+	overflow-y: scroll;
 }
 
 @keyframes fadeInDown {
