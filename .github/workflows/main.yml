@@ -28,7 +28,7 @@ jobs:
         run: npm install -g electron-builder
       - name: Make
         if: startsWith(github.ref, 'refs/tags/')
-        run: electron-builder --all
+        run: electron-builder --win
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
