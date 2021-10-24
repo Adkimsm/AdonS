@@ -8,7 +8,7 @@ html {
 	height: 618px;
 	width: 1000px;
 	font-family: "AlibabaPuhui";
-	background-image: url("./壁纸01.jpg");
+	background-image: url("./壁纸02.jpg");
 	object-fit: cover;
 	background-size: cover;
 	user-select: none;
@@ -54,14 +54,14 @@ html {
 }
 
 #laupad {
-	color: #2a2a2a;
+	color: #d8d8d8;
 	overflow: hidden;
 	top: 0;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	position: absolute;
-	background-color: rgba(246, 246, 250, 0.643);
+	background-color: rgba(24, 24, 24, 0.643);
 	backdrop-filter: blur(40px);
 	object-fit: cover;
 	background-size: cover;
@@ -223,18 +223,19 @@ h2#laupadTitle {
 
 #LockScreen,
 #onStart {
-	color: #292929;
+	color: #e2e2e2;
 	overflow: hidden;
 	top: 0;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	position: absolute;
-	background-color: #2a2a2a;
+	backdrop-filter: blur(30px);
 	text-align: center;
+	object-fit: cover;
+	background-size: cover;
 	z-index: 999;
-	background-image: url('./壁纸01.jpg');
-	backdrop-filter: blur(40px) brightness(70%) saturate(80%);
+	background-color: rgba(0, 0, 0, 0.589);
 }
 
 #LockTime {
@@ -245,7 +246,6 @@ h2#laupadTitle {
 
 #onStart {
 	padding-top: 130px;
-	background-color: rgba(0, 0, 0, 0.589);
 }
 
 #onStart img {

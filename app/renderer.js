@@ -85,6 +85,7 @@ function hideLockScr() {
 }
 
 function showLockScr() {
+	hideLauPad();
 	document.querySelector("#LockScreen").style.animation =
 		"fadeInDown .2s linear";
 	document.querySelector("#LockScreen").style.opacity = 1;
