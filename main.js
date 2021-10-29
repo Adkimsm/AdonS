@@ -3,6 +3,10 @@ const { app, BrowserWindow, Menu, dialog } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
+try {
+	require("electron-reloader")(module);
+} catch (_) {}
+
 function createWindow() {
 	// Create the browser window.
 	const mainWindow = new BrowserWindow({

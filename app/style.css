@@ -8,7 +8,7 @@ html {
 	height: 618px;
 	width: 1000px;
 	font-family: "AlibabaPuhui";
-	background-image: url("./壁纸02.jpg");
+	background-image: url("./壁纸01.jpg");
 	object-fit: cover;
 	background-size: cover;
 	user-select: none;
@@ -33,64 +33,61 @@ html {
 }
 
 #dock_time {
-	color: seashell;
+	z-index: 30;
+	color: #2a2a2a;
 	position: absolute;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	bottom: 5px;
-	right: 10px;
-	left: 10px;
-	width: 96%;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	bottom: 0px;
+	width: 97.85%;
+	padding: 5px;
 	backdrop-filter: blur(30px);
-	background-color: rgba(11, 11, 12, 0.643);
+	background-color: rgba(236, 236, 236, 0.643);
 	height: 58px;
 	border-radius: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
-	justify-content: center;
+	justify-content: flex-start;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
+}
+
+#dock_time div {
+	position: absolute;
+	right: 20px;
 }
 
 #laupad {
+	box-shadow: rgba(0, 0, 0, 0.1) 0px -10px 20px;
 	color: #d8d8d8;
 	overflow: hidden;
-	top: 0;
+	top: 45%;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	position: absolute;
-	background-color: rgba(24, 24, 24, 0.643);
+	background-color: rgba(236, 236, 236, 0.643);
 	backdrop-filter: blur(40px);
 	object-fit: cover;
 	background-size: cover;
 }
 
-h2#laupadTitle {
-	position: absolute;
-	top: 70px;
-	margin-left: 37%;
-	font-size: 40px;
-}
-
 #laupad .icon_bottom {
+	margin: 2rem;
 	position: absolute;
-	top: 45%;
-	bottom: 10px;
-	left: 20px;
-	right: 10px;
+	top: 0;
+	right: 0px;
+	display: grid;
+	grid-template-columns: 100px 100px;
 }
 
 #laupad .icon_top {
-	position: absolute;
+	margin: 2rem;
 	display: grid;
 	grid-template-columns: 100px 100px 100px;
 	grid-template-rows: 100px 100px 100px 100px;
-	top: 200px;
-	bottom: 10px;
-	left: 300px;
-	right: 10px;
 }
 
 #laupad .alignRight {
@@ -111,6 +108,7 @@ h2#laupadTitle {
 }
 
 #TodoList .container {
+	z-index: 31;
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -402,6 +400,10 @@ h2#laupadTitle {
 #contentFeedback {
 	height: 350px;
 	overflow-y: scroll;
+}
+
+#desktopPlugins {
+	z-index: 2;
 }
 
 @keyframes fadeInDown {

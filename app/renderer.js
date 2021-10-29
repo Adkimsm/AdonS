@@ -29,20 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
 (function () {
 	setInterval(() => {
 		document.querySelector("#dockTime").textContent =
-			new Date().getHours() +
-			":" +
-			new Date().getMinutes() +
-			":" +
-			new Date().getSeconds();
+			new Date().getHours() + ":" + new Date().getMinutes();
 	});
 	setInterval(() => {
 		document.querySelector("#dockDate").textContent =
 			new Date().getFullYear() +
-			"年" +
+			"/" +
 			new Date().getMonth() +
-			"月" +
-			new Date().getDate() +
-			"日";
+			"/" +
+			new Date().getDate();
 	});
 	setInterval(() => {
 		document.querySelector("#LockTime").textContent =
@@ -62,6 +57,10 @@ function showLauPad() {
 	document.querySelector("#laupad").style.animation = "FadeIn .2s linear";
 	document.querySelector("#laupad").style.opacity = 1;
 	document.querySelector("#laupad").style.display = "block";
+	document.querySelector("#dock_time").style.bottom = "calc(55%)";
+	document.querySelector("#sysIco").onclick = function () {
+		hideLauPad();
+	};
 }
 
 function hideLauPad() {
@@ -70,6 +69,10 @@ function hideLauPad() {
 		document.querySelector("#laupad").style.opacity = 0;
 		document.querySelector("#laupad").style.display = "none";
 	}, 100);
+	document.querySelector("#dock_time").style.bottom = "0px";
+	document.querySelector("#sysIco").onclick = function () {
+		showLauPad();
+	};
 }
 
 /**
@@ -245,12 +248,14 @@ document.querySelector("#shutdown_btn").addEventListener("click", () => {
 })();
 
 function showTodoList() {
+	hideLauPad();
 	document.querySelector("#TodoList").style.animation = "FadeIn .2s linear";
 	document.querySelector("#TodoList").style.opacity = 1;
 	document.querySelector("#TodoList").style.display = "block";
 }
 
 function hideTodoList() {
+	showLauPad();
 	document.querySelector("#TodoList").style.animation = "FadeOut .2s linear";
 	setTimeout(() => {
 		document.querySelector("#TodoList").style.opacity = 0;
@@ -338,7 +343,6 @@ ipcRenderer.on("Plugin-Content", (_event, path, content) => {
 		localStorage.setItem("InstalledPlugins", JSON.stringify(items));
 	}
 });
-
 
 ipcRenderer.on("Plugin-Uninstall-All", (_event, mess) => {
 	if (mess === "checked") {

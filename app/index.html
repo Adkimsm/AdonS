@@ -24,19 +24,17 @@
 		</div>
 		<!-- 可视区域 -->
 		<div id="outScreen">
-			<!-- Y 轴 Dock 栏（只有一个图标） -->
-			<div id="dock_y">
-				<div class="item">
-					<img id="sysIco" src="./xh-48.png" onclick="showLauPad()" />
+			<div id="dock_time">
+				<img id="sysIco" src="./xh-48.png" onclick="showLauPad()" />
+				<div>
+					<span id="dockDate" style="margin-right: 8px">ggg</span>
+					<span id="dockTime">ggg</span>
 				</div>
 			</div>
-			<div id="dock_time">
-				<span id="dockDate" style="margin-right: 8px">ggg</span>
-				<span id="dockTime">ggg</span>
-			</div>
 		</div>
-
-		<div id="he-plugin-standard"></div>
+		<div id="desktopPlugins">
+			<div id="he-plugin-standard"></div>
+		</div>
 		<script>
 			WIDGET = {
 				CONFIG: {
@@ -62,7 +60,6 @@
 
 		<!-- 如果用户想打开启动台，就把这个div的display设为block -->
 		<div id="laupad" style="display: none">
-			<h2 id="laupadTitle">Applications</h2>
 			<div class="icons">
 				<div class="icon_top">
 					<img onclick="showPop(popFeedback)" src="windows-explorer.png" />
@@ -98,11 +95,8 @@
 					</svg>
 				</div>
 				<div class="icon_bottom">
-					<img src="./xh-48.png" alt="" onclick="hideLauPad()" />
-					<div class="alignRight">
 						<img id="shutdown_btn" src="./shutdown.png" />
 						<img onclick="showLockScr()" src="./keyhole-shield.png" />
-					</div>
 				</div>
 			</div>
 		</div>
@@ -146,7 +140,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="cover1" id="cover1">
-		</div>
+		<div class="cover1" id="cover1"></div>
 	</body>
 </html>
