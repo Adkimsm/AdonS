@@ -3,13 +3,11 @@ const { app, BrowserWindow, Menu, dialog } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
-try {
-	require("electron-reloader")(module);
-} catch (_) {}
+let mainWindow = null;
 
 function createWindow() {
 	// Create the browser window.
-	const mainWindow = new BrowserWindow({
+	mainWindow = new BrowserWindow({
 		width: 1000,
 		resizable: false,
 		height: 618,
@@ -87,6 +85,27 @@ function createWindow() {
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()
 }
+
+const md5 = require("md5");
+let preveMd5 = null,
+	fsWait = false;
+const filePath = "./app/";
+console.log(`正在监听 ${filePath}`);
+fs.watch(filePath, (event, filename) => {
+	if (filename) {
+		if (fsWait) return;
+		fsWait = setTimeout(() => {
+			fsWait = false;
+		}, 100);
+		var currentMd5 = md5(fs.readFileSync(filePath + filename));
+		if (currentMd5 == preveMd5) {
+			return;
+		}
+		preveMd5 = currentMd5;
+		console.log(`${filePath}文件发生更新`);
+		mainWindow.webContents.reload();
+	}
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

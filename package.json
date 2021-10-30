@@ -14,9 +14,8 @@
   "author": "Adkinsm",
   "license": "UNLICENSED",
   "devDependencies": {
-    "electron": "13.2.2",
+    "electron": "^13.6.1",
     "electron-builder": "^22.13.1",
-    "electron-reload": "^2.0.0-alpha.1",
     "gulp": "^3.9.1",
     "gulp-javascript-obfuscator": "^1.1.6",
     "vinyl-sourcemaps-apply": "^0.2.1"

@@ -43,7 +43,7 @@ html {
 	width: 97.85%;
 	padding: 5px;
 	backdrop-filter: blur(30px);
-	background-color: rgba(236, 236, 236, 0.643);
+	background-color: rgba(255, 255, 255, 0.911);
 	height: 58px;
 	border-radius: 20px;
 	padding-left: 10px;
@@ -59,16 +59,24 @@ html {
 	right: 20px;
 }
 
+hr {
+	background-color: #b3b3b3;
+	margin: 0.5rem 17rem;
+	border: transparent solid 1px;
+	border-radius: 10px;
+	height: 5px;
+}
+
 #laupad {
 	box-shadow: rgba(0, 0, 0, 0.1) 0px -10px 20px;
-	color: #d8d8d8;
+	color: #0e0e0e;
 	overflow: hidden;
 	top: 45%;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	position: absolute;
-	background-color: rgba(236, 236, 236, 0.643);
+	background-color: rgba(255, 255, 255, 0.911);
 	backdrop-filter: blur(40px);
 	object-fit: cover;
 	background-size: cover;
@@ -76,18 +84,38 @@ html {
 
 #laupad .icon_bottom {
 	margin: 2rem;
-	position: absolute;
 	top: 0;
 	right: 0px;
-	display: grid;
-	grid-template-columns: 100px 100px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+#laupad .icon_bottom h2 {
+	position: absolute;
+	left: 35px;
+	top: 20px;
+}
+
+#laupad .icon_bottom .icons {
+	float: right;
+}
+
+#laupad .icon_bottom img,
+#laupad .icon_bottom svg {
+	margin-right: 5px;
+}
+
+#laupad .icon_top img,
+#laupad .icon_top svg {
+	margin-right: 5px;
+	padding: 10px;
+	background-color: #2a2a2a;
+	border-radius: 5px;
 }
 
 #laupad .icon_top {
 	margin: 2rem;
-	display: grid;
-	grid-template-columns: 100px 100px 100px;
-	grid-template-rows: 100px 100px 100px 100px;
 }
 
 #laupad .alignRight {

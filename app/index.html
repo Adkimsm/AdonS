@@ -60,7 +60,16 @@
 
 		<!-- 如果用户想打开启动台，就把这个div的display设为block -->
 		<div id="laupad" style="display: none">
+			<hr>
 			<div class="icons">
+				<div class="icon_bottom">
+					<h2>LauPad</h2>
+					<div class="icons">
+						<img id="shutdown_btn" src="./shutdown.png" />
+						<img onclick="showLockScr()" src="./keyhole-shield.png" />
+						<img onclick="showPop(popSettings)" src="./settings.svg" />
+					</div>
+				</div>
 				<div class="icon_top">
 					<img onclick="showPop(popFeedback)" src="windows-explorer.png" />
 					<svg
@@ -93,10 +102,6 @@
 							d="M17.797,41.642l-6.667-6.667c-0.784-0.784-0.784-2.054,0-2.838L36.907,6.358	c0.784-0.784,2.054-0.784,2.838,0l6.667,6.667c0.784,0.784,0.784,2.054,0,2.838L20.634,41.642	C19.851,42.425,18.58,42.425,17.797,41.642z"
 						></path>
 					</svg>
-				</div>
-				<div class="icon_bottom">
-						<img id="shutdown_btn" src="./shutdown.png" />
-						<img onclick="showLockScr()" src="./keyhole-shield.png" />
 				</div>
 			</div>
 		</div>
@@ -140,6 +145,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="cover1" id="cover1"></div>
+		<div class="cover1" id="cover1">
+			<div class="popUp" id="popSettings">
+				<span class="btnClose" onclick="closePop(popSettings)"></span>
+				<div class="pTitle">Settings</div>
+				<div class="pContent">good.</div>
+			</div>
+		</div>
 	</body>
 </html>
