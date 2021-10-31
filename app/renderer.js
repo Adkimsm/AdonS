@@ -297,16 +297,19 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 
 function showPop(thePopUp) {
+	let cover1 = document.querySelector("#cover1.cover1")
+	let popObj = document.querySelector("#" +thePopUp)
 	cover1.style.display = "block";
-	thePopUp.style.display = "block";
-	thePopUp.style.transform = "scale(1.1)";
+	popObj.style.display = "block";
+	popObj.style.transform = "scale(1.1)";
 	setTimeout(() => {
 		cover1.style.opacity = "1";
-		thePopUp.style.opacity = "1";
+		popObj.style.opacity = "1";
 		setTimeout(() => {
-			thePopUp.style.transform = "scale(1.0)";
+			popObj.style.transform = "scale(1.0)";
 		}, 100);
 	}, 50);
+	cover1.style.opacity = "1";
 }
 
 function closePop(obj) {

@@ -7,9 +7,9 @@ let StringContent = `
                 hi
                 </div>
             </div>`;
-let con = document.createElement("div");
-con.innerHTML = StringContent;
-document.querySelector("#cover1.cover1").append(con);
+document
+	.querySelector("#cover1.cover1")
+	.insertAdjacentHTML('beforeend', StringContent);
 
 let image = document.createElement("img");
 document.querySelector("#laupad .icons .icon_top").append(image);
