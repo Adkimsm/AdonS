@@ -9,7 +9,7 @@ let StringContent = `
             </div>`;
 document
 	.querySelector("#cover1.cover1")
-	.insertAdjacentHTML('beforeend', StringContent);
+	.insertAdjacentHTML("beforeend", StringContent);
 
 let image = document.createElement("img");
 document.querySelector("#laupad .icons .icon_top").append(image);

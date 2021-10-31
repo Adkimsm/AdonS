@@ -297,8 +297,8 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 
 function showPop(thePopUp) {
-	let cover1 = document.querySelector("#cover1.cover1")
-	let popObj = document.querySelector("#" +thePopUp)
+	let cover1 = document.querySelector("#cover1.cover1");
+	let popObj = document.querySelector("#" + thePopUp);
 	cover1.style.display = "block";
 	popObj.style.display = "block";
 	popObj.style.transform = "scale(1.1)";
