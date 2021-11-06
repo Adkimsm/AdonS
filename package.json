@@ -1,7 +1,7 @@
 {
-  "name": "xhos",
+  "name": "easier",
   "version": "1.5.0",
-  "description": "XHOS 1.5 Pro Plus NS Is Not From HaoHao,It Is From Adkinsm.",
+  "description": "Easier Of AdonS.",
   "main": "main.js",
   "private": true,
   "scripts": {
@@ -44,5 +44,8 @@
         }
       ]
     }
+  },
+  "dependencies": {
+    "electron-store": "^8.0.1"
   }
 }

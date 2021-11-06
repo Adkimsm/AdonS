@@ -7,6 +7,12 @@
 |____| |____|    '.__.;__]    '.__.'    [___||__]    \______.' 
 
  */
+const Store = require("electron-store");
+
+const store = new Store();
+
+store.set("unicorn", "🦄");
+console.log(store.get("unicorn"));
 
 /**
  * Start Screen Animation.
@@ -158,7 +164,7 @@ document.querySelector("#shutdown_btn").addEventListener("click", () => {
 		var addItems = document.querySelector(".add-items");
 		var itemsList = document.querySelector(".plates");
 		var buttons = document.querySelector(".buttons");
-		var items = JSON.parse(localStorage.getItem("items")) || [];
+		var items = store.get("items") ? JSON.parse(store.get("items")) : [];
 
 		//添加item方法
 		function handleSubmit(e) {
@@ -170,7 +176,7 @@ document.querySelector("#shutdown_btn").addEventListener("click", () => {
 				done: false,
 			};
 			items.push(item);
-			localStorage.setItem("items", JSON.stringify(items));
+			store.set("items", JSON.stringify(items));
 			updateList(items, itemsList);
 			this.reset();
 		}
@@ -199,7 +205,7 @@ document.querySelector("#shutdown_btn").addEventListener("click", () => {
 			if (!e.target.matches("input")) return;
 			var item = e.target.dataset.index;
 			items[item].done = !items[item].done;
-			localStorage.setItem("items", JSON.stringify(items));
+			store.set("items", JSON.stringify(items));
 			updateList(items, itemsList);
 		}
 
@@ -233,7 +239,7 @@ document.querySelector("#shutdown_btn").addEventListener("click", () => {
 				default:
 					return;
 			}
-			localStorage.setItem("items", JSON.stringify(items));
+			store.set("items", JSON.stringify(items));
 			updateList(items, itemsList);
 		}
 
@@ -269,7 +275,7 @@ function hideTodoList() {
 
 document.addEventListener("DOMContentLoaded", () => {
 	var forRight = document.getElementById("right-menu");
-	window.oncontextmenu = function (event) {
+	function showContextmenu() {
 		var event = event || window.event;
 		//显示菜单
 		forRight.style.display = "block";
@@ -277,18 +283,24 @@ document.addEventListener("DOMContentLoaded", () => {
 			forRight.style.opacity = "1";
 			forRight.style.transform = "scale(1.05)";
 		}, 50);
-		setTimeout(() => (forRight.style.transform = "scale(1)"), 300);
+		setTimeout(() => (forRight.style.transform = "scale(1)"), 200);
 		//菜单定位
 		forRight.style.left = event.pageX + "px";
 		forRight.style.top = event.pageY + "px";
 		//return false为了屏蔽默认事件
 		return false;
+	}
+	function hideContextMenu() {
+		forRight.style.transform = "scale(7.5)";
+		forRight.style.opacity = "0";
+		setTimeout(() => (forRight.style.display = "none"), 250);
+	}
+	window.oncontextmenu = function (event) {
+			showContextmenu();
 	};
 	//再次点击，菜单消失
 	document.onclick = function () {
-		forRight.style.transform = "scale(0.5)";
-		forRight.style.opacity = "0";
-		setTimeout(() => (forRight.style.display = "none"), 250);
+		hideContextMenu();
 	};
 });
 
@@ -337,13 +349,15 @@ ipcRenderer.on("Plugin-Content", (_event, path, content) => {
 		console.log(content);
 		let contentObj = JSON.parse(content);
 		let mainJsPathInJson = contentObj.main;
-		let items = JSON.parse(localStorage.getItem("InstalledPlugins")) || [];
+		var items = store.get("InstalledPlugins")
+			? JSON.parse(store.get("items"))
+			: [];
 		let item = {
 			name: path,
 			main: mainJsPathInJson,
 		};
 		items.push(item);
-		localStorage.setItem("InstalledPlugins", JSON.stringify(items));
+		store.set("InstalledPlugins", JSON.stringify(items));
 	}
 });
 
@@ -394,17 +408,15 @@ ipcRenderer.on("Plugin-Uninstall-All", (_event, mess) => {
 	}
 });
 
-if (localStorage.getItem("InstalledPlugins")) {
+if (store.get("InstalledPlugins")) {
 	window.addEventListener("load", () => {
-		let InstalledPluginsObj = JSON.parse(
-			localStorage.getItem("InstalledPlugins")
-		);
+		let InstalledPluginsObj = JSON.parse(store.get("InstalledPlugins"));
 		InstalledPluginsObj.forEach((obj) => {
 			let elementObj = document.createElement("script");
 			obj.main
 				? (elementObj.src = obj.main)
 				: console.log(
-						"Pth 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
+						"Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
 				  );
 			elementObj.defer = true;
 			document.querySelector("body").append(elementObj);

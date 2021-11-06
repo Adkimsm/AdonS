@@ -3,6 +3,10 @@ const { app, BrowserWindow, Menu, dialog } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
+const Store = require("electron-store");
+
+Store.initRenderer();
+
 let mainWindow = null;
 
 function createWindow() {
@@ -85,28 +89,28 @@ function createWindow() {
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()
 }
-
-const md5 = require("md5");
-let preveMd5 = null,
-	fsWait = false;
-const filePath = "./app/";
-console.log(`正在监听 ${filePath}`);
-fs.watch(filePath, (event, filename) => {
-	if (filename) {
-		if (fsWait) return;
-		fsWait = setTimeout(() => {
-			fsWait = false;
-		}, 100);
-		var currentMd5 = md5(fs.readFileSync(filePath + filename));
-		if (currentMd5 == preveMd5) {
-			return;
+if (!app.isPackaged) {
+	const md5 = require("md5");
+	let preveMd5 = null,
+		fsWait = false;
+	const filePath = "./app/";
+	console.log(`正在监听 ${filePath}`);
+	fs.watch(filePath, (event, filename) => {
+		if (filename) {
+			if (fsWait) return;
+			fsWait = setTimeout(() => {
+				fsWait = false;
+			}, 100);
+			var currentMd5 = md5(fs.readFileSync(filePath + filename));
+			if (currentMd5 == preveMd5) {
+				return;
+			}
+			preveMd5 = currentMd5;
+			console.log(`${filePath}文件发生更新`);
+			mainWindow.webContents.reload();
 		}
-		preveMd5 = currentMd5;
-		console.log(`${filePath}文件发生更新`);
-		mainWindow.webContents.reload();
-	}
-});
-
+	});
+}
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
