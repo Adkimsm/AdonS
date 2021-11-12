@@ -47,10 +47,6 @@
 					key: "e223a4c3407042dc9db7505464cc03d3",
 				},
 			};
-			console.log(
-				"%cAdonS Primedy Version PA 1.02.34.12",
-				"font-size: 1.5rem;color: #e6e6e6;background-color: #2a2a2a;border-radius: 10px;margin: 10px; padding: 10px;"
-			);
 		</script>
 		<script
 			async
@@ -148,8 +144,16 @@
 			<div class="popUp" id="popSettings">
 				<span class="btnClose" onclick="closePop(popSettings)"></span>
 				<div class="pTitle">Settings</div>
-				<div class="pContent">good.</div>
+				<div class="pContent">
+					<h3>Wallpaper</h3>
+					<input type="text" id="wallpaperInput">
+					<button id="wallpaperInputSummit">提交</button>
+					<button onclick="store.delete('wallpaperSrc');history.go(0)">恢复默认壁纸</button>
+				</div>
 			</div>
 		</div>
+
+
+		<img src="./壁纸01.jpg" id="WallpaperBackGround">
 	</body>
 </html>

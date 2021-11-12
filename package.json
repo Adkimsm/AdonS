@@ -16,6 +16,7 @@
   "devDependencies": {
     "electron": "^13.6.1",
     "electron-builder": "^22.13.1",
+    "eslint": "^8.2.0",
     "gulp": "^3.9.1",
     "gulp-javascript-obfuscator": "^1.1.6",
     "vinyl-sourcemaps-apply": "^0.2.1"

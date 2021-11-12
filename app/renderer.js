@@ -1,3 +1,4 @@
+/*eslint-disable no-undef */
 /*
       _                __                             ______   
      / \              |  ]                          .' ____ \  
@@ -6,13 +7,16 @@
  _/ /   \ \_    | \__/  |    | \__. |    | | | |    | \____) | 
 |____| |____|    '.__.;__]    '.__.'    [___||__]    \______.' 
 
+ _   _           _
+| | | | __ _ ___(_)_ __ __ _
+| | | |/ _` |_  / | '__/ _` |
+| |_| | (_| |/ /| | | | (_| |
+ \___/ \__,_/___|_|_|  \__,_|
+
  */
 const Store = require("electron-store");
 
 const store = new Store();
-
-store.set("unicorn", "🦄");
-console.log(store.get("unicorn"));
 
 /**
  * Start Screen Animation.
@@ -296,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		setTimeout(() => (forRight.style.display = "none"), 250);
 	}
 	window.oncontextmenu = function (event) {
-			showContextmenu();
+		showContextmenu();
 	};
 	//再次点击，菜单消失
 	document.onclick = function () {
@@ -402,7 +406,8 @@ ipcRenderer.on("Plugin-Uninstall-All", (_event, mess) => {
 			})
 			.then(function (res) {
 				if (res.btn == "right") {
-					localStorage.removeItem("InstalledPlugins");
+					store.delete("InstalledPlugins");
+					history.go(0);
 				}
 			});
 	}
@@ -417,9 +422,44 @@ if (store.get("InstalledPlugins")) {
 				? (elementObj.src = obj.main)
 				: console.log(
 						"Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
-				  );
+				);
 			elementObj.defer = true;
 			document.querySelector("body").append(elementObj);
 		});
 	});
 }
+
+/**
+ * Change Wallpaper
+ */
+
+function getWallpaperInfo() {
+	let wallpaperBool = store.get("wallpaperSrc") ? true : false;
+	if (wallpaperBool) {
+		let wallpaperSrc = store.get("wallpaperSrc");
+		return String(wallpaperSrc);
+	}
+	return false;
+}
+
+function setWallpaper(src) {
+	if (src) {
+		document.querySelector("#WallpaperBackGround").src = String(src);
+		store.set("wallpaperSrc", String(src));
+	} else {
+		return console.error(
+			new Error("Can not Read Background Src of 'setWallpaper' function.")
+		);
+	}
+	return "Done.";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	if (getWallpaperInfo()) {
+		setWallpaper(getWallpaperInfo());
+	}
+});
+
+document.querySelector("#wallpaperInputSummit").addEventListener('click', () => {
+	setWallpaper(String(document.querySelector("#wallpaperInput").value));
+});

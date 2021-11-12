@@ -8,10 +8,6 @@ html {
 	height: 618px;
 	width: 1000px;
 	font-family: "AlibabaPuhui";
-	background-image: url("./壁纸01.jpg");
-	object-fit: cover;
-	background-size: cover;
-	user-select: none;
 }
 
 * {
@@ -432,6 +428,18 @@ hr {
 
 #desktopPlugins {
 	z-index: 2;
+}
+
+#WallpaperBackGround {
+	z-index: -9999;
+	top: 0px;
+	position: absolute;
+	overflow: hidden;
+	object-fit: cover;
+	background-size: cover;
+	user-select: none;
+	width: 1000px;
+	height: 618px;
 }
 
 @keyframes fadeInDown {
