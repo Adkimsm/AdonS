@@ -9,6 +9,7 @@ Store.initRenderer();
 
 let mainWindow = null;
 
+const channelName = "Plugin-Uninstall-All";
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1000,
@@ -44,7 +45,12 @@ function createWindow() {
 						});
 						const files = dialog.showOpenDialogSync(mainWindow, {
 							properties: ["openFile"],
-							filters: [{ name: "JSON Files", extensions: ["json"] }],
+							filters: [
+								{
+									name: "JSON Files",
+									extensions: ["json"]
+								}
+							],
 						});
 						if (files) {
 							console.log(files[0]);
@@ -59,7 +65,7 @@ function createWindow() {
 				{
 					label: "Uninstall All Plugin",
 					click() {
-						mainWindow.webContents.send("Plugin-Uninstall-All", "checked");
+						mainWindow.webContents.send(channelName, "checked");
 					},
 				},
 			],
