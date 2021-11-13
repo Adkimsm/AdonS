@@ -8,6 +8,7 @@ html {
 	height: 618px;
 	width: 1000px;
 	font-family: "AlibabaPuhui";
+	user-select: none;
 }
 
 * {
@@ -332,10 +333,10 @@ hr {
 	font-size: small;
 	border-radius: 20px;
 	overflow: hidden;
-	box-shadow: rgba(0, 0, 0, 0.05) 0 10px 20px;
 	transform: scale(1.1);
 	transition: all 0.25s;
 	display: none;
+	box-shadow: 0px 30px 60px rgba(0,0,0,0.12);
 }
 
 .btnClose {
@@ -440,6 +441,46 @@ hr {
 	user-select: none;
 	width: 1000px;
 	height: 618px;
+}
+
+.popContentLabel {
+	padding: 10px;
+	border: 1px transparent solid;
+	border-radius: 18px;
+	background-color: #f3f6f3;
+}
+
+.popContentLabel:hover {
+	box-shadow: 0px 30px 60px rgba(0,0,0,0.12);
+}
+
+.popContentLabel h3 {
+	margin: 10px;
+}
+
+.popContentLabel input {
+	outline: none;
+	padding: 5px;
+	border-radius: 5px;
+	border: transparent solid;
+}
+
+.popContentLabel input:focus {
+	background-color: #000000;
+	color: #fff;
+}
+
+.popContentLabel button {
+	padding: 5px;
+	background-color: #ffffff;
+	border: transparent solid;
+	margin-left: 5px;
+}
+
+.popContentLabel button:hover {
+	border-radius: 5px;
+	background-color: black;
+	color: #fff;
 }
 
 @keyframes fadeInDown {

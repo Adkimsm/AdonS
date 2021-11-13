@@ -145,15 +145,18 @@
 				<span class="btnClose" onclick="closePop(popSettings)"></span>
 				<div class="pTitle">Settings</div>
 				<div class="pContent">
+					<div class="popContentLabel">
 					<h3>Wallpaper</h3>
-					<input type="text" id="wallpaperInput">
-					<button id="wallpaperInputSummit">提交</button>
-					<button onclick="store.delete('wallpaperSrc');history.go(0)">恢复默认壁纸</button>
+						<input type="text" id="wallpaperInput" />
+						<button id="wallpaperInputSummit">提交</button>
+						<button onclick="store.delete('wallpaperSrc');history.go(0)">
+							恢复默认壁纸
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
 
-
-		<img src="./壁纸01.jpg" id="WallpaperBackGround">
+		<img src="./壁纸01.jpg" id="WallpaperBackGround" />
 	</body>
 </html>

@@ -18,6 +18,17 @@ const Store = require("electron-store");
 
 const store = new Store();
 
+const { ipcRenderer } = require("electron");
+
+function showError(message) {
+	ipcRenderer.send("errorInRenderer", String(message));
+	return false;
+}
+
+window.onerror = (e) => {
+	showError(e);
+};
+
 /**
  * Start Screen Animation.
  */
@@ -29,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			document.querySelector("#onStart").style.opacity = 0;
 			document.querySelector("#onStart").style.display = "none";
 		}, 100);
-	}, 2168);
+	}, 5656);
 });
 
 /**
@@ -346,8 +357,6 @@ function closePop(obj) {
  * Plugin Support.
  */
 
-const { ipcRenderer } = require("electron");
-
 ipcRenderer.on("Plugin-Content", (_event, path, content) => {
 	if (content && path) {
 		console.log(content);
@@ -422,7 +431,7 @@ if (store.get("InstalledPlugins")) {
 				? (elementObj.src = obj.main)
 				: console.log(
 						"Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
-				);
+				  );
 			elementObj.defer = true;
 			document.querySelector("body").append(elementObj);
 		});
@@ -447,9 +456,7 @@ function setWallpaper(src) {
 		document.querySelector("#WallpaperBackGround").src = String(src);
 		store.set("wallpaperSrc", String(src));
 	} else {
-		return console.error(
-			new Error("Can not Read Background Src of 'setWallpaper' function.")
-		);
+		showError("Can not Read Background Src of 'setWallpaper' function.");
 	}
 	return "Done.";
 }
@@ -460,6 +467,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-document.querySelector("#wallpaperInputSummit").addEventListener('click', () => {
-	setWallpaper(String(document.querySelector("#wallpaperInput").value));
-});
+document
+	.querySelector("#wallpaperInputSummit")
+	.addEventListener("click", () => {
+		setWallpaper(String(document.querySelector("#wallpaperInput").value));
+	});

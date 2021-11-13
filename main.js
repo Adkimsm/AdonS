@@ -1,5 +1,5 @@
 /*eslint-disable no-undef */
-const { app, BrowserWindow, Menu, dialog } = require("electron");
+const { app, BrowserWindow, Menu, dialog, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -48,8 +48,8 @@ function createWindow() {
 							filters: [
 								{
 									name: "JSON Files",
-									extensions: ["json"]
-								}
+									extensions: ["json"],
+								},
 							],
 						});
 						if (files) {
@@ -124,4 +124,8 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", function () {
 	if (process.platform !== "darwin") app.quit();
+});
+
+ipcMain.on("errorInRenderer", function (sys, msg) {
+	dialog.showErrorBox("Error", msg);
 });
