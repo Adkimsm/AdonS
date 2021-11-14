@@ -299,10 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			forRight.style.transform = "scale(1.05)";
 		}, 50);
 		setTimeout(() => (forRight.style.transform = "scale(1)"), 200);
-		//菜单定位
 		forRight.style.left = event.pageX + "px";
 		forRight.style.top = event.pageY + "px";
-		//return false为了屏蔽默认事件
 		return false;
 	}
 	function hideContextMenu() {
@@ -472,3 +470,10 @@ document
 	.addEventListener("click", () => {
 		setWallpaper(String(document.querySelector("#wallpaperInput").value));
 	});
+
+/**
+ * Terminal
+ */
+document.querySelector("#terminalButton").onclick = function() {
+	ipcRenderer.send('openTerminal', 'y');
+};

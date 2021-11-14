@@ -3,28 +3,26 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Socpdy Easier</title>
-		<link rel="stylesheet" href="style.css" />
-		<script defer src="./renderer.js"></script>
-		<script src="./pxmu.js"></script>
-		<meta
-			http-equiv="Cache-Control"
-			content="no-cache, no-store, must-revalidate"
-		/>
-		<meta http-equiv="Pragma" content="no-cache" />
-		<meta http-equiv="Expires" content="0" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
+		<script src="./libs/js/pxmu.js"></script>
+		<script defer src="./assets/js/renderer.js"></script>
 	</head>
 
 	<body>
 		<div id="onStart">
 			<h1>Easier Socpdy</h1>
-			<img src="./89b192c6a03e051b30b2d370d9c21479.png" alt="" />
+			<img src="./assets/images/89b192c6a03e051b30b2d370d9c21479.png" alt="" />
 			<br />
 			<small>Build 12135.129</small>
 		</div>
 		<!-- 可视区域 -->
 		<div id="outScreen">
 			<div id="dock_time">
-				<img id="sysIco" src="./xh-48.png" onclick="showLauPad()" />
+				<img
+					id="sysIco"
+					src="./assets/images/xh-48.png"
+					onclick="showLauPad()"
+				/>
 				<div>
 					<span id="dockDate" style="margin-right: 8px">ggg</span>
 					<span id="dockTime">ggg</span>
@@ -60,13 +58,19 @@
 				<div class="icon_bottom">
 					<h2>LauPad</h2>
 					<div class="icons">
-						<img id="shutdown_btn" src="./shutdown.png" />
-						<img onclick="showLockScr()" src="./keyhole-shield.png" />
+						<img id="shutdown_btn" src="./assets/images/shutdown.png" />
+						<img
+							onclick="showLockScr()"
+							src="./assets/images/keyhole-shield.png"
+						/>
 						<img onclick="showPop('popSettings')" src="./settings.svg" />
 					</div>
 				</div>
 				<div class="icon_top">
-					<img onclick="showPop('popFeedback')" src="windows-explorer.png" />
+					<img
+					    id="terminalButton"
+						src="./assets/images/console_48px.png"
+					/>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
@@ -146,7 +150,7 @@
 				<div class="pTitle">Settings</div>
 				<div class="pContent">
 					<div class="popContentLabel">
-					<h3>Wallpaper</h3>
+						<h3>Wallpaper</h3>
 						<input type="text" id="wallpaperInput" />
 						<button id="wallpaperInputSummit">提交</button>
 						<button onclick="store.delete('wallpaperSrc');history.go(0)">
@@ -157,6 +161,6 @@
 			</div>
 		</div>
 
-		<img src="./壁纸01.jpg" id="WallpaperBackGround" />
+		<img src="./assets/images/壁纸01.jpg" id="WallpaperBackGround" />
 	</body>
 </html>
