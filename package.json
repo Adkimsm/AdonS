@@ -47,6 +47,7 @@
     }
   },
   "dependencies": {
-    "electron-store": "^8.0.1"
+    "dom-terminal": "1.0.3",
+    "electron-store": "8.0.1"
   }
 }

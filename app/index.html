@@ -29,6 +29,8 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Desktop -->
 		<div id="desktopPlugins">
 			<div id="he-plugin-standard"></div>
 		</div>
@@ -51,6 +53,7 @@
 			src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"
 		></script>
 
+		<!-- LauPad -->
 		<!-- 如果用户想打开启动台，就把这个div的display设为block -->
 		<div id="laupad" style="display: none">
 			<hr />
@@ -67,10 +70,7 @@
 					</div>
 				</div>
 				<div class="icon_top">
-					<img
-					    id="terminalButton"
-						src="./assets/images/console_48px.png"
-					/>
+					<img id="terminalButton" src="./assets/images/console_48px.png" />
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						x="0px"
@@ -104,11 +104,15 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Lock -->
 		<div id="LockScreen" style="display: none" onclick="hideLockScr()">
 			<div class="con">
 				<h2 id="LockTime">time..</h2>
 			</div>
 		</div>
+
+		<!-- ToDo -->
 		<div id="TodoList" style="display: none">
 			<div class="container">
 				<div class="wrapper">
@@ -135,6 +139,13 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Terminal -->
+		<div id="terminalCon">
+			<span id="TerminalCloseBtn">×</span>
+			<div id="terminal"></div>
+		</div>
+
 		<div class="right-menu" id="right-menu">
 			<div class="list">
 				<div

@@ -3,6 +3,11 @@
 	src: url("../images/AlibabaPuHuiTi-2-65-Medium.ttf");
 }
 
+@font-face {
+	font-family: "JetBrains";
+	src: url("../images/JetBrainsMono-Regular.ttf");
+}
+
 html {
 	overflow: hidden;
 	height: 618px;
@@ -236,8 +241,10 @@ hr {
 }
 
 #todo_btnClose,
-#lockBtnClose {
-	position: absolute;
+#lockBtnClose,
+#TerminalCloseBtn {
+	z-index: 32;
+	position: fixed;
 	right: 0;
 	top: 0;
 	padding: 12px 16px 12px 16px;
@@ -336,7 +343,7 @@ hr {
 	transform: scale(1.1);
 	transition: all 0.25s;
 	display: none;
-	box-shadow: 0px 30px 60px rgba(0,0,0,0.12);
+	box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.12);
 }
 
 .btnClose {
@@ -451,7 +458,7 @@ hr {
 }
 
 .popContentLabel:hover {
-	box-shadow: 0px 30px 60px rgba(0,0,0,0.12);
+	box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.12);
 }
 
 .popContentLabel h3 {
@@ -481,6 +488,119 @@ hr {
 	border-radius: 5px;
 	background-color: black;
 	color: #fff;
+}
+
+#terminalCon {
+	position: absolute;
+	display: none;
+	opacity: 0;
+	z-index: 31;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.terminal ::selection {
+	background: #0080ff;
+	text-shadow: none !important;
+}
+
+.terminal {
+	min-height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+.terminal .container {
+	padding: 1em 1.5em 1em 1em;
+	position: absolute;
+	text-shadow: 0 0 5px #c8c8c8;
+}
+
+.terminal .container output {
+	clear: both;
+	width: 100%;
+}
+
+.terminal .container output pre {
+	margin: 0;
+}
+
+.terminal .cmdline {
+	background-color: transparent;
+	border: none;
+	color: inherit;
+	font: inherit;
+	margin: 0;
+	outline: none;
+	width: 100%;
+}
+
+.terminal output table.input-line td:last-child {
+	padding-left: 1px;
+}
+
+.terminal .prompt {
+	line-height: 20px;
+	margin-right: 7px;
+	white-space: nowrap;
+}
+
+.terminal table.input-line {
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.terminal table.input-line td {
+	margin: 0;
+	padding: 0;
+}
+
+.terminal-modern {
+	color: white;
+	font-family: "JetBrains", monospace;
+}
+
+.terminal-modern table {
+	color: white;
+}
+
+.terminal-modern a {
+	color: #fff;
+}
+
+.terminal-modern a.external {
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA9QTFRFzs7OqKio0NDQ////////DlgqrAAAAAV0Uk5T/////wD7tg5TAAAAN0lEQVR42izLyQ0AMAgDQYPpv+b4yD7QEBGcYoI0yN454Sqy9KnfTUufQpB7c/9AM1RlE58AAwBEcAE4zo3mOAAAAABJRU5ErkJggg==")
+		no-repeat scroll right center transparent;
+	padding-right: 13px;
+	outline: none;
+}
+
+.terminal-modern .background {
+	position: fixed;
+	background: #000;
+	height: 100%;
+	left: 0;
+	pointer-events: none;
+	top: 0;
+	width: 100%;
+}
+
+.terminal-modern .container {
+	text-shadow: none;
+}
+
+.terminal-modern .container output pre {
+	color: white;
+	font-family: "JetBrains", monospace;
+}
+
+.terminal-modern .prompt {
+	color: #fc0;
 }
 
 @keyframes fadeInDown {

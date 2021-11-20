@@ -129,14 +129,3 @@ app.on("window-all-closed", function () {
 ipcMain.on("errorInRenderer", function (sys, msg) {
 	dialog.showErrorBox("Error", msg);
 });
-
-ipcMain.on("openTerminal", function () {
-		let terminalWin = new BrowserWindow({
-			width: 1000,
-			resizable: false,
-			height: 618,
-			backgroundColor: "#e0e0e0"
-		});
-	terminalWin.loadFile("./app/terminal.html");
-	terminalWin.show();
-});

@@ -20,6 +20,8 @@ const store = new Store();
 
 const { ipcRenderer } = require("electron");
 
+const Terminal = require("dom-terminal");
+
 function showError(message) {
 	ipcRenderer.send("errorInRenderer", String(message));
 	return false;
@@ -429,7 +431,7 @@ if (store.get("InstalledPlugins")) {
 				? (elementObj.src = obj.main)
 				: console.log(
 						"Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
-				  );
+				);
 			elementObj.defer = true;
 			document.querySelector("body").append(elementObj);
 		});
@@ -474,6 +476,55 @@ document
 /**
  * Terminal
  */
-document.querySelector("#terminalButton").onclick = function() {
-	ipcRenderer.send('openTerminal', 'y');
+document.querySelector("#terminalButton").onclick = function () {
+	document.querySelector("#terminalCon").style.animation = "FadeIn .2s linear";
+	document.querySelector("#terminalCon").style.opacity = 1;
+	document.querySelector("#terminalCon").style.display = "block";
+	document.querySelector("#TerminalCloseBtn").onclick = function () {
+		document.querySelector("#terminalCon").style.animation =
+			"FadeOut .2s linear";
+		setTimeout(() => {
+			document.querySelector("#terminalCon").style.opacity = 0;
+			document.querySelector("#terminalCon").style.display = "none";
+		}, 100);
+	};
 };
+
+var ter = new Terminal(
+	"terminal",
+	{
+		welcome: "Welcome to Adon terminal!",
+		prompt: "AdonTerminal ",
+		separator: "&gt;",
+	},
+	{
+		execute: function (cmd, args) {
+			switch (cmd) {
+				case "clear":
+					terminal.clear();
+					return "";
+
+				case "help":
+					return 'Commands: clear, help, theme, ver or version<br>More help available <a class="external" href="http://github.com/sasadjolic/dom-terminal" target="_blank">here</a>';
+
+				case "theme":
+					if (args && args[0]) {
+						if (args.length > 1) return "Too many arguments";
+						else if (args[0].match(/^interlaced|modern|white$/u)) {
+							terminal.setTheme(args[0]);
+							return "";
+						}
+						return "Invalid theme";
+					}
+					return terminal.getTheme();
+
+				case "ver":
+				case "version":
+					return "1.0.2";
+
+				default:
+					return false;
+			}
+		},
+	}
+);
