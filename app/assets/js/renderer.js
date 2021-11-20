@@ -1,3 +1,6 @@
+/*eslint-disable no-fallthrough */
+/*eslint-disable default-case */
+/*eslint-disable camelcase */
 /*eslint-disable no-undef */
 /*
       _                __                             ______   
@@ -41,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		setTimeout(() => {
 			document.querySelector("#onStart").style.opacity = 0;
 			document.querySelector("#onStart").style.display = "none";
+			displayMessage("Welcome To AdonS.");
 		}, 100);
 	}, 5656);
 });
@@ -431,7 +435,7 @@ if (store.get("InstalledPlugins")) {
 				? (elementObj.src = obj.main)
 				: console.log(
 						"Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
-			);
+				  );
 			elementObj.defer = true;
 			document.querySelector("body").append(elementObj);
 		});
@@ -528,3 +532,61 @@ var ter = new Terminal(
 		},
 	}
 );
+
+/**
+ * Message Toast
+ *
+ * By `Leng Yi Bai`
+ *
+ * @param str 'String'
+ */
+
+function displayMessage(str) {
+	let alert = document.querySelector("alert");
+	let timer = null;
+
+	function display_S() {
+		alert.style.top = "35px";
+		alert.style.opacity = "1";
+		alert.innerHTML = str;
+		timer = setTimeout(function () {
+			alert.style.top = "-50px";
+			alert.style.opacity = "0";
+		}, 5000);
+	}
+
+	alert.addEventListener("mouseover", function () {
+		clearTimeout(timer);
+		console.log("用户已知晓");
+	});
+
+	alert.addEventListener("mouseleave", function () {
+		console.log("用户已阅读完毕");
+		setTimeout(() => {
+			alert.style.top = "-50px";
+			alert.style.opacity = "0";
+		}, 100);
+	});
+
+	function display_C() {
+		clearTimeout(timer);
+		alert.style.backgroundColor = "white";
+		alert.style.color = "black";
+		let twinkle1 = setInterval(() => {
+			alert.style.backgroundColor = "rgb(51, 51, 51)";
+			alert.style.color = "white";
+		}, 250);
+		let twinkle2 = setInterval(() => {
+			alert.style.backgroundColor = "white";
+			alert.style.color = "black";
+		}, 500);
+		setTimeout(() => {
+			clearInterval(twinkle1);
+			clearInterval(twinkle2);
+		}, 750);
+	}
+
+	display_C();
+	display_S();
+	return true;
+}

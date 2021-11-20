@@ -150,6 +150,7 @@ hr {
 	overflow-y: scroll;
 	padding-bottom: 30px;
 }
+
 .wrapper {
 	overflow-y: auto;
 	margin: auto;
@@ -158,44 +159,54 @@ hr {
 	background: #e6e6e6;
 	box-shadow: 0 0 0 5px rgba(187, 157, 157, 0.5);
 }
+
 #TodoList .container h2 {
 	text-align: center;
 	margin: 0;
 	font-weight: 200;
 }
+
 .plates {
 	margin: 0;
 	padding: 0;
 	position: relative;
 }
+
 .plates li {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 10px 10px;
 	font-weight: 100;
 	display: flex;
 }
+
 .plates li:hover {
 	background-color: #2a2a2a;
 	color: #e6e6e6;
 }
+
 .plates label {
 	flex: 1;
 	cursor: pointer;
 }
+
 .plates input {
 	display: none;
 }
+
 .plates input + label:before {
 	content: "⬜️";
 	margin-right: 10px;
 }
+
 .plates input:checked + label {
 	text-decoration: line-through;
 	padding-left: 30px;
 }
+
 .plates li:hover input + label:before {
 	border-color: #e6e6e6;
 }
+
 .plates input:checked + label:before {
 	content: "";
 	position: absolute;
@@ -208,17 +219,21 @@ hr {
 	height: 15px;
 	width: 7px;
 }
+
 .add-items {
 	margin-top: 20px;
 }
+
 .add-items input {
 	padding: 10px;
 	outline: 0;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .add-items input:nth-child(1) {
 	width: 61.3%;
 }
+
 .add-items input:nth-child(2) {
 	width: 30%;
 	color: rgb(85, 108, 128);
@@ -601,6 +616,21 @@ hr {
 
 .terminal-modern .prompt {
 	color: #fc0;
+}
+
+alert {
+	position: fixed;
+	top: -50px;
+	left: 50%;
+	padding: 20px;
+	transform: translateX(-50%);
+	background-color: rgba(30, 30, 30);
+	border-radius: 50px;
+	text-align: center;
+	font-size: 15px;
+	opacity: 1;
+	z-index: 999;
+	transition-duration: 0.35s;
 }
 
 @keyframes fadeInDown {
