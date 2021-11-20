@@ -431,7 +431,7 @@ if (store.get("InstalledPlugins")) {
 				? (elementObj.src = obj.main)
 				: console.log(
 						"Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
-				);
+			);
 			elementObj.defer = true;
 			document.querySelector("body").append(elementObj);
 		});
