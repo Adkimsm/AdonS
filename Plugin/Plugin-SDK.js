@@ -20,3 +20,4 @@ image.alt = pName;
 image.addEventListener("click", () => {
 	showPop("pop" + pName);
 });
+
