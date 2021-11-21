@@ -2,6 +2,7 @@
 /*eslint-disable default-case */
 /*eslint-disable camelcase */
 /*eslint-disable no-undef */
+
 /*
       _                __                             ______   
      / \              |  ]                          .' ____ \  
@@ -590,3 +591,9 @@ function displayMessage(str) {
   display_S();
   return true;
 }
+
+/**
+ * Users.
+ */
+
+
