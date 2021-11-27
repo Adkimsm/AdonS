@@ -22,9 +22,7 @@ const Store = require("electron-store");
 
 const store = new Store();
 
-const {
-  ipcRenderer
-} = require("electron");
+const { ipcRenderer } = require("electron");
 
 const Terminal = require("dom-terminal");
 
@@ -47,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       document.querySelector("#onStart").style.opacity = 0;
       document.querySelector("#onStart").style.display = "none";
-      displayMessage("Welcome To AdonS," + store.get('users.firstUser.name'));
+      displayMessage("Welcome To AdonS," + store.get("users.firstUser.name"));
     }, 100);
   }, 5656);
 });
@@ -84,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 
 function showLauPad() {
+  hideConsoleCentre();
   document.querySelector("#laupad").style.animation = "FadeIn .2s linear";
   document.querySelector("#laupad").style.opacity = 1;
   document.querySelector("#laupad").style.display = "block";
@@ -371,9 +370,9 @@ ipcRenderer.on("Plugin-Content", (_event, path, content) => {
     console.log(content);
     let contentObj = JSON.parse(content);
     let mainJsPathInJson = contentObj.main;
-    var items = store.get("InstalledPlugins") ?
-      JSON.parse(store.get("items")) :
-      [];
+    var items = store.get("InstalledPlugins")
+      ? JSON.parse(store.get("items"))
+      : [];
     let item = {
       name: path,
       main: mainJsPathInJson,
@@ -383,64 +382,16 @@ ipcRenderer.on("Plugin-Content", (_event, path, content) => {
   }
 });
 
-ipcRenderer.on("Plugin-Uninstall-All", (_event, mess) => {
-  if (mess === "checked") {
-    pxmu
-      .diaglog({
-        title: {
-          text: "警告！",
-          color: "red",
-          fontsize: 20,
-          fontweight: "bold",
-          center: false,
-        },
-        content: {
-          text: "您确定要删除所有插件吗？",
-          color: "#444",
-          fontsize: 14,
-          fontweight: "normal",
-        },
-        line: {
-          solid: 1,
-          color: "#eee",
-        },
-        btn: {
-          left: {
-            text: "取消",
-            bg: "#fff",
-            solidcolor: "#fff",
-            color: "#444",
-          },
-          right: {
-            text: "确定",
-            bg: "#fff",
-            solidcolor: "#fff",
-            color: "red",
-          },
-        },
-        congif: {
-          animation: "fade",
-        },
-      })
-      .then(function (res) {
-        if (res.btn == "right") {
-          store.delete("InstalledPlugins");
-          history.go(0);
-        }
-      });
-  }
-});
-
 if (store.get("InstalledPlugins")) {
   window.addEventListener("load", () => {
     let InstalledPluginsObj = JSON.parse(store.get("InstalledPlugins"));
     InstalledPluginsObj.forEach((obj) => {
       let elementObj = document.createElement("script");
-      obj.main ?
-        (elementObj.src = obj.main) :
-        console.log(
-          "Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
-        );
+      obj.main
+        ? (elementObj.src = obj.main)
+        : console.log(
+            "Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
+          );
       elementObj.defer = true;
       document.querySelector("body").append(elementObj);
     });
@@ -500,11 +451,13 @@ document.querySelector("#terminalButton").onclick = function () {
 };
 
 var ter = new Terminal(
-  "terminal", {
+  "terminal",
+  {
     welcome: "Welcome to Adon terminal!",
     prompt: "AdonTerminal ",
     separator: "&gt;",
-  }, {
+  },
+  {
     execute: function (cmd, args) {
       switch (cmd) {
         case "clear":
@@ -549,7 +502,7 @@ function displayMessage(str) {
   let timer = null;
 
   function display_S() {
-    alert.style.top = "35px";
+    alert.style.top = "45px";
     alert.style.opacity = "1";
     alert.innerHTML = str;
     timer = setTimeout(function () {
@@ -598,7 +551,7 @@ function displayMessage(str) {
  * Users.
  */
 
-if (!(store.get('users.firstUser.name'))) {
+if (!store.get("users.firstUser.name")) {
   window.location.href = "././preSettings.html";
 }
 
@@ -607,7 +560,8 @@ if (!(store.get('users.firstUser.name'))) {
  */
 
 function showConsoleCentre() {
-  document.querySelector("#consoleCentre").style.animation = "FadeIn .2s linear";
+  document.querySelector("#consoleCentre").style.animation =
+    "FadeIn .2s linear";
   document.querySelector("#consoleCentre").style.opacity = 1;
   document.querySelector("#consoleCentre").style.display = "block";
   document.querySelector("#WallpaperBackGround").onclick = function () {
@@ -616,10 +570,12 @@ function showConsoleCentre() {
   document.querySelector("hr#showConsoleCentreLine").onclick = function () {
     hideConsoleCentre();
   };
+  hideLauPad();
 }
 
 function hideConsoleCentre() {
-  document.querySelector("#consoleCentre").style.animation = "FadeOut .2s linear";
+  document.querySelector("#consoleCentre").style.animation =
+    "FadeOut .2s linear";
   setTimeout(() => {
     document.querySelector("#consoleCentre").style.opacity = 0;
     document.querySelector("#consoleCentre").style.display = "none";
@@ -632,3 +588,65 @@ function hideConsoleCentre() {
     showConsoleCentre();
   };
 }
+
+/**
+ * No-Frame.
+ */
+
+document.querySelector('#dropdownHeaderReloadDevBtn').addEventListener('click', () => {
+  history.go(0);
+});
+
+document.querySelector('#dropdownHeaderToolsDevBtn').addEventListener('click', () => {
+  ipcRenderer.send('openDevTools');
+});
+
+document.querySelector('#dropdownHeaderUninstallAllPluginsBtn').addEventListener('click', () => {
+    pxmu
+      .diaglog({
+        title: {
+          text: "警告！",
+          color: "red",
+          fontsize: 20,
+          fontweight: "bold",
+          center: false,
+        },
+        content: {
+          text: "您确定要删除所有插件吗？",
+          color: "#444",
+          fontsize: 14,
+          fontweight: "normal",
+        },
+        line: {
+          solid: 1,
+          color: "#eee",
+        },
+        btn: {
+          left: {
+            text: "取消",
+            bg: "#fff",
+            solidcolor: "#fff",
+            color: "#444",
+          },
+          right: {
+            text: "确定",
+            bg: "#fff",
+            solidcolor: "#fff",
+            color: "red",
+          },
+        },
+        congif: {
+          animation: "fade",
+        },
+      })
+      .then(function (res) {
+        if (res.btn == "right") {
+          store.delete("InstalledPlugins");
+          history.go(0);
+        }
+      });
+});
+
+document.querySelector('#dropdownHeaderInstallPluginsBtn').addEventListener('click', () => {
+  ipcRenderer.send('InstallAllPluginsFromJSONFile');
+});

@@ -15,8 +15,8 @@ function createWindow() {
 		width: 1000,
 		resizable: false,
 		height: 618,
-		show: false,
 		backgroundColor: "#e0e0e0",
+		frame: false,
 		webPreferences: {
 			nodeIntegration: true,
 			enableRemoteModule: true,
@@ -26,11 +26,7 @@ function createWindow() {
 
 	mainWindow.loadFile("./app/index.html");
 
-	mainWindow.once("ready-to-show", () => {
-		mainWindow.show();
-	});
-
-	const template = [
+	/*const template = [
 		{
 			label: "Settings",
 			role: "Settings",
@@ -90,8 +86,10 @@ function createWindow() {
 		},
 	];
 	Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+	*/
 	//mainWindow.webContents.openDevTools()
 }
+
 if (!app.isPackaged) {
 	const md5 = require("md5");
 	let fsWait = false,
@@ -116,10 +114,6 @@ if (!app.isPackaged) {
 }
 app.whenReady().then(() => {
 	createWindow();
-
-	app.on("activate", function () {
-		if (BrowserWindow.getAllWindows().length === 0) createWindow();
-	});
 });
 
 app.on("window-all-closed", function () {
@@ -128,4 +122,33 @@ app.on("window-all-closed", function () {
 
 ipcMain.on("errorInRenderer", function (sys, msg) {
 	dialog.showErrorBox("Error", msg);
+});
+
+ipcMain.on("openDevTools", function (sys, msg) {
+	mainWindow.webContents.isDevToolsOpened() ? mainWindow.webContents.closeDevTools() : mainWindow.webContents.openDevTools({ mode: 'bottom' });
+});
+
+ipcMain.on("InstallAllPluginsFromJSONFile", function (sys, msg) {
+	dialog.showMessageBoxSync({
+		title: "注意!",
+		message:
+			"插件安装后拥有系统一切权限，请您确认您的插件提供者不会作恶！",
+	});
+	const files = dialog.showOpenDialogSync(mainWindow, {
+		properties: ["openFile"],
+		filters: [
+			{
+				name: "JSON Files",
+				extensions: ["json"],
+			},
+		],
+	});
+	if (files) {
+		console.log(files[0]);
+		mainWindow.webContents.send(
+			"Plugin-Content",
+			files[0],
+			fs.readFileSync(files[0], { encoding: "utf8" })
+		);
+	}
 });

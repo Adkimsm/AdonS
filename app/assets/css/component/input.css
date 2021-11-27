@@ -1100,10 +1100,12 @@
     transition: opacity 0.3s, transform 0.3s;
     -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    margin-top: 5px;
 }
 
 .input__field--isao:focus+.input__label--isao .input__label-content--isao {
     opacity: 0;
     -webkit-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
+    margin-top: 5px;
 }
