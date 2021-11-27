@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       document.querySelector("#onStart").style.opacity = 0;
       document.querySelector("#onStart").style.display = "none";
-      displayMessage("Welcome To AdonS.");
+      displayMessage("Welcome To AdonS," + store.get('users.firstUser.name'));
     }, 100);
   }, 5656);
 });
@@ -596,4 +596,6 @@ function displayMessage(str) {
  * Users.
  */
 
-
+if (!(store.get('users.firstUser.name'))) {
+  window.location.href = "././preSettings.html";
+}

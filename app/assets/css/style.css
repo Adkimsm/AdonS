@@ -466,7 +466,7 @@ hr {
 }
 
 .popContentLabel {
-	padding: 10px;
+	padding: 25px;
 	border: 1px transparent solid;
 	border-radius: 18px;
 	background-color: #f3f6f3;
@@ -488,8 +488,7 @@ hr {
 }
 
 .popContentLabel input:focus {
-	background-color: #000000;
-	color: #fff;
+	color: rgb(0, 0, 0);
 }
 
 .popContentLabel button {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Easier Pre Settings</title>
+    <link rel="stylesheet" href="./assets/css/presettings.css">
+    <link rel="stylesheet" href="./assets/css/component/input.css">
+    <script src="./assets/js/presettings.js"></script>
+</head>
+
+<body>
+    <aside>
+        <ul>
+            <li class="focus" id="welcomeLi">Welcome</li>
+            <li id="preLi">预先设置</li>
+            <li id="okLi">完成设置</li>
+        </ul>
+    </aside>
+    <section id="Content">
+        <section id="welcomeContent">
+            <h1>欢迎来到 Easier !</h1>
+            <p>Easier 是以 Electron 为核心，以 Windows NT 为基石构建的新一代 Exe 系统。</p>
+            <p>它兼具 UI 特色以及使用功能于一身，是您居家、旅行必备的效率神器。</p>
+            <p>相信您会对其一见钟情，并对 Easier 的 强大感到惊叹。</p>
+            <p>接下来，我们会邀请您加入 Easier 的大家庭，并对您询问若干问题。</p>
+            <p>这些问题不会触犯您的隐私，您可放心填写。</p>
+            <p>我们承诺不会外泄这些信息，因为这些信息是位于您本地的电脑上的。</p>
+            <footer>
+                <button id="nextWelcome">Next</button>
+            </footer>
+        </section>
+        <section id="settingsContent" style="display: none">
+            <h1>预设置</h1>
+            <p>让我们来进行一些预先的设置。它将有利于您的日后使用。</p>
+            <span class="input input--kaede">
+                <input class="input__field input__field--kaede" type="text" id="userNameInput" />
+                <label class="input__label input__label--kaede" for="userNameInput">
+                    <span class="input__label-content input__label-content--kaede">用户名</span>
+                </label>
+            </span>
+            <footer>
+                <button id="nextSettings">Next</button>
+            </footer>
+        </section>
+        <section id="okContent" style="display: none">
+            <h1>完成设置</h1>
+            <p>感谢您的配合， Easier 已经可以正常使用了。</p>
+            <p>点击下面的 Finish 按钮，开始享受 Easier 吧！</p>
+            <footer>
+                <button id="nextOk">Finish</button>
+            </footer>
+        </section>
+
+    </section>
+</body>
+
+</html>

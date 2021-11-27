@@ -1,179 +1,156 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<title>Socpdy Easier</title>
-		<link rel="stylesheet" href="./assets/css/style.css" />
-		<script src="./libs/js/pxmu.js"></script>
-		<script defer src="./assets/js/renderer.js"></script>
-	</head>
 
-	<body>
-		<div id="onStart">
-			<h1>Easier Socpdy</h1>
-			<img src="./assets/images/89b192c6a03e051b30b2d370d9c21479.png" alt="" />
-			<br />
-			<small>Build 12135.129</small>
+<head>
+	<meta charset="UTF-8" />
+	<title>Socpdy Easier</title>
+	<link rel="stylesheet" href="./assets/css/style.css" />
+	<script src="./libs/js/pxmu.js"></script>
+	<script defer src="./assets/js/renderer.js"></script>
+	<link rel="stylesheet" href="./assets/css/component/input.css">
+</head>
+
+<body>
+	<div id="onStart">
+		<h1>Easier Socpdy</h1>
+		<img src="./assets/images/89b192c6a03e051b30b2d370d9c21479.png" alt="" />
+		<br />
+		<small>Build 12135.129</small>
+	</div>
+	<!-- 可视区域 -->
+	<div id="outScreen">
+		<div id="dock_time">
+			<img id="sysIco" src="./assets/images/xh-48.png" onclick="showLauPad()" />
+			<div>
+				<span id="dockDate" style="margin-right: 8px">ggg</span>
+				<span id="dockTime">ggg</span>
+			</div>
 		</div>
-		<!-- 可视区域 -->
-		<div id="outScreen">
-			<div id="dock_time">
-				<img
-					id="sysIco"
-					src="./assets/images/xh-48.png"
-					onclick="showLauPad()"
-				/>
-				<div>
-					<span id="dockDate" style="margin-right: 8px">ggg</span>
-					<span id="dockTime">ggg</span>
+	</div>
+
+	<!-- Desktop -->
+	<div id="desktopPlugins">
+		<div id="he-plugin-standard"></div>
+	</div>
+	<script>
+		WIDGET = {
+			CONFIG: {
+				layout: "2",
+				width: "200",
+				height: "200",
+				background: "3",
+				dataColor: "FFFFFF",
+				borderRadius: "20",
+				modules: "10",
+				key: "e223a4c3407042dc9db7505464cc03d3",
+			},
+		};
+	</script>
+	<script async src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"></script>
+
+	<!-- LauPad -->
+	<!-- 如果用户想打开启动台，就把这个div的display设为block -->
+	<div id="laupad" style="display: none">
+		<hr />
+		<div class="icons">
+			<div class="icon_bottom">
+				<h2>LauPad</h2>
+				<div class="icons">
+					<img id="shutdown_btn" src="./assets/images/shutdown.png" />
+					<img onclick="showLockScr()" src="./assets/images/keyhole-shield.png" />
+					<img onclick="showPop('popSettings')" src="./settings.svg" />
+				</div>
+			</div>
+			<div class="icon_top">
+				<img id="terminalButton" src="./assets/images/console_48px.png" />
+				<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48"
+					style="fill: #000000" onclick="showTodoList()">
+					<path fill="#185abd"
+						d="M24.48,29.316l-9.505,9.505L1.588,25.434c-0.784-0.784-0.784-2.054,0-2.838l6.667-6.667	c0.784-0.784,2.054-0.784,2.838,0L24.48,29.316z">
+					</path>
+					<linearGradient id="5qKAcydctVb3hkGT27jhwa_HpPqCqynotVp_gr1" x1="14.572" x2="43.188" y1="38.199"
+						y2="9.583" gradientUnits="userSpaceOnUse">
+						<stop offset="0" stop-color="#4191fd"></stop>
+						<stop offset="1" stop-color="#55acfd"></stop>
+					</linearGradient>
+					<path fill="url(#5qKAcydctVb3hkGT27jhwa_HpPqCqynotVp_gr1)"
+						d="M17.797,41.642l-6.667-6.667c-0.784-0.784-0.784-2.054,0-2.838L36.907,6.358	c0.784-0.784,2.054-0.784,2.838,0l6.667,6.667c0.784,0.784,0.784,2.054,0,2.838L20.634,41.642	C19.851,42.425,18.58,42.425,17.797,41.642z">
+					</path>
+				</svg>
+			</div>
+		</div>
+	</div>
+
+	<!-- Lock -->
+	<div id="LockScreen" style="display: none" onclick="hideLockScr()">
+		<div class="con">
+			<h2 id="LockTime">time..</h2>
+		</div>
+	</div>
+
+	<!-- ToDo -->
+	<div id="TodoList" style="display: none">
+		<div class="container">
+			<div class="wrapper">
+				<span id="todo_btnClose" onclick="hideTodoList()">×</span>
+				<h2>To Do</h2>
+				<p></p>
+				<ul class="plates">
+					<li>待添加事项</li>
+				</ul>
+				<form class="add-items">
+					<input type="text" name="item" placeholder="Item Name" required />
+					<input type="submit" id="sumit_todo" value="添                      加" />
+				</form>
+				<div class="buttons">
+					<button data-action="clear">删除所有任务</button>
+					<button data-action="clearCheck">删除已完成的</button>
+					<button data-action="check">全部选中</button>
+					<button data-action="uncheck">全部不选中</button>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Desktop -->
-		<div id="desktopPlugins">
-			<div id="he-plugin-standard"></div>
+	<!-- Terminal -->
+	<div id="terminalCon">
+		<span id="TerminalCloseBtn">×</span>
+		<div id="terminal"></div>
+	</div>
+
+	<div class="right-menu" id="right-menu">
+		<div class="list">
+			<div
+				onclick="let evt = document.createEvent('MouseEvents');evt.initEvent('click', true, true);document.getElementById('shutdown_btn').dispatchEvent(evt);">
+				退出
+			</div>
 		</div>
-		<script>
-			WIDGET = {
-				CONFIG: {
-					layout: "2",
-					width: "200",
-					height: "200",
-					background: "3",
-					dataColor: "FFFFFF",
-					borderRadius: "20",
-					modules: "10",
-					key: "e223a4c3407042dc9db7505464cc03d3",
-				},
-			};
-		</script>
-		<script
-			async
-			src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"
-		></script>
-
-		<!-- LauPad -->
-		<!-- 如果用户想打开启动台，就把这个div的display设为block -->
-		<div id="laupad" style="display: none">
-			<hr />
-			<div class="icons">
-				<div class="icon_bottom">
-					<h2>LauPad</h2>
-					<div class="icons">
-						<img id="shutdown_btn" src="./assets/images/shutdown.png" />
-						<img
-							onclick="showLockScr()"
-							src="./assets/images/keyhole-shield.png"
-						/>
-						<img onclick="showPop('popSettings')" src="./settings.svg" />
-					</div>
-				</div>
-				<div class="icon_top">
-					<img id="terminalButton" src="./assets/images/console_48px.png" />
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						x="0px"
-						y="0px"
-						width="48"
-						height="48"
-						viewBox="0 0 48 48"
-						style="fill: #000000"
-						onclick="showTodoList()"
-					>
-						<path
-							fill="#185abd"
-							d="M24.48,29.316l-9.505,9.505L1.588,25.434c-0.784-0.784-0.784-2.054,0-2.838l6.667-6.667	c0.784-0.784,2.054-0.784,2.838,0L24.48,29.316z"
-						></path>
-						<linearGradient
-							id="5qKAcydctVb3hkGT27jhwa_HpPqCqynotVp_gr1"
-							x1="14.572"
-							x2="43.188"
-							y1="38.199"
-							y2="9.583"
-							gradientUnits="userSpaceOnUse"
-						>
-							<stop offset="0" stop-color="#4191fd"></stop>
-							<stop offset="1" stop-color="#55acfd"></stop>
-						</linearGradient>
-						<path
-							fill="url(#5qKAcydctVb3hkGT27jhwa_HpPqCqynotVp_gr1)"
-							d="M17.797,41.642l-6.667-6.667c-0.784-0.784-0.784-2.054,0-2.838L36.907,6.358	c0.784-0.784,2.054-0.784,2.838,0l6.667,6.667c0.784,0.784,0.784,2.054,0,2.838L20.634,41.642	C19.851,42.425,18.58,42.425,17.797,41.642z"
-						></path>
-					</svg>
+	</div>
+	<div class="cover1" id="cover1">
+		<div class="popUp" id="popSettings">
+			<span class="btnClose" onclick="closePop(popSettings)"></span>
+			<div class="pTitle">Settings</div>
+			<div class="pContent">
+				<div class="popContentLabel">
+					<span class="input input--isao">
+						<input class="input__field input__field--isao" type="text" id="wallpaperInput">
+						<label class="input__label input__label--isao" for="wallpaperInput" data-content="Wallpaper URL">
+							<span style="color: #000000;" class="input__label-content input__label-content--isao">Wallpaper
+								URL</span>
+						</label>
+					</span>
+					<button id="wallpaperInputSummit">提交</button>
+					<button onclick="store.delete('wallpaperSrc');history.go(0)">
+						恢复默认壁纸
+					</button>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Lock -->
-		<div id="LockScreen" style="display: none" onclick="hideLockScr()">
-			<div class="con">
-				<h2 id="LockTime">time..</h2>
-			</div>
-		</div>
+	<alert></alert>
 
-		<!-- ToDo -->
-		<div id="TodoList" style="display: none">
-			<div class="container">
-				<div class="wrapper">
-					<span id="todo_btnClose" onclick="hideTodoList()">×</span>
-					<h2>To Do</h2>
-					<p></p>
-					<ul class="plates">
-						<li>待添加事项</li>
-					</ul>
-					<form class="add-items">
-						<input type="text" name="item" placeholder="Item Name" required />
-						<input
-							type="submit"
-							id="sumit_todo"
-							value="添                      加"
-						/>
-					</form>
-					<div class="buttons">
-						<button data-action="clear">删除所有任务</button>
-						<button data-action="clearCheck">删除已完成的</button>
-						<button data-action="check">全部选中</button>
-						<button data-action="uncheck">全部不选中</button>
-					</div>
-				</div>
-			</div>
-		</div>
+	<img src="./assets/images/壁纸01.jpg" id="WallpaperBackGround" />
+</body>
 
-		<!-- Terminal -->
-		<div id="terminalCon">
-			<span id="TerminalCloseBtn">×</span>
-			<div id="terminal"></div>
-		</div>
-
-		<div class="right-menu" id="right-menu">
-			<div class="list">
-				<div
-					onclick="let evt = document.createEvent('MouseEvents');evt.initEvent('click', true, true);document.getElementById('shutdown_btn').dispatchEvent(evt);"
-				>
-					退出
-				</div>
-			</div>
-		</div>
-		<div class="cover1" id="cover1">
-			<div class="popUp" id="popSettings">
-				<span class="btnClose" onclick="closePop(popSettings)"></span>
-				<div class="pTitle">Settings</div>
-				<div class="pContent">
-					<div class="popContentLabel">
-						<h3>Wallpaper</h3>
-						<input type="text" id="wallpaperInput" />
-						<button id="wallpaperInputSummit">提交</button>
-						<button onclick="store.delete('wallpaperSrc');history.go(0)">
-							恢复默认壁纸
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<alert></alert>
-
-		<img src="./assets/images/壁纸01.jpg" id="WallpaperBackGround" />
-	</body>
 </html>
