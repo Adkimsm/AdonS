@@ -1,5 +1,5 @@
 /*eslint-disable no-undef */
-const { app, BrowserWindow, Menu, dialog, ipcMain } = require("electron");
+const { app, BrowserWindow, Menu, dialog, ipcMain, globalShortcut } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -8,6 +8,10 @@ const Store = require("electron-store");
 Store.initRenderer();
 
 let mainWindow = null;
+
+function toogleDevTools() {
+	mainWindow.webContents.isDevToolsOpened() ? mainWindow.webContents.closeDevTools() : mainWindow.webContents.openDevTools({ mode: 'detach' });
+}
 
 const channelName = "Plugin-Uninstall-All";
 function createWindow() {
@@ -88,6 +92,10 @@ function createWindow() {
 	Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 	*/
 	//mainWindow.webContents.openDevTools()
+
+	globalShortcut.register('Control+Shift+D', () => {
+		toogleDevTools();
+	});
 }
 
 if (!app.isPackaged) {
@@ -117,6 +125,7 @@ app.whenReady().then(() => {
 });
 
 app.on("window-all-closed", function () {
+	globalShortcut.unregisterAll();
 	if (process.platform !== "darwin") app.quit();
 });
 
@@ -125,7 +134,7 @@ ipcMain.on("errorInRenderer", function (sys, msg) {
 });
 
 ipcMain.on("openDevTools", function (sys, msg) {
-	mainWindow.webContents.isDevToolsOpened() ? mainWindow.webContents.closeDevTools() : mainWindow.webContents.openDevTools({ mode: 'bottom' });
+	toogleDevTools();
 });
 
 ipcMain.on("InstallAllPluginsFromJSONFile", function (sys, msg) {
