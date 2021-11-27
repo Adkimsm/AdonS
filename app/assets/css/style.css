@@ -632,6 +632,41 @@ alert {
 	transition-duration: 0.35s;
 }
 
+#consoleCentre {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 30%;
+	height: 85%;
+	backdrop-filter: blur(30px) saturate(200%);
+	padding: 25px;
+	background-color: #e6e6e636;
+}
+
+#consoleCentre .centreItem {
+	background-color: #242424a9;
+	padding: 10px;
+	width: 20%;
+	border-radius: 15px;
+}
+
+#consoleCentre .centreCon {
+	background-color: #5f585869;
+	border-radius: 30px;
+	border: transparent 1px solid;
+	height: 40%;
+	padding: 20px;
+}
+
+hr#showConsoleCentreLine {
+	width: 5%;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	margin: 0;
+	background: #fff;
+}
+
 @keyframes fadeInDown {
 	0% {
 		opacity: 0;

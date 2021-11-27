@@ -22,7 +22,9 @@ const Store = require("electron-store");
 
 const store = new Store();
 
-const { ipcRenderer } = require("electron");
+const {
+  ipcRenderer
+} = require("electron");
 
 const Terminal = require("dom-terminal");
 
@@ -297,6 +299,7 @@ function hideTodoList() {
 
 document.addEventListener("DOMContentLoaded", () => {
   var forRight = document.getElementById("right-menu");
+
   function showContextmenu() {
     var event = event || window.event;
     //显示菜单
@@ -310,6 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
     forRight.style.top = event.pageY + "px";
     return false;
   }
+
   function hideContextMenu() {
     forRight.style.transform = "scale(7.5)";
     forRight.style.opacity = "0";
@@ -367,9 +371,9 @@ ipcRenderer.on("Plugin-Content", (_event, path, content) => {
     console.log(content);
     let contentObj = JSON.parse(content);
     let mainJsPathInJson = contentObj.main;
-    var items = store.get("InstalledPlugins")
-      ? JSON.parse(store.get("items"))
-      : [];
+    var items = store.get("InstalledPlugins") ?
+      JSON.parse(store.get("items")) :
+      [];
     let item = {
       name: path,
       main: mainJsPathInJson,
@@ -432,11 +436,11 @@ if (store.get("InstalledPlugins")) {
     let InstalledPluginsObj = JSON.parse(store.get("InstalledPlugins"));
     InstalledPluginsObj.forEach((obj) => {
       let elementObj = document.createElement("script");
-      obj.main
-        ? (elementObj.src = obj.main)
-        : console.log(
-            "Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
-          );
+      obj.main ?
+        (elementObj.src = obj.main) :
+        console.log(
+          "Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
+        );
       elementObj.defer = true;
       document.querySelector("body").append(elementObj);
     });
@@ -496,13 +500,11 @@ document.querySelector("#terminalButton").onclick = function () {
 };
 
 var ter = new Terminal(
-  "terminal",
-  {
+  "terminal", {
     welcome: "Welcome to Adon terminal!",
     prompt: "AdonTerminal ",
     separator: "&gt;",
-  },
-  {
+  }, {
     execute: function (cmd, args) {
       switch (cmd) {
         case "clear":
@@ -598,4 +600,35 @@ function displayMessage(str) {
 
 if (!(store.get('users.firstUser.name'))) {
   window.location.href = "././preSettings.html";
+}
+
+/**
+ * Console Centre.
+ */
+
+function showConsoleCentre() {
+  document.querySelector("#consoleCentre").style.animation = "FadeIn .2s linear";
+  document.querySelector("#consoleCentre").style.opacity = 1;
+  document.querySelector("#consoleCentre").style.display = "block";
+  document.querySelector("#WallpaperBackGround").onclick = function () {
+    hideConsoleCentre();
+  };
+  document.querySelector("hr#showConsoleCentreLine").onclick = function () {
+    hideConsoleCentre();
+  };
+}
+
+function hideConsoleCentre() {
+  document.querySelector("#consoleCentre").style.animation = "FadeOut .2s linear";
+  setTimeout(() => {
+    document.querySelector("#consoleCentre").style.opacity = 0;
+    document.querySelector("#consoleCentre").style.display = "none";
+  }, 100);
+  document.querySelector("#WallpaperBackGround").onclick = function () {
+    //eslint-disable-next-line no-useless-return
+    return;
+  };
+  document.querySelector("hr#showConsoleCentreLine").onclick = function () {
+    showConsoleCentre();
+  };
 }
