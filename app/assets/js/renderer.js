@@ -1,3 +1,4 @@
+/*eslint-disable no-case-declarations */
 /*eslint-disable no-fallthrough */
 /*eslint-disable default-case */
 /*eslint-disable camelcase */
@@ -18,6 +19,7 @@
  \___/ \__,_/___|_|_|  \__,_|
 
  */
+
 const Store = require("electron-store");
 
 const store = new Store();
@@ -371,27 +373,29 @@ ipcRenderer.on("Plugin-Content", (_event, path, content) => {
     let contentObj = JSON.parse(content);
     let mainJsPathInJson = contentObj.main;
     var items = store.get("InstalledPlugins")
-      ? JSON.parse(store.get("items"))
+      ? store.get("items")
       : [];
     let item = {
-      name: path,
+      name: contentObj.name,
       main: mainJsPathInJson,
+      version: contentObj.version,
+      description: contentObj.description,
     };
     items.push(item);
-    store.set("InstalledPlugins", JSON.stringify(items));
+    store.set("InstalledPlugins", items);
   }
 });
 
 if (store.get("InstalledPlugins")) {
   window.addEventListener("load", () => {
-    let InstalledPluginsObj = JSON.parse(store.get("InstalledPlugins"));
+    let InstalledPluginsObj = store.get("InstalledPlugins");
     InstalledPluginsObj.forEach((obj) => {
       let elementObj = document.createElement("script");
       obj.main
         ? (elementObj.src = obj.main)
         : console.log(
-            "Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
-          );
+          "Path 为 " + obj.name + " 的插件没有 main 属性，无法添加至 DOM."
+        );
       elementObj.defer = true;
       document.querySelector("body").append(elementObj);
     });
@@ -436,6 +440,51 @@ document
 /**
  * Terminal
  */
+(function () {
+  var timeout = null;
+  var ter = new Terminal(
+    "terminal",
+    {
+      welcome: "Welcome to Adon terminal!",
+      prompt: "AdonTerminal ",
+      separator: "&gt;",
+    },
+    {
+      execute: function (cmd, args) {
+        switch (cmd) {
+          case "clear":
+            terminal.clear();
+            return "";
+
+          case "help":
+            return 'Commands: clear, help, ver or version, shutdown.';
+
+          case "ver":
+          case "version":
+            return "1.0.2";
+
+          case "shutdown":
+            if (args && (args[0] == "-t") && args[1]) {
+              timeout = setTimeout(() => {
+                window.close();
+              }, args[1]);
+              return `Easier Will Close With Time Out ${args[1]} ms.`;
+            } else if (args && (args[0] == "-a")) {
+              clearTimeout(timeout);
+              return 'Shutdown Was Clean.';
+            }
+            window.location = "././closing.html";
+            return "Closed.";
+
+          default:
+            return `Command "${cmd}" Not Found.Run "help" To List All Commands.`;
+        }
+      },
+    }
+  );
+
+  ter.output('<br>Adon Terminal In Easier Version 1.0.2');
+})();
 document.querySelector("#terminalButton").onclick = function () {
   document.querySelector("#terminalCon").style.animation = "FadeIn .2s linear";
   document.querySelector("#terminalCon").style.opacity = 1;
@@ -449,45 +498,6 @@ document.querySelector("#terminalButton").onclick = function () {
     }, 100);
   };
 };
-
-var ter = new Terminal(
-  "terminal",
-  {
-    welcome: "Welcome to Adon terminal!",
-    prompt: "AdonTerminal ",
-    separator: "&gt;",
-  },
-  {
-    execute: function (cmd, args) {
-      switch (cmd) {
-        case "clear":
-          terminal.clear();
-          return "";
-
-        case "help":
-          return 'Commands: clear, help, theme, ver or version<br>More help available <a class="external" href="http://github.com/sasadjolic/dom-terminal" target="_blank">here</a>';
-
-        case "theme":
-          if (args && args[0]) {
-            if (args.length > 1) return "Too many arguments";
-            else if (args[0].match(/^interlaced|modern|white$/u)) {
-              terminal.setTheme(args[0]);
-              return "";
-            }
-            return "Invalid theme";
-          }
-          return terminal.getTheme();
-
-        case "ver":
-        case "version":
-          return "1.0.2";
-
-        default:
-          return false;
-      }
-    },
-  }
-);
 
 /**
  * Message Toast
@@ -602,49 +612,49 @@ document.querySelector('#dropdownHeaderToolsDevBtn').addEventListener('click', (
 });
 
 document.querySelector('#dropdownHeaderUninstallAllPluginsBtn').addEventListener('click', () => {
-    pxmu
-      .diaglog({
-        title: {
-          text: "警告！",
-          color: "red",
-          fontsize: 20,
-          fontweight: "bold",
-          center: false,
-        },
-        content: {
-          text: "您确定要删除所有插件吗？",
+  pxmu
+    .diaglog({
+      title: {
+        text: "警告！",
+        color: "red",
+        fontsize: 20,
+        fontweight: "bold",
+        center: false,
+      },
+      content: {
+        text: "您确定要删除所有插件吗？",
+        color: "#444",
+        fontsize: 14,
+        fontweight: "normal",
+      },
+      line: {
+        solid: 1,
+        color: "#eee",
+      },
+      btn: {
+        left: {
+          text: "取消",
+          bg: "#fff",
+          solidcolor: "#fff",
           color: "#444",
-          fontsize: 14,
-          fontweight: "normal",
         },
-        line: {
-          solid: 1,
-          color: "#eee",
+        right: {
+          text: "确定",
+          bg: "#fff",
+          solidcolor: "#fff",
+          color: "red",
         },
-        btn: {
-          left: {
-            text: "取消",
-            bg: "#fff",
-            solidcolor: "#fff",
-            color: "#444",
-          },
-          right: {
-            text: "确定",
-            bg: "#fff",
-            solidcolor: "#fff",
-            color: "red",
-          },
-        },
-        congif: {
-          animation: "fade",
-        },
-      })
-      .then(function (res) {
-        if (res.btn == "right") {
-          store.delete("InstalledPlugins");
-          history.go(0);
-        }
-      });
+      },
+      congif: {
+        animation: "fade",
+      },
+    })
+    .then(function (res) {
+      if (res.btn == "right") {
+        store.delete("InstalledPlugins");
+        history.go(0);
+      }
+    });
 });
 
 document.querySelector('#dropdownHeaderInstallPluginsBtn').addEventListener('click', () => {

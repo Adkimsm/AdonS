@@ -96,6 +96,7 @@ function createWindow() {
 	globalShortcut.register('Control+Shift+D', () => {
 		toogleDevTools();
 	});
+	console.log(app.getPath('userData'));
 }
 
 if (!app.isPackaged) {
