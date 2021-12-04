@@ -98,9 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function showLauPad() {
   hideConsoleCentre();
-  document.querySelector('#laupad').style.animation = 'FadeIn .2s linear';
-  document.querySelector('#laupad').style.opacity = 1;
-  document.querySelector('#laupad').style.display = 'block';
+  methods.showElementByFade('#laupad');
   document.querySelector('#dock_time').style.bottom = 'calc(55%)';
   document.querySelector('#sysIco').onclick = function () {
     hideLauPad();
@@ -108,11 +106,7 @@ function showLauPad() {
 }
 
 function hideLauPad() {
-  document.querySelector('#laupad').style.animation = 'FadeOut .2s linear';
-  setTimeout(() => {
-    document.querySelector('#laupad').style.opacity = 0;
-    document.querySelector('#laupad').style.display = 'none';
-  }, 100);
+  methods.hideElementByFade('#laupad');
   document.querySelector('#dock_time').style.bottom = '0px';
   document.querySelector('#sysIco').onclick = function () {
     showLauPad();
@@ -124,19 +118,12 @@ function hideLauPad() {
  */
 
 function hideLockScr() {
-  document.querySelector('#LockScreen').style.animation = 'FadeOut .2s linear';
-  setTimeout(() => {
-    document.querySelector('#LockScreen').style.opacity = 0;
-    document.querySelector('#LockScreen').style.display = 'none';
-  }, 100);
+  methods.hideElementByFade('#LockScreen');
 }
 
 function showLockScr() {
   hideLauPad();
-  document.querySelector('#LockScreen').style.animation =
-    'fadeInDown .2s linear';
-  document.querySelector('#LockScreen').style.opacity = 1;
-  document.querySelector('#LockScreen').style.display = 'block';
+  methods.showElementByFade('#LockScreen');
 }
 
 /**
@@ -292,18 +279,12 @@ document.querySelector('#shutdown_btn').addEventListener('click', () => {
 
 function showTodoList() {
   hideLauPad();
-  document.querySelector('#TodoList').style.animation = 'FadeIn .2s linear';
-  document.querySelector('#TodoList').style.opacity = 1;
-  document.querySelector('#TodoList').style.display = 'block';
+  methods.showElementByFade('#TodoList');
 }
 
 function hideTodoList() {
   showLauPad();
-  document.querySelector('#TodoList').style.animation = 'FadeOut .2s linear';
-  setTimeout(() => {
-    document.querySelector('#TodoList').style.opacity = 0;
-    document.querySelector('#TodoList').style.display = 'none';
-  }, 100);
+  methods.hideElementByFade('#TodoList');
 }
 
 /**
@@ -581,10 +562,7 @@ if (!store.get('users.firstUser.name')) {
  */
 
 function showConsoleCentre() {
-  document.querySelector('#consoleCentre').style.animation =
-    'FadeIn .2s linear';
-  document.querySelector('#consoleCentre').style.opacity = 1;
-  document.querySelector('#consoleCentre').style.display = 'block';
+  methods.showElementByFade('#consoleCentre');
   document.querySelector('#WallpaperBackGround').onclick = function () {
     hideConsoleCentre();
   };
@@ -595,12 +573,7 @@ function showConsoleCentre() {
 }
 
 function hideConsoleCentre() {
-  document.querySelector('#consoleCentre').style.animation =
-    'FadeOut .2s linear';
-  setTimeout(() => {
-    document.querySelector('#consoleCentre').style.opacity = 0;
-    document.querySelector('#consoleCentre').style.display = 'none';
-  }, 100);
+  methods.hideElementByFade('#consoleCentre');
   document.querySelector('#WallpaperBackGround').onclick = function () {
     //eslint-disable-next-line no-useless-return
     return;
