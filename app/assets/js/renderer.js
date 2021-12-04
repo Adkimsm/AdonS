@@ -1,3 +1,4 @@
+/*eslint-disable no-undef */
 /*
       _                __                             ______   
      / \              |  ]                          .' ____ \  
@@ -22,7 +23,7 @@ const { ipcRenderer } = require('electron');
 
 const Terminal = require('dom-terminal');
 
-const pxmu = require('pxmu');
+const pxmu = require('./libs/js/pxmu.js');
 
 function showError(message) {
   ipcRenderer.send('errorInRenderer', String(message));
@@ -31,6 +32,23 @@ function showError(message) {
 
 window.onerror = (e) => {
   showError(e);
+};
+
+let methods = {
+  hideElementByFade: function (element) {
+    document.querySelector(element).style.animation = 'FadeOut .2s linear';
+    setTimeout(() => {
+      document.querySelector(element).style.opacity = 0;
+      document.querySelector(element).style.display = 'none';
+    }, 100);
+    return this;
+  },
+  showElementByFade: function (element) {
+    document.querySelector(element).style.animation = 'FadeIn .2s linear';
+    document.querySelector(element).style.opacity = 1;
+    document.querySelector(element).style.display = 'block';
+    return this;
+  }
 };
 
 /**
@@ -387,8 +405,8 @@ if (store.get('InstalledPlugins')) {
       obj.main
         ? (elementObj.src = obj.main)
         : console.log(
-            'Path 为 ' + obj.name + ' 的插件没有 main 属性，无法添加至 DOM.'
-          );
+          'Path 为 ' + obj.name + ' 的插件没有 main 属性，无法添加至 DOM.'
+        );
       elementObj.defer = true;
       document.querySelector('body').append(elementObj);
     });
@@ -661,3 +679,26 @@ document
   .addEventListener('click', () => {
     ipcRenderer.send('InstallAllPluginsFromJSONFile');
   });
+
+/**
+ * Office.
+ */
+
+(function () {
+  let vdit = new Vditor('vditor', {
+    mode: 'wysiwyg',
+    preview: {
+      markdown: {
+        mark: true,
+      },
+    }
+  });
+})();
+
+document.querySelector('#markdownButton').addEventListener('click', function () {
+  methods.showElementByFade('#markdown');
+});
+
+document.querySelector('#vditorCloseBtn').addEventListener('click', () => {
+  methods.hideElementByFade('#markdown');
+});

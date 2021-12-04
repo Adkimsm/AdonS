@@ -10,10 +10,9 @@ Store.initRenderer();
 let mainWindow = null;
 
 function toogleDevTools() {
-	mainWindow.webContents.isDevToolsOpened() ? mainWindow.webContents.closeDevTools() : mainWindow.webContents.openDevTools({ mode: 'detach' });
+	mainWindow.webContents.isDevToolsOpened() ? mainWindow.webContents.closeDevTools() : mainWindow.webContents.openDevTools({ mode: 'bottom' });
 }
 
-const channelName = "Plugin-Uninstall-All";
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1000,

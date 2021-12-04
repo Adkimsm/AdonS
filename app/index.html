@@ -5,9 +5,9 @@
 	<meta charset="UTF-8" />
 	<title>Socpdy Easier</title>
 	<link rel="stylesheet" href="./assets/css/style.css" />
-	<script src="./libs/js/pxmu.js"></script>
-	<script defer src="./assets/js/renderer.js"></script>
+	<!--<script src="./libs/js/pxmu.js"></script>-->
 	<link rel="stylesheet" href="./assets/css/component/input.css">
+	<link rel="stylesheet" href="./assets/css/component/pxmu.css">
 </head>
 
 <body>
@@ -81,6 +81,7 @@
 			</div>
 			<div class="icon_top">
 				<img id="terminalButton" src="./assets/images/console_48px.png" />
+				<img id="markdownButton" src="./assets/images/markdown_48px.png" />
 				<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48"
 					style="fill: #000000" onclick="showTodoList()">
 					<path fill="#185abd"
@@ -177,10 +178,20 @@
 		</div>
 	</div>
 	<hr id="showConsoleCentreLine" onclick="showConsoleCentre()" />
+	
+	<div id="office">
+		<div id="markdown">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.css" />
+			<script src="https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.min.js"></script>
+			<div id="vditor"></div>
+			<span id="vditorCloseBtn">×</apan>
+		</div>
+	</div>
 
 	<alert></alert>
 
 	<img src="./assets/images/壁纸01.jpg" id="WallpaperBackGround" />
+	<script defer src="./assets/js/renderer.js"></script>
 </body>
 
 </html>

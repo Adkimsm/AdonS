@@ -8,11 +8,11 @@
     "start": "electron .",
     "hx": "gulp",
     "build": "electron-builder --win",
-    "pack": "electron-packager ./ AdonS --platform=win32 --overwrite --arch=x64 --out=./out --asar --app-version=3.1.2",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "beautify": "prettier ./app/assets/js/*.js --write --config=./.prettierrc",
+    "lint": "eslint ./app/assets/js/*.js"
   },
   "author": "Adkinsm",
-  "license": "UNLICENSED",
+  "license": "GPL",
   "devDependencies": {
     "electron": "^13.6.1",
     "electron-builder": "^22.13.1",
@@ -48,7 +48,6 @@
   },
   "dependencies": {
     "dom-terminal": "1.0.3",
-    "electron-store": "8.0.1",
-    "pxmu": "^1.1.0"
+    "electron-store": "8.0.1"
   }
 }

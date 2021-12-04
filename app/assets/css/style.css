@@ -16,6 +16,11 @@ html {
   user-select: none;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 * {
   transition: all 0.3s;
 }
@@ -671,15 +676,16 @@ hr#showConsoleCentreLine {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: lightgrey;
+  background-color: rgba(0, 0, 0, 0.267);
   min-width: 200px;
   z-index: 1;
   border-radius: 5px;
+  backdrop-filter: blur(15px);
+  color: rgb(255, 255, 255);
 }
 
 .dropdown-content a {
   margin: 5px;
-  color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -687,7 +693,8 @@ hr#showConsoleCentreLine {
 }
 
 .dropdown-content a:hover {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.876);
+  color: rgb(0, 0, 0);
 }
 
 .dropdown div:hover .dropbtn~.dropdown-content {
@@ -708,6 +715,41 @@ hr#showConsoleCentreLine {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#markdown {
+  display: none;
+  opacity: 0;
+  top: 35px;
+  height: calc(100vh - 35px);
+  left: 0%;
+  width: 100vw;
+  position: fixed;
+  background: #fff;
+  z-index: 31;
+}
+
+#vditor {
+  width: 100%;
+  height: 100%;
+}
+
+.vditor--fullscreen {
+  top: 35px !important;
+}
+
+.vditor-reset {
+  display: block;
+  width: 100vw;
+}
+
+#vditorCloseBtn {
+  position: fixed;
+  right: 5px;
+  top: 45px;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
 }
 
 @keyframes fadeInDown {
@@ -744,6 +786,84 @@ hr#showConsoleCentreLine {
     display: block;
   }
 }
+
+.vditor-wysiwyg mark {
+	background-color: #ffb86c;
+	border-radius: 3px;
+	padding: 4px;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vditor-wysiwyg table thead tr {
+	background-color: #2b2d2e;
+  color: #fff;
+}
+
+.vditor-wysiwyg table tr th {
+	font-weight: bold;
+	border-left: 2px solid #555;
+	border-right: 2px solid #555;
+  color: #fff;
+	text-align: left;
+	margin: 0;
+	padding: 6px 13px;
+}
+
+.vditor-wysiwyg table tbody tr {
+	border-top: 2px solid #555;
+	margin: 0;
+	padding: 0;
+	background-color: #303233;
+  color: #fff;
+}
+
+.vditor-wysiwyg table tr td {
+	border-left: 2px solid #555;
+	border-right: 2px solid #555;
+  color: #fff;
+	text-align: left;
+	margin: 0;
+	padding: 6px 13px;
+	background-color: #303233;
+}
+
+.vditor-wysiwyg table tr th:first-child,
+.vditor-wysiwyg table tr td:first-child {
+	border-left-width: 0px;
+}
+
+.vditor-wysiwyg table tr th:last-child,
+.vditor-wysiwyg table tr td:last-child {
+	border-right-width: 0px;
+}
+
+.vditor-wysiwyg blockquote {
+	border-left: 4.5px solid #45a9f9;
+	border-radius: 5px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	margin: 0 0 1.875rem 1.875rem;
+	padding: 4px 15px;
+	color: #212224;
+	font-family: Georgia, "poppin", "Times New Roman", Times, serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.vditor-wysiwyg blockquote blockquote {
+	padding-right: 2.8em;
+}
+
+.vditor-wysiwyg hr {
+	height: 3px;
+	border: 0px;
+}
+
+.vditor-wysiwyg a {
+	color: #107ccf !important;
+	text-decoration: none;
+}
+
 
 @keyframes FadeOut {
   0% {

@@ -6,7 +6,7 @@ function joTask() {
 		.src("./app/renderer.js")
 		.pipe(
 			javascriptObfuscator({
-				compact: false,
+				compact: true,
 				controlFlowFlattening: true,
 				controlFlowFlatteningThreshold: 1,
 				numbersToExpressions: true,
@@ -18,10 +18,5 @@ function joTask() {
 		)
 		.pipe(gulp.dest("dist"));
 }
-function baTask() {
-	return gulp
-		.src("./app/renderer.js")
-		.pipe(gulp.dest("backup"));
-}
-exports.jo = joTask;
-exports.ba = baTask;
+
+exports = joTask;
