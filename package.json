@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "dom-terminal": "1.0.3",
-    "electron-store": "8.0.1"
+    "electron-store": "8.0.1",
+    "pxmu": "^1.1.0"
   }
 }
