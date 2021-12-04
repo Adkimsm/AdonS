@@ -752,41 +752,6 @@ hr#showConsoleCentreLine {
   color: #fff;
 }
 
-@keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes FadeIn {
-  0% {
-    opacity: 0;
-    display: none;
-  }
-  50% {
-    opacity: 0.7;
-    display: none;
-  }
-  100% {
-    opacity: 1;
-    display: block;
-  }
-}
-
 .vditor-wysiwyg mark {
 	background-color: #ffb86c;
 	border-radius: 3px;
@@ -864,6 +829,40 @@ hr#showConsoleCentreLine {
 	text-decoration: none;
 }
 
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  50% {
+    opacity: 0.7;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
 
 @keyframes FadeOut {
   0% {

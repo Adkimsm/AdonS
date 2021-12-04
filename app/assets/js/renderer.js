@@ -340,6 +340,10 @@ function showPop(thePopUp) {
     }, 100);
   }, 50);
   cover1.style.opacity = '1';
+  cover1.addEventListener('click', () => {
+    cover1.style.transform = 'scale(1.05)';
+    setTimeout(() => (cover1.style.transform = 'scale(1)'), 100);
+  });
 }
 
 function closePop(obj) {
