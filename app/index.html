@@ -38,7 +38,7 @@
 	<!-- 可视区域 -->
 	<div id="outScreen">
 		<div id="dock_time">
-			<img id="sysIco" src="./assets/images/xh-48.png" onclick="showLauPad()" />
+			<img id="sysIco" src="./assets/images/xh-48.png" />
 			<div>
 				<span id="dockDate" style="margin-right: 8px">ggg</span>
 				<span id="dockTime">ggg</span>
@@ -75,15 +75,15 @@
 				<h2>LauPad</h2>
 				<div class="icons">
 					<img id="shutdown_btn" src="./assets/images/shutdown.png" />
-					<img onclick="showLockScr()" src="./assets/images/keyhole-shield.png" />
-					<img onclick="showPop('popSettings')" src="./settings.svg" />
+					<img id="showLockScrBtn" src="./assets/images/keyhole-shield.png" />
+					<img id="popSettingsBtn" src="./settings.svg" />
 				</div>
 			</div>
 			<div class="icon_top">
 				<img id="terminalButton" src="./assets/images/console_48px.png" />
 				<img id="markdownButton" src="./assets/images/markdown_48px.png" />
 				<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48"
-					style="fill: #000000" onclick="showTodoList()">
+					style="fill: #000000" id="showTodoListSvg">
 					<path fill="#185abd"
 						d="M24.48,29.316l-9.505,9.505L1.588,25.434c-0.784-0.784-0.784-2.054,0-2.838l6.667-6.667	c0.784-0.784,2.054-0.784,2.838,0L24.48,29.316z">
 					</path>
@@ -101,7 +101,7 @@
 	</div>
 
 	<!-- Lock -->
-	<div id="LockScreen" style="display: none" onclick="hideLockScr()">
+	<div id="LockScreen" style="display: none">
 		<div class="con">
 			<h2 id="LockTime">time..</h2>
 		</div>
@@ -111,7 +111,7 @@
 	<div id="TodoList" style="display: none">
 		<div class="container">
 			<div class="wrapper">
-				<span id="todo_btnClose" onclick="hideTodoList()">×</span>
+				<span id="todo_btnClose">×</span>
 				<h2>To Do</h2>
 				<p></p>
 				<ul class="plates">
@@ -140,7 +140,8 @@
 	<div class="right-menu" id="right-menu">
 		<div class="list">
 			<div
-				onclick="let evt = document.createEvent('MouseEvents');evt.initEvent('click', true, true);document.getElementById('shutdown_btn').dispatchEvent(evt);">
+			    id="ExitBtnInRightMenu"
+			>
 				退出
 			</div>
 		</div>
@@ -177,7 +178,7 @@
 			</div>
 		</div>
 	</div>
-	<hr id="showConsoleCentreLine" onclick="showConsoleCentre()" />
+	<hr id="showConsoleCentreLine" />
 	
 	<div id="office">
 		<div id="markdown">

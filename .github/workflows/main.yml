@@ -20,12 +20,18 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
-      - name: Install
+      - name: Install Deps
         if: startsWith(github.ref, 'refs/tags/')
         run: npm install
-      - name: Install The Electron Builder
+      - name: Install The Global
         if: startsWith(github.ref, 'refs/tags/')
-        run: npm install -g electron-builder
+        run: npm install -g electron-builder@22.11.7 gulp-cli@2.3.0
+      - name: Install devDeps
+        if: startsWith(github.ref, 'refs/tags/')
+        run: npm install gulp@4.0.2 gulp-javascript-obfuscator@1.1.6
+      - name: Gulp
+        if: startsWith(github.ref, 'refs/tags/')
+        run: gulp
       - name: Make
         if: startsWith(github.ref, 'refs/tags/')
         run: electron-builder --win -p never

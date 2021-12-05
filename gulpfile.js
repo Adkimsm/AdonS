@@ -1,9 +1,9 @@
 const gulp = require('gulp');
 const javascriptObfuscator = require('gulp-javascript-obfuscator');
 
-function joTask() {
+function defaultTask() {
 	return gulp
-		.src("./app/renderer.js")
+		.src("./app/assets/js/renderer.js")
 		.pipe(
 			javascriptObfuscator({
 				compact: true,
@@ -16,7 +16,7 @@ function joTask() {
 				stringArrayThreshold: 1,
 			})
 		)
-		.pipe(gulp.dest("dist"));
+		.pipe(gulp.dest("./app/assets/js/"));
 }
 
-exports = joTask;
+exports.default = defaultTask;

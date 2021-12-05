@@ -113,6 +113,22 @@ function hideLauPad() {
   };
 }
 
+document.querySelector('#sysIco').onclick = function () {
+  showLauPad();
+};
+
+document.querySelector('#showLockScrBtn').addEventListener('click', () => {
+  showLockScr();
+});
+
+document.querySelector('#popSettingsBtn').addEventListener('click', () => {
+  showPop('popSettings');
+});
+
+document.querySelector('#showTodoListSvg').addEventListener('click', () => {
+  showTodoList();
+});
+
 /**
  * Lock Screen,Like Windows 11.
  */
@@ -125,6 +141,10 @@ function showLockScr() {
   hideLauPad();
   methods.showElementByFade('#LockScreen');
 }
+
+document.querySelector('#LockScreen').addEventListener('click', () => {
+  hideLockScr();
+});
 
 /**
  * Shutdown Diaglog
@@ -287,6 +307,10 @@ function hideTodoList() {
   methods.hideElementByFade('#TodoList');
 }
 
+document.querySelector('#todo_btnClose').addEventListener('click', () => {
+  hideTodoList();
+});
+
 /**
  * Context Menu DIY.
  */
@@ -320,6 +344,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.onclick = function () {
     hideContextMenu();
   };
+});
+
+document.querySelector('#ExitBtnInRightMenu').addEventListener('click', () => {
+  let evt = document.createEvent('MouseEvents');
+  evt.initEvent('click', true, true);
+  document.getElementById('shutdown_btn').dispatchEvent(evt);
 });
 
 /**
@@ -586,6 +616,10 @@ function hideConsoleCentre() {
     showConsoleCentre();
   };
 }
+
+document.querySelector('#showConsoleCentreLine').onclick = () => {
+  showConsoleCentre();
+};
 
 /**
  * No-Frame.
