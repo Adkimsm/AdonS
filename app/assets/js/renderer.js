@@ -48,6 +48,14 @@ let methods = {
     document.querySelector(element).style.opacity = 1;
     document.querySelector(element).style.display = 'block';
     return this;
+  },
+  formatDate: function (str) {
+    return str.replace(
+      /(?<=\/|-|\.|:|\b|T)\d{1}(?=\/|-|\.|:|\b|T)/gu,
+      function ($1) {
+        return "0" + $1;
+      }
+    );
   }
 };
 
@@ -72,23 +80,23 @@ document.addEventListener('DOMContentLoaded', () => {
 (function () {
   setInterval(() => {
     document.querySelector('#dockTime').textContent =
-      new Date().getHours() + ':' + new Date().getMinutes();
+      methods.formatDate(new Date().getHours() + ':' + new Date().getMinutes());
   });
   setInterval(() => {
-    document.querySelector('#dockDate').textContent =
-      new Date().getFullYear() +
+    document.querySelector('#dockDate').textContent = 
+      methods.formatDate(new Date().getFullYear() +
       '/' +
       new Date().getMonth() +
       '/' +
-      new Date().getDate();
+      new Date().getDate());
   });
   setInterval(() => {
     document.querySelector('#LockTime').textContent =
-      new Date().getHours() +
+      methods.formatDate(new Date().getHours() +
       ':' +
       new Date().getMinutes() +
       ':' +
-      new Date().getSeconds();
+      new Date().getSeconds());
   });
 })();
 

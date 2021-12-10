@@ -1,30 +1,44 @@
-# Welcome to Easier 👋
+<style>
+    h2 {
+        font-size: 3rem;
+        font-weight: 900;
+    }
+    hhs {
+        font-size: 5rem;
+        font-weight: 1000;
+    }
+    p {
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+    em {
+        font-weight: 800
+    }
+</style>
 
-> AdonS is Inside Core of Easier.
+<div align="center">
+    <hhs style="font-size: 5rem">Welcome to Easier 👋</hhs><br>
+    <em>Easier · Very Easy To Use</em>
+</div>
 
-## Install
-
-```sh
-npm install
-```
+> <strong>AdonS is Inside Core of Easier.</strong>
 
 ## Author
 
 👤 **Adkinsm** and Uazira's everyone
 
-* Website: https://blog.adkimsm.asia/
-* Github: [@Uazira](https://github.com/Uazira)
+- Website: https://www.emmm.asia/
+- Github: [@Uazira](https://github.com/Uazira)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com/Uazira/AdonS/issues). 
+Feel free to check [issues page](https://github.com/Uazira/AdonS/issues).
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
 
 ## 📝 License
 
