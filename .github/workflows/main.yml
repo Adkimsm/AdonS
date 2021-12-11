@@ -19,22 +19,22 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: 16.x
-          cache: npm
+          cache: yarn
       - name: Install Deps
         if: startsWith(github.ref, 'refs/tags/')
-        run: npm install
+        run: yarn install
       - name: Install The Global
         if: startsWith(github.ref, 'refs/tags/')
-        run: npm install -g electron-builder@22.11.7 gulp-cli@2.3.0
+        run: yarn add global gulp-cli@2.3.0 @electron-forge/cli@6.0.0-beta.61 @electron-forge/maker-squirrel@6.0.0-beta.61
       - name: Install devDeps
         if: startsWith(github.ref, 'refs/tags/')
-        run: npm install gulp@4.0.2 gulp-javascript-obfuscator@1.1.6
+        run: yarn add gulp@4.0.2 gulp-javascript-obfuscator@1.1.6
       - name: Gulp
         if: startsWith(github.ref, 'refs/tags/')
         run: gulp
       - name: Make
         if: startsWith(github.ref, 'refs/tags/')
-        run: electron-builder --win -p never
+        run: yarn make
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
@@ -43,4 +43,5 @@ jobs:
         with:
           draft: false
           files: |
-            build/*Setup*.exe
+            out/**/*setup*.exe
+            out/**/*.nupkg

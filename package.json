@@ -16,7 +16,7 @@
     "name": "Adkinsm2020",
     "email": "3020035335@qq.com"
   },
-  "license": "MIT",
+  "license": "GPL",
   "config": {
     "forge": {
       "packagerConfig": {},
@@ -26,20 +26,6 @@
           "config": {
             "name": "Easier"
           }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
         }
       ]
     }
@@ -50,11 +36,8 @@
     "electron-store": "8.0.1"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.61",
-    "@electron-forge/maker-deb": "^6.0.0-beta.61",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
-    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "@electron-forge/cli": "6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.61",
     "electron": "16.0.4",
     "eslint": "8.2.0",
     "gulp": "4.0.2",
