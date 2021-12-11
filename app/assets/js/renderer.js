@@ -1,3 +1,4 @@
+/*eslint-disable no-loop-func */
 /*eslint-disable no-undef */
 /*
       _                __                             ______   
@@ -83,20 +84,20 @@ document.addEventListener('DOMContentLoaded', () => {
       methods.formatDate(new Date().getHours() + ':' + new Date().getMinutes());
   });
   setInterval(() => {
-    document.querySelector('#dockDate').textContent = 
+    document.querySelector('#dockDate').textContent =
       methods.formatDate(new Date().getFullYear() +
-      '/' +
-      new Date().getMonth() +
-      '/' +
-      new Date().getDate());
+        '/' +
+        new Date().getMonth() +
+        '/' +
+        new Date().getDate());
   });
   setInterval(() => {
     document.querySelector('#LockTime').textContent =
       methods.formatDate(new Date().getHours() +
-      ':' +
-      new Date().getMinutes() +
-      ':' +
-      new Date().getSeconds());
+        ':' +
+        new Date().getMinutes() +
+        ':' +
+        new Date().getSeconds());
   });
 })();
 
@@ -408,7 +409,7 @@ ipcRenderer.on('Plugin-Content', (_event, path, content) => {
     console.log(content);
     let contentObj = JSON.parse(content);
     let mainJsPathInJson = contentObj.main;
-    var items = store.get('InstalledPlugins') ? store.get('items') : [];
+    var items = store.get('InstalledPlugins') ?? [];
     let item = {
       name: contentObj.name,
       main: mainJsPathInJson,
@@ -417,6 +418,7 @@ ipcRenderer.on('Plugin-Content', (_event, path, content) => {
     };
     items.push(item);
     store.set('InstalledPlugins', items);
+    history.go(0);
   }
 });
 
@@ -720,4 +722,38 @@ document.querySelector('#markdownButton').addEventListener('click', function () 
 
 document.querySelector('#vditorCloseBtn').addEventListener('click', () => {
   methods.hideElementByFade('#markdown');
+});
+
+/**
+ * Plugins Manger
+ */
+
+window.addEventListener('load', () => {
+  let InstalledPluginsObj = store.get('InstalledPlugins') ?? [];
+  let listObj = document.querySelector('#pluginsList');
+  let elementObj = null;
+  let deleteButtonObj = null;
+  for (let key in InstalledPluginsObj) {
+    if (Object.hasOwnProperty.call(InstalledPluginsObj, key)) {
+      document.querySelector('#DefaultLiInPlugins').style.display = "none";
+      const element = InstalledPluginsObj[key];
+      elementObj = document.createElement('li');
+      deleteButtonObj = document.createElement('button');
+      deleteButtonObj.textContent = "卸载";
+      deleteButtonObj.onclick = function () {
+        console.log(element);
+        console.log(InstalledPluginsObj.splice(InstalledPluginsObj.findIndex((e) => e.name === element.name), 1));
+        store.set('InstalledPlugins', InstalledPluginsObj.splice(InstalledPluginsObj.findIndex((e) => e.name === element.name), 1));
+        elementObj.remove();
+        pxmu.toast("已删除插件:" + element.name);
+      };
+      elementObj.textContent = element.name;
+      listObj.append(elementObj);
+      elementObj.append(deleteButtonObj);
+    }
+  }
+});
+
+document.querySelector('#pluginButton').addEventListener('click', () => {
+  showPop('popPlugins');
 });

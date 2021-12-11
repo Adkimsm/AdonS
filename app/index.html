@@ -96,6 +96,7 @@
 						d="M17.797,41.642l-6.667-6.667c-0.784-0.784-0.784-2.054,0-2.838L36.907,6.358	c0.784-0.784,2.054-0.784,2.838,0l6.667,6.667c0.784,0.784,0.784,2.054,0,2.838L20.634,41.642	C19.851,42.425,18.58,42.425,17.797,41.642z">
 					</path>
 				</svg>
+				<img id="pluginButton" src="./assets/images/plugin_48px.png" />
 			</div>
 		</div>
 	</div>
@@ -139,9 +140,7 @@
 
 	<div class="right-menu" id="right-menu">
 		<div class="list">
-			<div
-			    id="ExitBtnInRightMenu"
-			>
+			<div id="ExitBtnInRightMenu">
 				退出
 			</div>
 		</div>
@@ -169,6 +168,15 @@
 				</div>
 			</div>
 		</div>
+		<div class="popUp" id="popPlugins">
+			<span class="btnClose" onclick="closePop(popPlugins)"></span>
+			<div class="pTitle">Plugins</div>
+			<div class="pContent">
+				<ul id="pluginsList">
+					<li id="DefaultLiInPlugins">您还没有安装插件哦~~~</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 
 	<div id="consoleCentre" style="display: none;" onclick="return false;">
@@ -179,7 +187,7 @@
 		</div>
 	</div>
 	<hr id="showConsoleCentreLine" />
-	
+
 	<div id="office">
 		<div id="markdown">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.css" />

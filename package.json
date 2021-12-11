@@ -1,53 +1,64 @@
 {
   "name": "easier",
-  "version": "1.5.0",
-  "description": "Easier Of AdonS.",
+  "productName": "Easier",
+  "version": "1.0.0",
+  "description": "Exe System By AdonS",
   "main": "main.js",
-  "private": true,
   "scripts": {
-    "start": "electron .",
-    "hx": "gulp",
-    "build": "electron-builder --win",
-    "beautify": "prettier ./app/assets/js/*.js --write --config=./.prettierrc",
-    "lint": "eslint ./app/assets/js/*.js"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
-  "author": "Adkinsm",
-  "license": "GPL",
-  "devDependencies": {
-    "electron": "^13.6.1",
-    "electron-builder": "^22.13.1",
-    "eslint": "^8.2.0",
-    "gulp": "^4.0.2",
-    "gulp-javascript-obfuscator": "^1.1.6",
-    "vinyl-sourcemaps-apply": "^0.2.1"
+  "keywords": [],
+  "author": {
+    "name": "Adkinsm2020",
+    "email": "3020035335@qq.com"
   },
-  "build": {
-    "productName": "AdonS",
-    "appId": "com.uazira.adons",
-    "copyright": "Uazira Inc.",
-    "directories": {
-      "output": "build"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowElevation": true,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
-    },
-    "win": {
-      "target": [
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
         {
-          "target": "nsis",
-          "arch": [
-            "ia32"
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "Easier"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
           ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
         }
       ]
     }
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "dom-terminal": "1.0.3",
     "electron-store": "8.0.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "electron": "16.0.4",
+    "eslint": "8.2.0",
+    "gulp": "4.0.2",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "vinyl-sourcemaps-apply": "^0.2.1"
   }
 }
