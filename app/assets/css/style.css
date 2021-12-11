@@ -1,11 +1,11 @@
 @font-face {
-  font-family: "AlibabaPuhui";
-  src: url("../images/AlibabaPuHuiTi-2-65-Medium.ttf");
+  font-family: 'AlibabaPuhui';
+  src: url('../images/AlibabaPuHuiTi-2-65-Medium.ttf');
 }
 
 @font-face {
-  font-family: "JetBrains";
-  src: url("../images/JetBrainsMono-Regular.ttf");
+  font-family: 'JetBrains';
+  src: url('../images/JetBrainsMono-Regular.ttf');
 }
 
 html {
@@ -198,7 +198,7 @@ hr {
 }
 
 .plates input + label:before {
-  content: "⬜️";
+  content: '⬜️';
   margin-right: 10px;
 }
 
@@ -363,7 +363,7 @@ hr {
 }
 
 .btnClose::before {
-  content: "";
+  content: '';
   position: absolute;
   height: 2px;
   width: 100%;
@@ -567,7 +567,7 @@ hr {
 
 .terminal-modern {
   color: white;
-  font-family: "JetBrains", monospace;
+  font-family: 'JetBrains', monospace;
 }
 
 .terminal-modern table {
@@ -579,7 +579,7 @@ hr {
 }
 
 .terminal-modern a.external {
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA9QTFRFzs7OqKio0NDQ////////DlgqrAAAAAV0Uk5T/////wD7tg5TAAAAN0lEQVR42izLyQ0AMAgDQYPpv+b4yD7QEBGcYoI0yN454Sqy9KnfTUufQpB7c/9AM1RlE58AAwBEcAE4zo3mOAAAAABJRU5ErkJggg==")
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA9QTFRFzs7OqKio0NDQ////////DlgqrAAAAAV0Uk5T/////wD7tg5TAAAAN0lEQVR42izLyQ0AMAgDQYPpv+b4yD7QEBGcYoI0yN454Sqy9KnfTUufQpB7c/9AM1RlE58AAwBEcAE4zo3mOAAAAABJRU5ErkJggg==')
     no-repeat scroll right center transparent;
   padding-right: 13px;
   outline: none;
@@ -601,7 +601,7 @@ hr {
 
 .terminal-modern .container output pre {
   color: white;
-  font-family: "JetBrains", monospace;
+  font-family: 'JetBrains', monospace;
 }
 
 .terminal-modern .prompt {
@@ -674,7 +674,7 @@ hr#showConsoleCentreLine {
   border-radius: 5px;
   backdrop-filter: blur(15px);
   color: rgb(255, 255, 255);
-  transition: display .2s;
+  transition: display 0.2s;
 }
 
 .dropdown-content a {
@@ -690,7 +690,7 @@ hr#showConsoleCentreLine {
   color: rgb(0, 0, 0);
 }
 
-.dropdown div:hover .dropbtn~.dropdown-content {
+.dropdown div:hover .dropbtn ~ .dropdown-content {
   display: block;
 }
 
@@ -746,80 +746,105 @@ hr#showConsoleCentreLine {
 }
 
 .vditor-wysiwyg mark {
-	background-color: #ffb86c;
-	border-radius: 3px;
-	padding: 4px;
-	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  background-color: #ffb86c;
+  border-radius: 3px;
+  padding: 4px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .vditor-wysiwyg table thead tr {
-	background-color: #2b2d2e;
+  background-color: #2b2d2e;
   color: #fff;
 }
 
 .vditor-wysiwyg table tr th {
-	font-weight: bold;
-	border-left: 2px solid #555;
-	border-right: 2px solid #555;
+  font-weight: bold;
+  border-left: 2px solid #555;
+  border-right: 2px solid #555;
   color: #fff;
-	text-align: left;
-	margin: 0;
-	padding: 6px 13px;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
 }
 
 .vditor-wysiwyg table tbody tr {
-	border-top: 2px solid #555;
-	margin: 0;
-	padding: 0;
-	background-color: #303233;
+  border-top: 2px solid #555;
+  margin: 0;
+  padding: 0;
+  background-color: #303233;
   color: #fff;
 }
 
 .vditor-wysiwyg table tr td {
-	border-left: 2px solid #555;
-	border-right: 2px solid #555;
+  border-left: 2px solid #555;
+  border-right: 2px solid #555;
   color: #fff;
-	text-align: left;
-	margin: 0;
-	padding: 6px 13px;
-	background-color: #303233;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+  background-color: #303233;
 }
 
 .vditor-wysiwyg table tr th:first-child,
 .vditor-wysiwyg table tr td:first-child {
-	border-left-width: 0px;
+  border-left-width: 0px;
 }
 
 .vditor-wysiwyg table tr th:last-child,
 .vditor-wysiwyg table tr td:last-child {
-	border-right-width: 0px;
+  border-right-width: 0px;
 }
 
 .vditor-wysiwyg blockquote {
-	border-left: 4.5px solid #45a9f9;
-	border-radius: 5px;
-	border-top-left-radius: 0px;
-	border-bottom-left-radius: 0px;
-	margin: 0 0 1.875rem 1.875rem;
-	padding: 4px 15px;
-	color: #212224;
-	font-family: Georgia, "poppin", "Times New Roman", Times, serif;
-	font-weight: 300;
-	font-style: italic;
+  border-left: 4.5px solid #45a9f9;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  margin: 0 0 1.875rem 1.875rem;
+  padding: 4px 15px;
+  color: #212224;
+  font-family: Georgia, 'poppin', 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .vditor-wysiwyg blockquote blockquote {
-	padding-right: 2.8em;
+  padding-right: 2.8em;
 }
 
 .vditor-wysiwyg hr {
-	height: 3px;
-	border: 0px;
+  height: 3px;
+  border: 0px;
 }
 
 .vditor-wysiwyg a {
-	color: #107ccf !important;
-	text-decoration: none;
+  color: #107ccf !important;
+  text-decoration: none;
+}
+
+#pluginsList button {
+  position: absolute;
+  padding: 5px;
+  right: 5px;
+  border-width: 0px;
+	border-radius: 3px;
+	background: #1E90FF;
+	cursor: pointer;
+	outline: none;
+	color: white;
+}
+
+#pluginsList button:hover {
+  background: linear-gradient(top, #818181, #575757);
+}
+
+#pluginsList button:active {
+  box-shadow: 0 1px 3px #111 inset, 0 3px 0 #fff;
+  background: linear-gradient(top, #424242, #575757);
+}
+
+#pluginsList li {
+  margin-bottom: 15px;
 }
 
 @keyframes fadeInDown {
