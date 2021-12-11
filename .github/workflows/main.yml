@@ -43,5 +43,5 @@ jobs:
         with:
           draft: false
           files: |
-            out/**/*setup*.exe
+            out/**/*Setup.exe
             out/**/*.nupkg
