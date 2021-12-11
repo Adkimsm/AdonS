@@ -1,6 +1,5 @@
 /*eslint-disable no-undef */
-const { app, BrowserWindow, Menu, dialog, ipcMain, globalShortcut } = require("electron");
-const path = require("path");
+const { app, BrowserWindow, dialog, ipcMain, globalShortcut, autoUpdater } = require("electron");
 const fs = require("fs");
 
 const Store = require("electron-store");
@@ -106,7 +105,7 @@ if (!app.isPackaged) {
 		preveMd5 = null;
 	const filePath = "./app/";
 	console.log(`正在监听 ${filePath}`);
-	fs.watch(filePath, (event, filename) => {
+	fs.watch(filePath, (_event, filename) => {
 		if (filename) {
 			if (fsWait) return;
 			fsWait = setTimeout(() => {
@@ -122,6 +121,11 @@ if (!app.isPackaged) {
 		}
 	});
 }
+
+if (app.isPackaged) {
+	autoUpdater.setFeedURL(`https://adons.vercel.appupdate/${process.platform}/${app.getVersion()}`);
+}
+
 app.whenReady().then(() => {
 	createWindow();
 });
