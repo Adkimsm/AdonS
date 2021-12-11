@@ -16,7 +16,7 @@
     "name": "Adkinsm2020",
     "email": "3020035335@qq.com"
   },
-  "license": "GPL",
+  "license": "GPL-3.0-only",
   "config": {
     "forge": {
       "packagerConfig": {},
