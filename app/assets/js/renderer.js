@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /**
  * Get Date Or Time
  */
+
 (function () {
   setInterval(() => {
     document.querySelector('#dockTime').textContent =
@@ -87,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#dockDate').textContent =
       methods.formatDate(new Date().getFullYear() +
         '/' +
-        new Date().getMonth() +
+        (new Date().getMonth() + 1) +
         '/' +
         new Date().getDate());
   });
@@ -109,6 +110,10 @@ function showLauPad() {
   hideConsoleCentre();
   methods.showElementByFade('#laupad');
   document.querySelector('#dock_time').style.bottom = 'calc(55%)';
+  document.querySelector('#dock_time').style.left = '0px';
+  document.querySelector('#dock_time').style.width = '97.85%';
+  document.querySelector('#dock_time').style.borderBottomLeftRadius = "0px";
+  document.querySelector('#dock_time').style.borderBottomRightRadius = "0px";
   document.querySelector('#sysIco').onclick = function () {
     hideLauPad();
   };
@@ -116,7 +121,11 @@ function showLauPad() {
 
 function hideLauPad() {
   methods.hideElementByFade('#laupad');
-  document.querySelector('#dock_time').style.bottom = '0px';
+  document.querySelector('#dock_time').style.bottom = '25px';
+  document.querySelector('#dock_time').style.left = '221.2065px';
+  document.querySelector('#dock_time').style.width = '53.85%';
+  document.querySelector('#dock_time').style.borderBottomLeftRadius = "25px";
+  document.querySelector('#dock_time').style.borderBottomRightRadius = "25px";
   document.querySelector('#sysIco').onclick = function () {
     showLauPad();
   };
@@ -540,7 +549,7 @@ document.querySelector('#terminalButton').onclick = function () {
  *
  * By `Leng Yi Bai`
  *
- * @param str 'String'
+ * @param str {String}
  */
 
 function displayMessage(str) {

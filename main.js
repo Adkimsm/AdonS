@@ -29,6 +29,8 @@ function createWindow() {
 
 	mainWindow.loadFile("./app/index.html");
 
+	console.log(app.getVersion());
+
 	/*const template = [
 		{
 			label: "Settings",
