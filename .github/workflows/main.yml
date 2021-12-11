@@ -45,3 +45,4 @@ jobs:
           files: |
             out/**/*Setup.exe
             out/**/*.nupkg
+            out/**/RELEASES
