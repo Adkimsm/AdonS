@@ -124,7 +124,35 @@ if (!app.isPackaged) {
 
 if (app.isPackaged) {
 	autoUpdater.setFeedURL(`https://adons.vercel.appupdate/${process.platform}/${app.getVersion()}`);
+	if (new Date().getDay() == 3 || 0) {
+		autoUpdater.checkForUpdates();
+	}
 }
+
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+	const dialogOpts = {
+		type: 'info',
+		buttons: [
+			'立即更新',
+			'以后再说'
+		],
+		title: 'Easier 已接收到更新！',
+		message: process.platform === 'win32' ? releaseNotes : releaseName,
+		detail: '新版本已经下载，重启 Easier 来安装更新。'
+	};
+	dialog.showMessageBox(dialogOpts).then((returnValue) => {
+		if (returnValue.response === 0) {
+			app.removeListener("window-all-closed");
+			globalShortcut.unregisterAll();
+			autoUpdater.quitAndInstall();
+		}
+	});
+});
+
+autoUpdater.on('error', (message) => {
+	dialog.showErrorBox("Error", "There was a problem updating the application.\nPlease Restart The Application.");
+	console.error(message);
+});
 
 app.whenReady().then(() => {
 	createWindow();
