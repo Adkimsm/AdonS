@@ -756,4 +756,12 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
         '/' +
         new Date().getDate());
   });
+  setInterval(() => {
+    document.querySelector('#LockTime').textContent =
+      methods.formatDate(new Date().getHours() +
+        ':' +
+        new Date().getMinutes() +
+        ':' +
+        new Date().getSeconds());
+  });
 })();
