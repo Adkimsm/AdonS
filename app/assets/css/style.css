@@ -29,16 +29,6 @@ body {
   z-index: 1;
 }
 
-#dock_y .item {
-  position: absolute;
-  background-color: rgba(15, 16, 18, 0.397);
-  top: 45%;
-  backdrop-filter: blur(30px);
-  left: 10px;
-  padding: 8px;
-  border-radius: 15px;
-}
-
 #dock_time {
   z-index: 30;
   color: #2a2a2a;
@@ -46,23 +36,16 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  left: 221.2065px;
+  left: 466.977px;
   bottom: 25px;
-  width: 53.85%;
+  width: 58px;
   padding: 5px;
   backdrop-filter: blur(30px);
   background-color: rgba(255, 255, 255, 0.911);
   height: 58px;
   border-radius: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  justify-content: flex-start;
+  justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
-}
-
-#dock_time div {
-  position: absolute;
-  right: 20px;
 }
 
 hr {
@@ -139,6 +122,7 @@ hr {
 
 #he-plugin-standard {
   margin: 15px !important;
+  right: -750px;
 }
 
 #TodoList .container {
@@ -628,10 +612,11 @@ alert {
   top: 35px;
   right: 0;
   width: 30%;
-  height: 85%;
+  height: 100%;
   backdrop-filter: blur(30px);
   padding: 25px;
-  background-color: #2a2a2a;
+  background-color: #2a2a2ae3;
+  z-index: 100;
 }
 
 #consoleCentre .centreItem {
@@ -845,6 +830,22 @@ hr#showConsoleCentreLine {
 
 #pluginsList li {
   margin-bottom: 15px;
+}
+
+#desktopTime {
+  position: absolute;
+  margin: 0px 75px;
+}
+
+#desktopHours,
+#desktopMinutes {
+  font-size: 3rem;
+  color: #fff;
+}
+
+#desktopDate {
+  font-size: 1.5rem;
+  color: #fff;
 }
 
 @keyframes fadeInDown {

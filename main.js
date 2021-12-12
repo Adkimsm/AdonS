@@ -126,6 +126,7 @@ if (app.isPackaged) {
 	autoUpdater.setFeedURL(`https://adons.vercel.appupdate/${process.platform}/${app.getVersion()}`);
 	if (new Date().getDay() == 3 || 0) {
 		autoUpdater.checkForUpdates();
+		console.log("[AutoUpdater] Updater Run Well.");
 	}
 }
 

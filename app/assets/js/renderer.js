@@ -1,3 +1,4 @@
+/*eslint-disable new-cap */
 /*eslint-disable no-loop-func */
 /*eslint-disable no-undef */
 /*
@@ -76,33 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Get Date Or Time
- */
-
-(function () {
-  setInterval(() => {
-    document.querySelector('#dockTime').textContent =
-      methods.formatDate(new Date().getHours() + ':' + new Date().getMinutes());
-  });
-  setInterval(() => {
-    document.querySelector('#dockDate').textContent =
-      methods.formatDate(new Date().getFullYear() +
-        '/' +
-        (new Date().getMonth() + 1) +
-        '/' +
-        new Date().getDate());
-  });
-  setInterval(() => {
-    document.querySelector('#LockTime').textContent =
-      methods.formatDate(new Date().getHours() +
-        ':' +
-        new Date().getMinutes() +
-        ':' +
-        new Date().getSeconds());
-  });
-})();
-
-/**
  * LaunchPad.
  */
 
@@ -122,8 +96,8 @@ function showLauPad() {
 function hideLauPad() {
   methods.hideElementByFade('#laupad');
   document.querySelector('#dock_time').style.bottom = '25px';
-  document.querySelector('#dock_time').style.left = '221.2065px';
-  document.querySelector('#dock_time').style.width = '53.85%';
+  document.querySelector('#dock_time').style.left = '466.977px';
+  document.querySelector('#dock_time').style.width = '58px';
   document.querySelector('#dock_time').style.borderBottomLeftRadius = "25px";
   document.querySelector('#dock_time').style.borderBottomRightRadius = "25px";
   document.querySelector('#sysIco').onclick = function () {
@@ -766,3 +740,20 @@ window.addEventListener('load', () => {
 document.querySelector('#pluginButton').addEventListener('click', () => {
   showPop('popPlugins');
 });
+
+/**
+ * Desktop Date Time
+ */
+
+(function () {
+  setInterval(() => {
+    document.querySelector('#desktopHours').textContent =
+      new Date().getHours();
+    document.querySelector("#desktopMinutes").textContent = new Date().getMinutes();
+    document.querySelector('#desktopDate').textContent =
+      methods.formatDate(
+        (new Date().getMonth() + 1) +
+        '/' +
+        new Date().getDate());
+  });
+})();
