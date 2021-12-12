@@ -42,6 +42,8 @@
     "eslint": "8.2.0",
     "gulp": "4.0.2",
     "gulp-javascript-obfuscator": "^1.1.6",
-    "vinyl-sourcemaps-apply": "^0.2.1"
+    "vinyl-sourcemaps-apply": "^0.2.1",
+    "gulp-clean-css": "4.3.0",
+    "gulp-htmlmin": "5.0.1"
   }
 }

@@ -1,9 +1,11 @@
 const gulp = require('gulp');
 const javascriptObfuscator = require('gulp-javascript-obfuscator');
+const htmlmin = require('gulp-htmlmin');
+const cleanCSS = require('gulp-clean-css');
 
 function defaultTask() {
 	return gulp
-		.src("./app/assets/js/renderer.js")
+		.src("./app/assets/js/*.js")
 		.pipe(
 			javascriptObfuscator({
 				compact: true,
@@ -19,4 +21,14 @@ function defaultTask() {
 		.pipe(gulp.dest("./app/assets/js/"));
 }
 
-exports.default = defaultTask;
+function minCss() {
+	return gulp.src('./app/assets/css/*.css')
+		.pipe(cleanCSS({ debug: true }, (details) => {
+			console.log(`${details.name}: ${details.stats.originalSize}`);
+			console.log(`${details.name}: ${details.stats.minifiedSize}`);
+		}))
+		.pipe(gulp.dest('./app/assets/css/'));
+}
+
+exports.obfuscatorJs = defaultTask;
+exports.minCss = minCss;
