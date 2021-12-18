@@ -247,13 +247,10 @@ module.exports = {
         "require-await": "error",
         "require-unicode-regexp": "error",
         "rest-spread-spacing": "error",
-        "semi": "error",
+        "semi": "off",
         "semi-spacing": "error",
         "no-unused-vars": "off",
-        "semi-style": [
-            "error",
-            "last"
-        ],
+        "semi-style": "off",
         "sort-imports": "error",
         "sort-keys": "off",
         "sort-vars": "error",

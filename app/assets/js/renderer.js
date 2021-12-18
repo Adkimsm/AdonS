@@ -17,49 +17,49 @@
 
  */
 
-const Store = require('electron-store');
+const Store = require('electron-store')
 
-const store = new Store();
+const store = new Store()
 
-const { ipcRenderer } = require('electron');
+const { ipcRenderer } = require('electron')
 
-const Terminal = require('dom-terminal');
+const Terminal = require('dom-terminal')
 
-const pxmu = require('./libs/js/pxmu.js');
+const pxmu = require('./libs/js/pxmu.js')
 
 function showError(message) {
-  ipcRenderer.send('errorInRenderer', String(message));
-  return false;
+  ipcRenderer.send('errorInRenderer', String(message))
+  return false
 }
 
 window.onerror = (e) => {
-  showError(e);
-};
+  showError(e)
+}
 
 let methods = {
   hideElementByFade: function (element) {
-    document.querySelector(element).style.animation = 'FadeOut .2s linear';
+    document.querySelector(element).style.animation = 'FadeOut .2s linear'
     setTimeout(() => {
-      document.querySelector(element).style.opacity = 0;
-      document.querySelector(element).style.display = 'none';
-    }, 100);
-    return this;
+      document.querySelector(element).style.opacity = 0
+      document.querySelector(element).style.display = 'none'
+    }, 100)
+    return this
   },
   showElementByFade: function (element) {
-    document.querySelector(element).style.animation = 'FadeIn .2s linear';
-    document.querySelector(element).style.opacity = 1;
-    document.querySelector(element).style.display = 'block';
-    return this;
+    document.querySelector(element).style.animation = 'FadeIn .2s linear'
+    document.querySelector(element).style.opacity = 1
+    document.querySelector(element).style.display = 'block'
+    return this
   },
   formatDate: function (str) {
     return str.replace(
       /(?<=\/|-|\.|:|\b|T)\d{1}(?=\/|-|\.|:|\b|T)/gu,
       function ($1) {
-        return "0" + $1;
+        return '0' + $1
       }
-    );
-  }
-};
+    )
+  },
+}
 
 /**
  * Start Screen Animation.
@@ -67,76 +67,76 @@ let methods = {
 
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    document.querySelector('#onStart').style.animation = 'FadeOut .2s linear';
+    document.querySelector('#onStart').style.animation = 'FadeOut .2s linear'
     setTimeout(() => {
-      document.querySelector('#onStart').style.opacity = 0;
-      document.querySelector('#onStart').style.display = 'none';
-      displayMessage('Welcome To AdonS,' + store.get('users.firstUser.name'));
-    }, 100);
-  }, 5656);
-});
+      document.querySelector('#onStart').style.opacity = 0
+      document.querySelector('#onStart').style.display = 'none'
+      displayMessage('Welcome To AdonS,' + store.get('users.firstUser.name'))
+    }, 100)
+  }, 5656)
+})
 
 /**
  * LaunchPad.
  */
 
 function showLauPad() {
-  hideConsoleCentre();
-  methods.showElementByFade('#laupad');
-  document.querySelector('#dock_time').style.bottom = 'calc(55%)';
-  document.querySelector('#dock_time').style.left = '0px';
-  document.querySelector('#dock_time').style.width = '97.85%';
-  document.querySelector('#dock_time').style.borderBottomLeftRadius = "0px";
-  document.querySelector('#dock_time').style.borderBottomRightRadius = "0px";
+  hideConsoleCentre()
+  methods.showElementByFade('#laupad')
+  document.querySelector('#dock_time').style.bottom = 'calc(55%)'
+  document.querySelector('#dock_time').style.left = '0px'
+  document.querySelector('#dock_time').style.width = '98.69%'
+  document.querySelector('#dock_time').style.borderBottomLeftRadius = '0px'
+  document.querySelector('#dock_time').style.borderBottomRightRadius = '0px'
   document.querySelector('#sysIco').onclick = function () {
-    hideLauPad();
-  };
+    hideLauPad()
+  }
 }
 
 function hideLauPad() {
-  methods.hideElementByFade('#laupad');
-  document.querySelector('#dock_time').style.bottom = '25px';
-  document.querySelector('#dock_time').style.left = '466.977px';
-  document.querySelector('#dock_time').style.width = '58px';
-  document.querySelector('#dock_time').style.borderBottomLeftRadius = "25px";
-  document.querySelector('#dock_time').style.borderBottomRightRadius = "25px";
+  methods.hideElementByFade('#laupad')
+  document.querySelector('#dock_time').style.bottom = '25px'
+  document.querySelector('#dock_time').style.left = '466.977px'
+  document.querySelector('#dock_time').style.width = '58px'
+  document.querySelector('#dock_time').style.borderBottomLeftRadius = '25px'
+  document.querySelector('#dock_time').style.borderBottomRightRadius = '25px'
   document.querySelector('#sysIco').onclick = function () {
-    showLauPad();
-  };
+    showLauPad()
+  }
 }
 
 document.querySelector('#sysIco').onclick = function () {
-  showLauPad();
-};
+  showLauPad()
+}
 
 document.querySelector('#showLockScrBtn').addEventListener('click', () => {
-  showLockScr();
-});
+  showLockScr()
+})
 
 document.querySelector('#popSettingsBtn').addEventListener('click', () => {
-  showPop('popSettings');
-});
+  showPop('popSettings')
+})
 
 document.querySelector('#showTodoListSvg').addEventListener('click', () => {
-  showTodoList();
-});
+  showTodoList()
+})
 
 /**
  * Lock Screen,Like Windows 11.
  */
 
 function hideLockScr() {
-  methods.hideElementByFade('#LockScreen');
+  methods.hideElementByFade('#LockScreen')
 }
 
 function showLockScr() {
-  hideLauPad();
-  methods.showElementByFade('#LockScreen');
+  hideLauPad()
+  methods.showElementByFade('#LockScreen')
 }
 
 document.querySelector('#LockScreen').addEventListener('click', () => {
-  hideLockScr();
-});
+  hideLockScr()
+})
 
 /**
  * Shutdown Diaglog
@@ -183,38 +183,38 @@ document.querySelector('#shutdown_btn').addEventListener('click', () => {
     .then(function (res) {
       if (res.btn == 'right') {
         setTimeout(() => {
-          hideLauPad();
+          hideLauPad()
           setTimeout(() => {
-            window.location.href = './closing.html';
-          }, 700);
-        }, 600);
+            window.location.href = './closing.html'
+          }, 700)
+        }, 600)
       }
-    });
-});
+    })
+})
 
 /**
  * To Do List
  */
-(function () {
+;(function () {
   function newFun() {
-    var addItems = document.querySelector('.add-items');
-    var itemsList = document.querySelector('.plates');
-    var buttons = document.querySelector('.buttons');
-    var items = store.get('items') ? JSON.parse(store.get('items')) : [];
+    var addItems = document.querySelector('.add-items')
+    var itemsList = document.querySelector('.plates')
+    var buttons = document.querySelector('.buttons')
+    var items = store.get('items') ? JSON.parse(store.get('items')) : []
 
     //添加item方法
     function handleSubmit(e) {
-      e.preventDefault();
-      var name = this.querySelector('[name=item]').value;
+      e.preventDefault()
+      var name = this.querySelector('[name=item]').value
 
       var item = {
         name: name,
         done: false,
-      };
-      items.push(item);
-      store.set('items', JSON.stringify(items));
-      updateList(items, itemsList);
-      this.reset();
+      }
+      items.push(item)
+      store.set('items', JSON.stringify(items))
+      updateList(items, itemsList)
+      this.reset()
     }
 
     function updateList(plates = [], plateList) {
@@ -232,155 +232,155 @@ document.querySelector('#shutdown_btn').addEventListener('click', () => {
             '">' +
             plate.name +
             '</label></li>'
-          );
+          )
         })
-        .join('');
+        .join('')
     }
 
     function toggleChecked(e) {
-      if (!e.target.matches('input')) return;
-      var item = e.target.dataset.index;
-      items[item].done = !items[item].done;
-      store.set('items', JSON.stringify(items));
-      updateList(items, itemsList);
+      if (!e.target.matches('input')) return
+      var item = e.target.dataset.index
+      items[item].done = !items[item].done
+      store.set('items', JSON.stringify(items))
+      updateList(items, itemsList)
     }
 
     function doButtonPress(e) {
-      var action = e.target.dataset.action;
+      var action = e.target.dataset.action
       switch (action) {
         case 'clear':
-          items = [];
-          break;
+          items = []
+          break
         case 'check':
           items.map(function (item) {
-            return (item.done = true);
-          });
-          break;
+            return (item.done = true)
+          })
+          break
         case 'clearCheck':
           for (var key in items) {
             if (items[key].done === true) {
               pxmu.toast({
                 msg: '可能会无法一次删除所有，请多次点击',
                 time: 800,
-              });
-              items.splice(key, 1);
+              })
+              items.splice(key, 1)
             }
           }
-          break;
+          break
         case 'uncheck':
           items.map(function (item) {
-            return (item.done = false);
-          });
-          break;
+            return (item.done = false)
+          })
+          break
         default:
-          return;
+          return
       }
-      store.set('items', JSON.stringify(items));
-      updateList(items, itemsList);
+      store.set('items', JSON.stringify(items))
+      updateList(items, itemsList)
     }
 
-    addItems.addEventListener('submit', handleSubmit);
-    itemsList.addEventListener('click', toggleChecked);
-    buttons.addEventListener('click', doButtonPress);
+    addItems.addEventListener('submit', handleSubmit)
+    itemsList.addEventListener('click', toggleChecked)
+    buttons.addEventListener('click', doButtonPress)
 
-    updateList(items, itemsList);
+    updateList(items, itemsList)
   }
 
-  document.addEventListener('DOMContentLoaded', newFun);
-})();
+  document.addEventListener('DOMContentLoaded', newFun)
+})()
 
 function showTodoList() {
-  hideLauPad();
-  methods.showElementByFade('#TodoList');
+  hideLauPad()
+  methods.showElementByFade('#TodoList')
 }
 
 function hideTodoList() {
-  showLauPad();
-  methods.hideElementByFade('#TodoList');
+  showLauPad()
+  methods.hideElementByFade('#TodoList')
 }
 
 document.querySelector('#todo_btnClose').addEventListener('click', () => {
-  hideTodoList();
-});
+  hideTodoList()
+})
 
 /**
  * Context Menu DIY.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  var forRight = document.getElementById('right-menu');
+  var forRight = document.getElementById('right-menu')
 
   function showContextmenu() {
-    var event = event || window.event;
+    var event = event || window.event
     //显示菜单
-    forRight.style.display = 'block';
+    forRight.style.display = 'block'
     setTimeout(() => {
-      forRight.style.opacity = '1';
-      forRight.style.transform = 'scale(1.05)';
-    }, 50);
-    setTimeout(() => (forRight.style.transform = 'scale(1)'), 200);
-    forRight.style.left = event.pageX + 'px';
-    forRight.style.top = event.pageY + 'px';
-    return false;
+      forRight.style.opacity = '1'
+      forRight.style.transform = 'scale(1.05)'
+    }, 50)
+    setTimeout(() => (forRight.style.transform = 'scale(1)'), 200)
+    forRight.style.left = event.pageX + 'px'
+    forRight.style.top = event.pageY + 'px'
+    return false
   }
 
   function hideContextMenu() {
-    forRight.style.transform = 'scale(7.5)';
-    forRight.style.opacity = '0';
-    setTimeout(() => (forRight.style.display = 'none'), 250);
+    forRight.style.transform = 'scale(7.5)'
+    forRight.style.opacity = '0'
+    setTimeout(() => (forRight.style.display = 'none'), 250)
   }
   window.oncontextmenu = function (event) {
-    showContextmenu();
-  };
+    showContextmenu()
+  }
   //再次点击，菜单消失
   document.onclick = function () {
-    hideContextMenu();
-  };
-});
+    hideContextMenu()
+  }
+})
 
 document.querySelector('#ExitBtnInRightMenu').addEventListener('click', () => {
-  let evt = document.createEvent('MouseEvents');
-  evt.initEvent('click', true, true);
-  document.getElementById('shutdown_btn').dispatchEvent(evt);
-});
+  let evt = document.createEvent('MouseEvents')
+  evt.initEvent('click', true, true)
+  document.getElementById('shutdown_btn').dispatchEvent(evt)
+})
 
 /**
  * PopUp.
  */
 
 function showPop(thePopUp) {
-  let cover1 = document.querySelector('#cover1.cover1');
-  let popObj = document.querySelector('#' + thePopUp);
-  cover1.style.display = 'block';
-  popObj.style.display = 'block';
-  popObj.style.transform = 'scale(1.1)';
+  let cover1 = document.querySelector('#cover1.cover1')
+  let popObj = document.querySelector('#' + thePopUp)
+  cover1.style.display = 'block'
+  popObj.style.display = 'block'
+  popObj.style.transform = 'scale(1.1)'
   setTimeout(() => {
-    cover1.style.opacity = '1';
-    popObj.style.opacity = '1';
+    cover1.style.opacity = '1'
+    popObj.style.opacity = '1'
     setTimeout(() => {
-      popObj.style.transform = 'scale(1.0)';
-    }, 100);
-  }, 50);
-  cover1.style.opacity = '1';
+      popObj.style.transform = 'scale(1.0)'
+    }, 100)
+  }, 50)
+  cover1.style.opacity = '1'
   cover1.addEventListener('click', () => {
-    cover1.style.transform = 'scale(1.05)';
-    setTimeout(() => (cover1.style.transform = 'scale(1)'), 100);
-  });
+    cover1.style.transform = 'scale(1.05)'
+    setTimeout(() => (cover1.style.transform = 'scale(1)'), 100)
+  })
 }
 
 function closePop(obj) {
-  let cover1 = document.querySelector('#cover1.cover1');
-  cover1.style.opacity = '0';
-  obj.style.opacity = '0';
-  obj.style.transform = 'scale(1.1)';
+  let cover1 = document.querySelector('#cover1.cover1')
+  cover1.style.opacity = '0'
+  obj.style.opacity = '0'
+  obj.style.transform = 'scale(1.1)'
   setTimeout(() => {
-    cover1.style.display = 'none';
-    obj.style.display = 'none';
-    obj.style.transform = 'scale(0.6)';
+    cover1.style.display = 'none'
+    obj.style.display = 'none'
+    obj.style.transform = 'scale(0.6)'
     setTimeout(() => {
-      obj.style.transform = 'scale(1.1)';
-    }, 350);
-  }, 350);
+      obj.style.transform = 'scale(1.1)'
+    }, 350)
+  }, 350)
 }
 
 /**
@@ -389,36 +389,36 @@ function closePop(obj) {
 
 ipcRenderer.on('Plugin-Content', (_event, path, content) => {
   if (content && path) {
-    console.log(content);
-    let contentObj = JSON.parse(content);
-    let mainJsPathInJson = contentObj.main;
-    var items = store.get('InstalledPlugins') ?? [];
+    console.log(content)
+    let contentObj = JSON.parse(content)
+    let mainJsPathInJson = contentObj.main
+    var items = store.get('InstalledPlugins') ?? []
     let item = {
       name: contentObj.name,
       main: mainJsPathInJson,
       version: contentObj.version,
       description: contentObj.description,
-    };
-    items.push(item);
-    store.set('InstalledPlugins', items);
-    history.go(0);
+    }
+    items.push(item)
+    store.set('InstalledPlugins', items)
+    history.go(0)
   }
-});
+})
 
 if (store.get('InstalledPlugins')) {
   window.addEventListener('load', () => {
-    let InstalledPluginsObj = store.get('InstalledPlugins');
+    let InstalledPluginsObj = store.get('InstalledPlugins')
     InstalledPluginsObj.forEach((obj) => {
-      let elementObj = document.createElement('script');
+      let elementObj = document.createElement('script')
       obj.main
         ? (elementObj.src = obj.main)
         : console.log(
-          'Path 为 ' + obj.name + ' 的插件没有 main 属性，无法添加至 DOM.'
-        );
-      elementObj.defer = true;
-      document.querySelector('body').append(elementObj);
-    });
-  });
+            'Path 为 ' + obj.name + ' 的插件没有 main 属性，无法添加至 DOM.'
+          )
+      elementObj.defer = true
+      document.querySelector('body').append(elementObj)
+    })
+  })
 }
 
 /**
@@ -426,41 +426,41 @@ if (store.get('InstalledPlugins')) {
  */
 
 function getWallpaperInfo() {
-  let wallpaperBool = store.get('wallpaperSrc') ? true : false;
+  let wallpaperBool = store.get('wallpaperSrc') ? true : false
   if (wallpaperBool) {
-    let wallpaperSrc = store.get('wallpaperSrc');
-    return String(wallpaperSrc);
+    let wallpaperSrc = store.get('wallpaperSrc')
+    return String(wallpaperSrc)
   }
-  return false;
+  return false
 }
 
 function setWallpaper(src) {
   if (src) {
-    document.querySelector('#WallpaperBackGround').src = String(src);
-    store.set('wallpaperSrc', String(src));
+    document.querySelector('#WallpaperBackGround').src = String(src)
+    store.set('wallpaperSrc', String(src))
   } else {
-    showError("Can not Read Background Src of 'setWallpaper' function.");
+    showError("Can not Read Background Src of 'setWallpaper' function.")
   }
-  return 'Done.';
+  return 'Done.'
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   if (getWallpaperInfo()) {
-    setWallpaper(getWallpaperInfo());
+    setWallpaper(getWallpaperInfo())
   }
-});
+})
 
 document
   .querySelector('#wallpaperInputSummit')
   .addEventListener('click', () => {
-    setWallpaper(String(document.querySelector('#wallpaperInput').value));
-  });
+    setWallpaper(String(document.querySelector('#wallpaperInput').value))
+  })
 
 /**
  * Terminal
  */
-(function () {
-  var timeout = null;
+;(function () {
+  var timeout = null
   var ter = new Terminal(
     'terminal',
     {
@@ -472,51 +472,51 @@ document
       execute: function (cmd, args) {
         switch (cmd) {
           case 'clear':
-            Terminal.clear();
-            return '';
+            Terminal.clear()
+            return ''
 
           case 'help':
-            return 'Commands: clear, help, ver or version, shutdown.';
+            return 'Commands: clear, help, ver or version, shutdown.'
 
           case 'ver':
           case 'version':
-            return '1.0.2';
+            return '1.0.2'
 
           case 'shutdown':
             if (args && args[0] == '-t' && args[1]) {
               timeout = setTimeout(() => {
-                window.close();
-              }, args[1]);
-              return `Easier Will Close With Time Out ${args[1]} ms.`;
+                window.close()
+              }, args[1])
+              return `Easier Will Close With Time Out ${args[1]} ms.`
             } else if (args && args[0] == '-a') {
-              clearTimeout(timeout);
-              return 'Shutdown Was Clean.';
+              clearTimeout(timeout)
+              return 'Shutdown Was Clean.'
             }
-            window.location = '././closing.html';
-            return 'Closed.';
+            window.location = '././closing.html'
+            return 'Closed.'
 
           default:
-            return `Command "${cmd}" Not Found.Run "help" To List All Commands.`;
+            return `Command "${cmd}" Not Found.Run "help" To List All Commands.`
         }
       },
     }
-  );
+  )
 
-  ter.output('<br>Adon Terminal In Easier Version 1.0.2');
-})();
+  ter.output('<br>Adon Terminal In Easier Version 1.0.2')
+})()
 document.querySelector('#terminalButton').onclick = function () {
-  document.querySelector('#terminalCon').style.animation = 'FadeIn .2s linear';
-  document.querySelector('#terminalCon').style.opacity = 1;
-  document.querySelector('#terminalCon').style.display = 'block';
+  document.querySelector('#terminalCon').style.animation = 'FadeIn .2s linear'
+  document.querySelector('#terminalCon').style.opacity = 1
+  document.querySelector('#terminalCon').style.display = 'block'
   document.querySelector('#TerminalCloseBtn').onclick = function () {
     document.querySelector('#terminalCon').style.animation =
-      'FadeOut .2s linear';
+      'FadeOut .2s linear'
     setTimeout(() => {
-      document.querySelector('#terminalCon').style.opacity = 0;
-      document.querySelector('#terminalCon').style.display = 'none';
-    }, 100);
-  };
-};
+      document.querySelector('#terminalCon').style.opacity = 0
+      document.querySelector('#terminalCon').style.display = 'none'
+    }, 100)
+  }
+}
 
 /**
  * Message Toast
@@ -527,53 +527,53 @@ document.querySelector('#terminalButton').onclick = function () {
  */
 
 function displayMessage(str) {
-  let alert = document.querySelector('alert');
-  let timer = null;
+  let alert = document.querySelector('alert')
+  let timer = null
 
   function displayS() {
-    alert.style.top = '45px';
-    alert.style.opacity = '1';
-    alert.innerHTML = str;
+    alert.style.top = '45px'
+    alert.style.opacity = '1'
+    alert.innerHTML = str
     timer = setTimeout(function () {
-      alert.style.top = '-50px';
-      alert.style.opacity = '0';
-    }, 5000);
+      alert.style.top = '-50px'
+      alert.style.opacity = '0'
+    }, 5000)
   }
 
   alert.addEventListener('mouseover', function () {
-    clearTimeout(timer);
-    console.log('用户已知晓');
-  });
+    clearTimeout(timer)
+    console.log('用户已知晓')
+  })
 
   alert.addEventListener('mouseleave', function () {
-    console.log('用户已阅读完毕');
+    console.log('用户已阅读完毕')
     setTimeout(() => {
-      alert.style.top = '-50px';
-      alert.style.opacity = '0';
-    }, 100);
-  });
+      alert.style.top = '-50px'
+      alert.style.opacity = '0'
+    }, 100)
+  })
 
   function displayC() {
-    clearTimeout(timer);
-    alert.style.backgroundColor = 'white';
-    alert.style.color = 'black';
+    clearTimeout(timer)
+    alert.style.backgroundColor = 'white'
+    alert.style.color = 'black'
     let twinkle1 = setInterval(() => {
-      alert.style.backgroundColor = 'rgb(51, 51, 51)';
-      alert.style.color = 'white';
-    }, 250);
+      alert.style.backgroundColor = 'rgb(51, 51, 51)'
+      alert.style.color = 'white'
+    }, 250)
     let twinkle2 = setInterval(() => {
-      alert.style.backgroundColor = 'white';
-      alert.style.color = 'black';
-    }, 500);
+      alert.style.backgroundColor = 'white'
+      alert.style.color = 'black'
+    }, 500)
     setTimeout(() => {
-      clearInterval(twinkle1);
-      clearInterval(twinkle2);
-    }, 750);
+      clearInterval(twinkle1)
+      clearInterval(twinkle2)
+    }, 750)
   }
 
-  displayC();
-  displayS();
-  return true;
+  displayC()
+  displayS()
+  return true
 }
 
 /**
@@ -581,7 +581,7 @@ function displayMessage(str) {
  */
 
 if (!store.get('users.firstUser.name')) {
-  window.location.href = '././preSettings.html';
+  window.location.href = '././preSettings.html'
 }
 
 /**
@@ -589,30 +589,30 @@ if (!store.get('users.firstUser.name')) {
  */
 
 function showConsoleCentre() {
-  methods.showElementByFade('#consoleCentre');
+  methods.showElementByFade('#consoleCentre')
   document.querySelector('#WallpaperBackGround').onclick = function () {
-    hideConsoleCentre();
-  };
+    hideConsoleCentre()
+  }
   document.querySelector('hr#showConsoleCentreLine').onclick = function () {
-    hideConsoleCentre();
-  };
-  hideLauPad();
+    hideConsoleCentre()
+  }
+  hideLauPad()
 }
 
 function hideConsoleCentre() {
-  methods.hideElementByFade('#consoleCentre');
+  methods.hideElementByFade('#consoleCentre')
   document.querySelector('#WallpaperBackGround').onclick = function () {
     //eslint-disable-next-line no-useless-return
-    return;
-  };
+    return
+  }
   document.querySelector('hr#showConsoleCentreLine').onclick = function () {
-    showConsoleCentre();
-  };
+    showConsoleCentre()
+  }
 }
 
 document.querySelector('#showConsoleCentreLine').onclick = () => {
-  showConsoleCentre();
-};
+  showConsoleCentre()
+}
 
 /**
  * No-Frame.
@@ -621,14 +621,14 @@ document.querySelector('#showConsoleCentreLine').onclick = () => {
 document
   .querySelector('#dropdownHeaderReloadDevBtn')
   .addEventListener('click', () => {
-    history.go(0);
-  });
+    history.go(0)
+  })
 
 document
   .querySelector('#dropdownHeaderToolsDevBtn')
   .addEventListener('click', () => {
-    ipcRenderer.send('openDevTools');
-  });
+    ipcRenderer.send('openDevTools')
+  })
 
 document
   .querySelector('#dropdownHeaderUninstallAllPluginsBtn')
@@ -672,96 +672,108 @@ document
       })
       .then(function (res) {
         if (res.btn == 'right') {
-          store.delete('InstalledPlugins');
-          history.go(0);
+          store.delete('InstalledPlugins')
+          history.go(0)
         }
-      });
-  });
+      })
+  })
 
 document
   .querySelector('#dropdownHeaderInstallPluginsBtn')
   .addEventListener('click', () => {
-    ipcRenderer.send('InstallAllPluginsFromJSONFile');
-  });
+    ipcRenderer.send('InstallAllPluginsFromJSONFile')
+  })
 
 /**
  * Office.
  */
 
-(function () {
+;(function () {
   let vdit = new Vditor('vditor', {
     mode: 'wysiwyg',
     preview: {
       markdown: {
         mark: true,
       },
-    }
-  });
-})();
+    },
+  })
+})()
 
-document.querySelector('#markdownButton').addEventListener('click', function () {
-  methods.showElementByFade('#markdown');
-});
+document
+  .querySelector('#markdownButton')
+  .addEventListener('click', function () {
+    methods.showElementByFade('#markdown')
+  })
 
 document.querySelector('#vditorCloseBtn').addEventListener('click', () => {
-  methods.hideElementByFade('#markdown');
-});
+  methods.hideElementByFade('#markdown')
+})
 
 /**
  * Plugins Manger
  */
 
 window.addEventListener('load', () => {
-  let InstalledPluginsObj = store.get('InstalledPlugins') ?? [];
-  let listObj = document.querySelector('#pluginsList');
-  let elementObj = null;
-  let deleteButtonObj = null;
+  let InstalledPluginsObj = store.get('InstalledPlugins') ?? []
+  let listObj = document.querySelector('#pluginsList')
+  let elementObj = null
+  let deleteButtonObj = null
   for (let key in InstalledPluginsObj) {
     if (Object.hasOwnProperty.call(InstalledPluginsObj, key)) {
-      document.querySelector('#DefaultLiInPlugins').style.display = "none";
-      const element = InstalledPluginsObj[key];
-      elementObj = document.createElement('li');
-      deleteButtonObj = document.createElement('button');
-      deleteButtonObj.textContent = "卸载";
+      document.querySelector('#DefaultLiInPlugins').style.display = 'none'
+      const element = InstalledPluginsObj[key]
+      elementObj = document.createElement('li')
+      deleteButtonObj = document.createElement('button')
+      deleteButtonObj.textContent = '卸载'
       deleteButtonObj.onclick = function () {
-        console.log(element);
-        console.log(InstalledPluginsObj.splice(InstalledPluginsObj.findIndex((e) => e.name === element.name), 1));
-        store.set('InstalledPlugins', InstalledPluginsObj.splice(InstalledPluginsObj.findIndex((e) => e.name === element.name), 1));
-        elementObj.remove();
-        pxmu.toast("已删除插件:" + element.name);
-      };
-      elementObj.textContent = element.name;
-      listObj.append(elementObj);
-      elementObj.append(deleteButtonObj);
+        console.log(element)
+        console.log(
+          InstalledPluginsObj.splice(
+            InstalledPluginsObj.findIndex((e) => e.name === element.name),
+            1
+          )
+        )
+        store.set(
+          'InstalledPlugins',
+          InstalledPluginsObj.splice(
+            InstalledPluginsObj.findIndex((e) => e.name === element.name),
+            1
+          )
+        )
+        elementObj.remove()
+        pxmu.toast('已删除插件:' + element.name)
+      }
+      elementObj.textContent = element.name
+      listObj.append(elementObj)
+      elementObj.append(deleteButtonObj)
     }
   }
-});
+})
 
 document.querySelector('#pluginButton').addEventListener('click', () => {
-  showPop('popPlugins');
-});
+  showPop('popPlugins')
+})
 
 /**
  * Desktop Date Time
  */
 
-(function () {
+;(function () {
   setInterval(() => {
-    document.querySelector('#desktopHours').textContent =
-      new Date().getHours();
-    document.querySelector("#desktopMinutes").textContent = new Date().getMinutes();
-    document.querySelector('#desktopDate').textContent =
-      methods.formatDate(
-        (new Date().getMonth() + 1) +
-        '/' +
-        new Date().getDate());
-  });
+    document.querySelector('#desktopHours').textContent = new Date().getHours()
+    document.querySelector('#desktopMinutes').textContent =
+      new Date().getMinutes()
+    document.querySelector('#desktopDate').textContent = methods.formatDate(
+      new Date().getMonth() + 1 + '/' + new Date().getDate()
+    )
+  })
   setInterval(() => {
-    document.querySelector('#LockTime').textContent =
-      methods.formatDate(new Date().getHours() +
+    document.querySelector('#LockTime').textContent = methods.formatDate(
+      new Date().getHours() +
         ':' +
         new Date().getMinutes() +
         ':' +
-        new Date().getSeconds());
-  });
-})();
+        new Date().getSeconds()
+    )
+  })
+})()

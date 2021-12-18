@@ -9,7 +9,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "beautify": "prettier ./app/assets/js/*.js --write --config=./.prettierrc",
+    "lint": "eslint ./app/assets/js/*.js"
   },
   "keywords": [],
   "author": {
