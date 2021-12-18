@@ -27,6 +27,12 @@ const Terminal = require('dom-terminal')
 
 const pxmu = require('./libs/js/pxmu.js')
 
+/**
+ * 
+ * @param {string} message 
+ * @returns {false} 
+ */
+
 function showError(message) {
   ipcRenderer.send('errorInRenderer', String(message))
   return false
@@ -310,6 +316,10 @@ document.querySelector('#todo_btnClose').addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
   var forRight = document.getElementById('right-menu')
 
+  /**
+   * 
+   * @returns {false}
+   */
   function showContextmenu() {
     var event = event || window.event
     //显示菜单
@@ -425,6 +435,10 @@ if (store.get('InstalledPlugins')) {
  * Change Wallpaper
  */
 
+/**
+ * 
+ * @returns {string | false}
+ */
 function getWallpaperInfo() {
   let wallpaperBool = store.get('wallpaperSrc') ? true : false
   if (wallpaperBool) {
@@ -433,6 +447,12 @@ function getWallpaperInfo() {
   }
   return false
 }
+
+/**
+ * 
+ * @param {string} src 
+ * @returns {string}
+ */
 
 function setWallpaper(src) {
   if (src) {
@@ -521,9 +541,9 @@ document.querySelector('#terminalButton').onclick = function () {
 /**
  * Message Toast
  *
- * By `Leng Yi Bai`
- *
+ * @author LengYiBai
  * @param str {String}
+ * @returns {boolean}
  */
 
 function displayMessage(str) {
@@ -598,6 +618,10 @@ function showConsoleCentre() {
   }
   hideLauPad()
 }
+
+/**
+ * @returns {null}
+ */
 
 function hideConsoleCentre() {
   methods.hideElementByFade('#consoleCentre')
