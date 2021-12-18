@@ -17,6 +17,18 @@
 
  */
 
+ /**
+  * @author Adkinsm<3020035335@qq.com>
+  * @license GPL-3.0-only
+  * @requires electron-Store
+  * @requires electron
+  * @requires dom-terminal
+  * @requires pxmu
+  * @copyright Adkinsm Uazira 2020.
+  * @file AdonS-Easier Renderer Processs Main Js.
+  *   
+  */
+
 const Store = require('electron-store')
 
 const store = new Store()
@@ -41,6 +53,10 @@ function showError(message) {
 window.onerror = (e) => {
   showError(e)
 }
+
+/**
+ * @this methods
+ */
 
 let methods = {
   hideElementByFade: function (element) {
