@@ -268,10 +268,12 @@ hr {
   padding-top: 150px;
 }
 
-#onStart img {
-  width: 160px;
-  height: 120px;
-  animation: rotate 0.9s linear infinite;
+#onStart .ball-clip-rotate-pulse {
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  top: 30px;
+  margin-bottom: 30px;
 }
 
 .right-menu {
