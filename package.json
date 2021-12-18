@@ -18,19 +18,6 @@
     "email": "3020035335@qq.com"
   },
   "license": "GPL-3.0-only",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "Easier"
-          }
-        }
-      ]
-    }
-  },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "dom-terminal": "1.0.3",

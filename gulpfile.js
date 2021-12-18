@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const javascriptObfuscator = require('gulp-javascript-obfuscator');
-const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
 
 function defaultTask() {

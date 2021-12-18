@@ -25,7 +25,7 @@ jobs:
         run: |
           yarn install
           yarn add global gulp-cli@2.3.0 @electron-forge/cli@6.0.0-beta.61 @electron-forge/maker-squirrel@6.0.0-beta.61
-          yarn add gulp@4.0.2 gulp-javascript-obfuscator@1.1.6
+          yarn add gulp@4.0.2 gulp-javascript-obfuscator@1.1.6 gulp-clean-css
       - name: Gulp
         if: startsWith(github.ref, 'refs/tags/')
         run: |
