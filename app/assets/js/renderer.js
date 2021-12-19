@@ -868,6 +868,7 @@ function newXHR(link) {
               console.log(item)
               items.push(item)
               store.set('InstalledPlugins', items)
+              pxmu.toast('已安装插件:' + contentObj.name + ",刷新后自动应用")
             }
             let c = document.createElement('p')
             c.textContent = element[2]
@@ -880,3 +881,7 @@ function newXHR(link) {
     }
   }
 })()
+
+document.querySelector('#storeButton').addEventListener('click', function () {
+  showPop("popPluginsStore")
+})

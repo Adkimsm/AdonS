@@ -809,7 +809,8 @@ hr#showConsoleCentreLine {
   text-decoration: none;
 }
 
-#pluginsList button {
+#pluginsList button,
+#popPluginsStore button {
   position: absolute;
   padding: 5px;
   right: 5px;
@@ -821,11 +822,13 @@ hr#showConsoleCentreLine {
 	color: white;
 }
 
-#pluginsList button:hover {
+#pluginsList button:hover,
+#popPluginsStore button:hover {
   background: linear-gradient(top, #818181, #575757);
 }
 
-#pluginsList button:active {
+#pluginsList button:active,
+#popPluginsStore button:active {
   box-shadow: 0 1px 3px #111 inset, 0 3px 0 #fff;
   background: linear-gradient(top, #424242, #575757);
 }
