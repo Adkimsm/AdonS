@@ -17,17 +17,17 @@
 
  */
 
- /**
-  * @author Adkinsm<3020035335@qq.com>
-  * @license GPL-3.0-only
-  * @requires electron-Store
-  * @requires electron
-  * @requires dom-terminal
-  * @requires pxmu
-  * @copyright Adkinsm Uazira 2020.
-  * @file AdonS-Easier Renderer Processs Main Js.
-  *   
-  */
+/**
+ * @author Adkinsm<3020035335@qq.com>
+ * @license GPL-3.0-only
+ * @requires electron-Store
+ * @requires electron
+ * @requires dom-terminal
+ * @requires pxmu
+ * @copyright Adkinsm Uazira 2020.
+ * @file AdonS-Easier Renderer Processs Main Js.
+ *
+ */
 
 const Store = require('electron-store')
 
@@ -40,9 +40,9 @@ const Terminal = require('dom-terminal')
 const pxmu = require('./libs/js/pxmu.js')
 
 /**
- * 
- * @param {string} message 
- * @returns {false} 
+ *
+ * @param {string} message
+ * @returns {false}
  */
 
 function showError(message) {
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var forRight = document.getElementById('right-menu')
 
   /**
-   * 
+   *
    * @returns {false}
    */
   function showContextmenu() {
@@ -452,7 +452,7 @@ if (store.get('InstalledPlugins')) {
  */
 
 /**
- * 
+ *
  * @returns {string | false}
  */
 function getWallpaperInfo() {
@@ -465,8 +465,8 @@ function getWallpaperInfo() {
 }
 
 /**
- * 
- * @param {string} src 
+ *
+ * @param {string} src
  * @returns {string}
  */
 
@@ -727,7 +727,6 @@ document
 /**
  * Office.
  */
-
 ;(function () {
   let vdit = new Vditor('vditor', {
     mode: 'wysiwyg',
@@ -781,7 +780,9 @@ window.addEventListener('load', () => {
           )
         )
         elementObj.remove()
-        pxmu.toast('已删除插件:' + element.name)
+        pxmu.toast(
+          element.name ? '已删除插件:' + element.name : '已删除此匿名插件'
+        )
       }
       elementObj.textContent = element.name
       listObj.append(elementObj)
@@ -797,7 +798,6 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
 /**
  * Desktop Date Time
  */
-
 ;(function () {
   setInterval(() => {
     document.querySelector('#desktopHours').textContent = new Date().getHours()
@@ -816,4 +816,67 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
         new Date().getSeconds()
     )
   })
+})()
+
+/**
+ * Plugins Store
+ */
+
+function newXHR(link) {
+  let dataFetch = new XMLHttpRequest()
+  dataFetch.open('GET', link)
+  dataFetch.send()
+  dataFetch.onload = function () {
+    return dataFetch.responseText    
+  }
+}
+
+;(function () {
+  let dataFetch = new XMLHttpRequest()
+  dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
+  dataFetch.send()
+  dataFetch.onload = function () {
+    if (dataFetch.status == 200) {
+      let data = dataFetch.responseText
+      console.log(data)
+      console.log(data)
+      const newTable = typeof data === 'object' ? data : JSON.parse(data)
+      console.log(newTable)
+      const ulElementObj = document.querySelector('#pluginsRemote')
+      for (const key in newTable) {
+        if (Object.hasOwnProperty.call(newTable, key)) {
+          const element = newTable[key]
+          if (element[0] && element[1] && element[2]) {
+            let a = document.createElement('li')
+            a.textContent = element[0]
+            let b = document.createElement('button')
+            b.textContent = '安装'
+            b.onclick = async function () {
+              let pluginOrigin = await fetch(element[1])
+              let pluginSrc = await pluginOrigin.json()
+              console.log(pluginSrc)
+              let contentObj = pluginSrc
+              let mainJsPathInJson = contentObj.main
+              console.log(contentObj)
+              var items = store.get('InstalledPlugins') ?? []
+              let item = {
+                name: contentObj.name,
+                main: mainJsPathInJson,
+                version: contentObj.version ? contentObj.version : undefined,
+                description: contentObj.description,
+              }
+              console.log(item)
+              items.push(item)
+              store.set('InstalledPlugins', items)
+            }
+            let c = document.createElement('p')
+            c.textContent = element[2]
+            ulElementObj.append(a)
+            a.append(b)
+            a.append(c)
+          }
+        }
+      }
+    }
+  }
 })()
