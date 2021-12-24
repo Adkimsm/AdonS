@@ -1,3 +1,4 @@
+/*eslint-disable no-implicit-globals */
 /*eslint-disable new-cap */
 /*eslint-disable no-loop-func */
 /*eslint-disable no-undef */
@@ -55,11 +56,11 @@ window.onerror = (e) => {
 }
 
 /**
- * @this methods
+ * @this METHODS
  */
 
-let methods = {
-  hideElementByFade: function (element) {
+METHODS = {
+  hideElementByFade(element) {
     document.querySelector(element).style.animation = 'FadeOut .2s linear'
     setTimeout(() => {
       document.querySelector(element).style.opacity = 0
@@ -67,13 +68,13 @@ let methods = {
     }, 100)
     return this
   },
-  showElementByFade: function (element) {
+  showElementByFade(element) {
     document.querySelector(element).style.animation = 'FadeIn .2s linear'
     document.querySelector(element).style.opacity = 1
     document.querySelector(element).style.display = 'block'
     return this
   },
-  formatDate: function (str) {
+  formatDate(str) {
     return str.replace(
       /(?<=\/|-|\.|:|\b|T)\d{1}(?=\/|-|\.|:|\b|T)/gu,
       function ($1) {
@@ -81,6 +82,36 @@ let methods = {
       }
     )
   },
+  import(url, type) {
+    return importJsCss(url, type)
+  },
+  throwError(errorString) {
+    showError(errorString)
+  },
+  displayMsg(msg) {
+    displayMessage(msg)
+  },
+}
+
+/**
+ * Custom Command.
+ */
+
+COMMANDS = {
+  echo(cmd, args) {
+    return args.toString()
+  },
+  ech(cmd, args) {
+    return 'dfgdfg'
+  },
+}
+
+function customCommandsCheck(cmd, args) {
+  if (Object.hasOwnProperty.call(COMMANDS, cmd)) {
+    const command = COMMANDS[cmd]
+    return command(cmd, args)
+  }
+  return `Command "${cmd}" Not Found.`
 }
 
 /**
@@ -104,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function showLauPad() {
   hideConsoleCentre()
-  methods.showElementByFade('#laupad')
+  METHODS.showElementByFade('#laupad')
   document.querySelector('#dock_time').style.bottom = 'calc(55%)'
   document.querySelector('#dock_time').style.left = '0px'
   document.querySelector('#dock_time').style.width = '98.69%'
@@ -116,7 +147,7 @@ function showLauPad() {
 }
 
 function hideLauPad() {
-  methods.hideElementByFade('#laupad')
+  METHODS.hideElementByFade('#laupad')
   document.querySelector('#dock_time').style.bottom = '25px'
   document.querySelector('#dock_time').style.left = '466.977px'
   document.querySelector('#dock_time').style.width = '58px'
@@ -148,12 +179,12 @@ document.querySelector('#showTodoListSvg').addEventListener('click', () => {
  */
 
 function hideLockScr() {
-  methods.hideElementByFade('#LockScreen')
+  METHODS.hideElementByFade('#LockScreen')
 }
 
 function showLockScr() {
   hideLauPad()
-  methods.showElementByFade('#LockScreen')
+  METHODS.showElementByFade('#LockScreen')
 }
 
 document.querySelector('#LockScreen').addEventListener('click', () => {
@@ -313,12 +344,12 @@ document.querySelector('#shutdown_btn').addEventListener('click', () => {
 
 function showTodoList() {
   hideLauPad()
-  methods.showElementByFade('#TodoList')
+  METHODS.showElementByFade('#TodoList')
 }
 
 function hideTodoList() {
   showLauPad()
-  methods.hideElementByFade('#TodoList')
+  METHODS.hideElementByFade('#TodoList')
 }
 
 document.querySelector('#todo_btnClose').addEventListener('click', () => {
@@ -358,7 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.oncontextmenu = function (event) {
     showContextmenu()
   }
-  //再次点击，菜单消失
   document.onclick = function () {
     hideContextMenu()
   }
@@ -452,9 +482,9 @@ if (store.get('InstalledPlugins')) {
  */
 
 /**
- *
  * @returns {string | false}
  */
+
 function getWallpaperInfo() {
   let wallpaperBool = store.get('wallpaperSrc') ? true : false
   if (wallpaperBool) {
@@ -465,7 +495,6 @@ function getWallpaperInfo() {
 }
 
 /**
- *
  * @param {string} src
  * @returns {string}
  */
@@ -532,12 +561,11 @@ document
             return 'Closed.'
 
           default:
-            return `Command "${cmd}" Not Found.Run "help" To List All Commands.`
+            return customCommandsCheck(cmd, args)
         }
       },
     }
   )
-
   ter.output('<br>Adon Terminal In Easier Version 1.0.2')
 })()
 document.querySelector('#terminalButton').onclick = function () {
@@ -625,7 +653,7 @@ if (!store.get('users.firstUser.name')) {
  */
 
 function showConsoleCentre() {
-  methods.showElementByFade('#consoleCentre')
+  METHODS.showElementByFade('#consoleCentre')
   document.querySelector('#WallpaperBackGround').onclick = function () {
     hideConsoleCentre()
   }
@@ -636,11 +664,11 @@ function showConsoleCentre() {
 }
 
 /**
- * @returns {null}
+ * @returns {undefined}
  */
 
 function hideConsoleCentre() {
-  methods.hideElementByFade('#consoleCentre')
+  METHODS.hideElementByFade('#consoleCentre')
   document.querySelector('#WallpaperBackGround').onclick = function () {
     //eslint-disable-next-line no-useless-return
     return
@@ -741,11 +769,11 @@ document
 document
   .querySelector('#markdownButton')
   .addEventListener('click', function () {
-    methods.showElementByFade('#markdown')
+    METHODS.showElementByFade('#markdown')
   })
 
 document.querySelector('#vditorCloseBtn').addEventListener('click', () => {
-  methods.hideElementByFade('#markdown')
+  METHODS.hideElementByFade('#markdown')
 })
 
 /**
@@ -803,12 +831,12 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
     document.querySelector('#desktopHours').textContent = new Date().getHours()
     document.querySelector('#desktopMinutes').textContent =
       new Date().getMinutes()
-    document.querySelector('#desktopDate').textContent = methods.formatDate(
+    document.querySelector('#desktopDate').textContent = METHODS.formatDate(
       new Date().getMonth() + 1 + '/' + new Date().getDate()
     )
   })
   setInterval(() => {
-    document.querySelector('#LockTime').textContent = methods.formatDate(
+    document.querySelector('#LockTime').textContent = METHODS.formatDate(
       new Date().getHours() +
         ':' +
         new Date().getMinutes() +
@@ -821,16 +849,6 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
 /**
  * Plugins Store
  */
-
-function newXHR(link) {
-  let dataFetch = new XMLHttpRequest()
-  dataFetch.open('GET', link)
-  dataFetch.send()
-  dataFetch.onload = function () {
-    return dataFetch.responseText    
-  }
-}
-
 ;(function () {
   let dataFetch = new XMLHttpRequest()
   dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
@@ -868,7 +886,7 @@ function newXHR(link) {
               console.log(item)
               items.push(item)
               store.set('InstalledPlugins', items)
-              pxmu.toast('已安装插件:' + contentObj.name + ",刷新后自动应用")
+              pxmu.toast('已安装插件:' + contentObj.name + ',刷新后自动应用')
             }
             let c = document.createElement('p')
             c.textContent = element[2]
@@ -883,5 +901,37 @@ function newXHR(link) {
 })()
 
 document.querySelector('#storeButton').addEventListener('click', function () {
-  showPop("popPluginsStore")
+  showPop('popPluginsStore')
 })
+
+/**
+ * Promise CreateHTMLStyleSheetElement OR CreateHTMLScriptElement.
+ * @returns {Promise<HTMLLinkElement | HTMLScriptElement>}
+ * @param {string} url CSS OR JS Link
+ * @param {string} type 'css' OR 'js'
+ */
+
+function importJsCss(url, type) {
+  return new Promise(function (resolve, reject) {
+    let element = null
+    if (type == 'css') {
+      element = document.createElement('link')
+      element.rel = 'stylesheet'
+      if (typeof url == 'string') {
+        element.href = url
+      } else {
+        reject(new Error('The First Param Must Be A String.'))
+      }
+    } else if (type == 'js') {
+      element = document.createElement('script')
+      if (typeof url == 'string') {
+        element.src = url
+      } else {
+        reject(new Error('The First Param Must Be A String.'))
+      }
+    } else {
+      reject(new Error('The Second Param Must Be A String: "js" OR "css".'))
+    }
+    resolve(element)
+  })
+}

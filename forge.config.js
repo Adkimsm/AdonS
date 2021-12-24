@@ -1,7 +1,7 @@
 module.exports = {
     packagerConfig: {
         appCopyright: "©Uazira ©Adkinsm 2021. ",
-        icon: "./app/assets/images/xh-256.ico"
+        icon: "./app/assets/images/xh-256.ico",
      },
     makers: [
         {
