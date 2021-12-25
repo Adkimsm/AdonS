@@ -9,8 +9,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "beautify": "prettier ./app/assets/js/*.js --write --config=./.prettierrc",
-    "lint": "eslint ./app/assets/js/*.js"
+    "beautify": "prettier ./app/assets/js/*.js --write --config=./.prettierrc"
   },
   "keywords": [],
   "author": {
@@ -19,19 +18,18 @@
   },
   "license": "GPL-3.0-only",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
     "dom-terminal": "1.0.3",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-store": "8.0.1"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.61",
     "@electron-forge/maker-squirrel": "6.0.0-beta.61",
     "electron": "16.0.4",
-    "eslint": "8.2.0",
     "gulp": "4.0.2",
-    "gulp-javascript-obfuscator": "^1.1.6",
-    "vinyl-sourcemaps-apply": "^0.2.1",
     "gulp-clean-css": "4.3.0",
-    "gulp-htmlmin": "5.0.1"
+    "gulp-htmlmin": "5.0.1",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "vinyl-sourcemaps-apply": "^0.2.1"
   }
 }
