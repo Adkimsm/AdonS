@@ -6,6 +6,8 @@ const Store = require("electron-store");
 
 Store.initRenderer();
 
+if (require('electron-squirrel-startup')) return;
+
 let mainWindow = null;
 
 function toogleDevTools() {
