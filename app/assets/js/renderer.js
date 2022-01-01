@@ -602,6 +602,15 @@ function displayMessage(str) {
       alert.style.top = '-50px'
       alert.style.opacity = '0'
     }, 5000)
+    let cacheEle = document.createElement('div')
+    cacheEle.classList.add('notificationItem')
+    cacheEle.textContent = str
+    cacheEle.style.display = "none"
+    document.querySelector('#consoleCentre .notificationCon').append(cacheEle)
+    cacheEle.style.animation = 'FadeIn .2s linear'
+    cacheEle.style.opacity = 1
+    cacheEle.style.display = 'block'
+    return this
   }
 
   alert.addEventListener('mouseover', function () {
@@ -654,12 +663,6 @@ if (!store.get('users.firstUser.name')) {
 
 function showConsoleCentre() {
   METHODS.showElementByFade('#consoleCentre')
-  document.querySelector('#WallpaperBackGround').onclick = function () {
-    hideConsoleCentre()
-  }
-  document.querySelector('hr#showConsoleCentreLine').onclick = function () {
-    hideConsoleCentre()
-  }
   hideLauPad()
 }
 
@@ -669,10 +672,6 @@ function showConsoleCentre() {
 
 function hideConsoleCentre() {
   METHODS.hideElementByFade('#consoleCentre')
-  document.querySelector('#WallpaperBackGround').onclick = function () {
-    //eslint-disable-next-line no-useless-return
-    return
-  }
   document.querySelector('hr#showConsoleCentreLine').onclick = function () {
     showConsoleCentre()
   }
@@ -681,6 +680,10 @@ function hideConsoleCentre() {
 document.querySelector('#showConsoleCentreLine').onclick = () => {
   showConsoleCentre()
 }
+
+document.querySelector('#centreBG').addEventListener('click', () => {
+  hideConsoleCentre()
+})
 
 /**
  * No-Frame.
@@ -838,10 +841,19 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
   setInterval(() => {
     document.querySelector('#LockTime').textContent = METHODS.formatDate(
       new Date().getHours() +
-        ':' +
-        new Date().getMinutes() +
-        ':' +
-        new Date().getSeconds()
+      ':' +
+      new Date().getMinutes() +
+      ':' +
+      new Date().getSeconds()
+    )
+  })
+  setInterval(() => {
+    document.querySelector('#controlCentreTime').textContent = METHODS.formatDate(
+      new Date().getHours() +
+      ':' +
+      new Date().getMinutes() +
+      ':' +
+      new Date().getSeconds()
     )
   })
 })()
@@ -849,6 +861,7 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
 /**
  * Plugins Store
  */
+  
 ;(function () {
   let dataFetch = new XMLHttpRequest()
   dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')

@@ -25,6 +25,23 @@ body {
   transition: all 0.3s;
 }
 
+::-webkit-scrollbar {
+	width: 8px;
+	padding-right: 10px;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-track:hover {
+	background-color: rgba(95, 97, 101, 0.3) !important;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:active {
+	background-color: #6fc1ff !important;
+	border-radius: 4px;
+}
+
 #outScreen {
   z-index: 1;
 }
@@ -601,7 +618,7 @@ alert {
   padding: 20px;
   transform: translateX(-50%);
   background-color: rgba(30, 30, 30);
-  border-radius: 50px;
+  border-radius: 15px;
   text-align: center;
   font-size: 15px;
   opacity: 1;
@@ -610,10 +627,11 @@ alert {
 }
 
 #consoleCentre {
+  box-sizing: border-box;
   position: absolute;
   top: 35px;
   right: 0;
-  width: 30%;
+  width: 1000px;
   height: 100%;
   backdrop-filter: blur(30px);
   padding: 25px;
@@ -621,12 +639,59 @@ alert {
   z-index: 100;
 }
 
+#consoleCentre .centreCon {
+  right: 30px;
+}
+
+#consoleCentre .centreCon,
+#consoleCentre .notificationCon {
+  position: absolute;
+  top: 175px;
+  width: 35%;
+  background-color: #181717e3;
+  border-radius: 25px;
+  padding: 15px;
+  box-sizing: border-box;
+  z-index: 102;
+}
+
+#consoleCentre .notificationCon {
+  left: 30px;
+  max-height: 348.305px;
+  overflow-x: scroll;
+}
+
+#consoleCentre .notificationItem,
 #consoleCentre .centreItem {
   background-color: #4c4c4c;
   padding: 10px;
   width: 48px;
   height: 48px;
   border-radius: 15px;
+}
+
+#consoleCentre .notificationItem {
+  width: calc(100% - 30px);
+  color: #f3f6f3;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+#centreBG {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  width: 1000px;
+  height: 100%;
+  z-index: 101;
+}
+
+#controlCentreTime {
+  font-size: 4rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
 }
 
 hr#showConsoleCentreLine {
