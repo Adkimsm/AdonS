@@ -107,8 +107,8 @@ COMMANDS = {
 }
 
 /**
- * @param {string} cmd 
- * @param {string[]} args 
+ * @param {string} cmd
+ * @param {string[]} args
  * @returns {string}
  */
 
@@ -610,7 +610,7 @@ function displayMessage(str) {
     let cacheEle = document.createElement('div')
     cacheEle.classList.add('notificationItem')
     cacheEle.textContent = str
-    cacheEle.style.display = "none"
+    cacheEle.style.display = 'none'
     document.querySelector('#consoleCentre .notificationCon').append(cacheEle)
     cacheEle.style.animation = 'FadeIn .2s linear'
     cacheEle.style.opacity = 1
@@ -763,29 +763,31 @@ document
 /**
  * Office.
  */
-  
-;(function () {
-})()
+;(function () {})()
 
 document
   .querySelector('#markdownButton')
   .addEventListener('click', function () {
-    METHODS.import('https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.min.js', 'js')
-      .then((ele) => {
-        document.querySelector('#markdown').prepend(ele)
-        let vdit = new Vditor('vditor', {
-          mode: 'wysiwyg',
-          preview: {
-            markdown: {
-              mark: true,
-            },
+    METHODS.import(
+      'https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.min.js',
+      'js'
+    ).then((ele) => {
+      document.querySelector('#markdown').prepend(ele)
+      let vdit = new Vditor('vditor', {
+        mode: 'wysiwyg',
+        preview: {
+          markdown: {
+            mark: true,
           },
-        })
+        },
       })
-    METHODS.import('https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.css', 'css')
-      .then((ele) => {
-        document.querySelector('#markdown').prepend(ele)
-      })
+    })
+    METHODS.import(
+      'https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.css',
+      'css'
+    ).then((ele) => {
+      document.querySelector('#markdown').prepend(ele)
+    })
     METHODS.showElementByFade('#markdown')
   })
 
@@ -855,27 +857,27 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
   setInterval(() => {
     document.querySelector('#LockTime').textContent = METHODS.formatDate(
       new Date().getHours() +
-      ':' +
-      new Date().getMinutes() +
-      ':' +
-      new Date().getSeconds()
+        ':' +
+        new Date().getMinutes() +
+        ':' +
+        new Date().getSeconds()
     )
   })
   setInterval(() => {
-    document.querySelector('#controlCentreTime').textContent = METHODS.formatDate(
-      new Date().getHours() +
-      ':' +
-      new Date().getMinutes() +
-      ':' +
-      new Date().getSeconds()
-    )
+    document.querySelector('#controlCentreTime').textContent =
+      METHODS.formatDate(
+        new Date().getHours() +
+          ':' +
+          new Date().getMinutes() +
+          ':' +
+          new Date().getSeconds()
+      )
   })
 })()
 
 /**
  * Plugins Store
  */
-  
 ;(function () {
   let dataFetch = new XMLHttpRequest()
   dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
