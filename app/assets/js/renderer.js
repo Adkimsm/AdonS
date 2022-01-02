@@ -59,7 +59,7 @@ window.onerror = (e) => {
  * @this METHODS
  */
 
-METHODS = {
+var METHODS = {
   hideElementByFade(element) {
     document.querySelector(element).style.animation = 'FadeOut .2s linear'
     setTimeout(() => {
@@ -758,20 +758,29 @@ document
 /**
  * Office.
  */
+  
 ;(function () {
-  let vdit = new Vditor('vditor', {
-    mode: 'wysiwyg',
-    preview: {
-      markdown: {
-        mark: true,
-      },
-    },
-  })
 })()
 
 document
   .querySelector('#markdownButton')
   .addEventListener('click', function () {
+    METHODS.import('https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.min.js', 'js')
+      .then((ele) => {
+        document.querySelector('#markdown').prepend(ele)
+        let vdit = new Vditor('vditor', {
+          mode: 'wysiwyg',
+          preview: {
+            markdown: {
+              mark: true,
+            },
+          },
+        })
+      })
+    METHODS.import('https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.css', 'css')
+      .then((ele) => {
+        document.querySelector('#markdown').prepend(ele)
+      })
     METHODS.showElementByFade('#markdown')
   })
 
