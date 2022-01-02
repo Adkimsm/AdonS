@@ -106,6 +106,12 @@ COMMANDS = {
   },
 }
 
+/**
+ * @param {string} cmd 
+ * @param {string[]} args 
+ * @returns {string}
+ */
+
 function customCommandsCheck(cmd, args) {
   if (Object.hasOwnProperty.call(COMMANDS, cmd)) {
     const command = COMMANDS[cmd]
@@ -364,8 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var forRight = document.getElementById('right-menu')
 
   /**
-   *
-   * @returns {false}
+   * @returns {void}
    */
   function showContextmenu() {
     var event = event || window.event
@@ -378,7 +383,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => (forRight.style.transform = 'scale(1)'), 200)
     forRight.style.left = event.pageX + 'px'
     forRight.style.top = event.pageY + 'px'
-    return false
   }
 
   function hideContextMenu() {
@@ -387,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => (forRight.style.display = 'none'), 250)
   }
   window.oncontextmenu = function (event) {
+    event.preventDefault()
     showContextmenu()
   }
   document.onclick = function () {
