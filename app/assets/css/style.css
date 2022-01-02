@@ -659,6 +659,7 @@ alert {
   left: 30px;
   max-height: 348.305px;
   overflow-x: scroll;
+  padding-bottom: 0;
 }
 
 #consoleCentre .notificationItem,
@@ -675,6 +676,10 @@ alert {
   color: #f3f6f3;
   height: auto;
   margin-bottom: 15px;
+}
+
+#consoleCentre .notificationItem:only-child {
+  margin-bottom: 0;
 }
 
 #centreBG {
