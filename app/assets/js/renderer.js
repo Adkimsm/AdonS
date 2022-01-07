@@ -436,6 +436,31 @@ function closePop(obj) {
   }, 350)
 }
 
+(function () {
+  let oTitles = document.querySelectorAll('.popUp');
+  for (const key in oTitles) {
+    if (Object.hasOwnProperty.call(oTitles, key)) {
+      let oTitle = oTitles[key];
+      let offsetX, offsetY;
+      oTitle.ondragstart = function (e) {
+        offsetX = e.movementX;
+        offsetY = e.movementY;
+      };
+      oTitle.ondrag = function (e) {
+        if (e.pageX == 0 && e.pageY == 0) {
+          return;
+        }
+        if (((e.pageX - offsetX) < 300) || ((e.pageY - offsetY) < 250)) {
+          return
+        } else {
+          oTitle.style.left = (e.pageX - offsetX) + "px";
+          oTitle.style.top = (e.pageY - offsetY) + "px";
+        }
+      }
+    }
+  }
+})()
+
 /**
  * Plugin Support.
  */
