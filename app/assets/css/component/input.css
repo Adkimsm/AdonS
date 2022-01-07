@@ -12,7 +12,8 @@
     position: relative;
     display: block;
     float: right;
-    padding: 0.8em;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
     width: 60%;
     border: none;
     border-radius: 0;
@@ -35,7 +36,7 @@
     width: 40%;
     color: #6a7989;
     font-weight: bold;
-    font-size: 70.25%;
+    font-size: 86.87%;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -1108,4 +1109,14 @@
     -webkit-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
     margin-top: 5px;
+}
+
+/**
+ *
+ * AdonS
+ *
+ */
+
+.popUp .input .input__label-content {
+    margin-left: 30px;
 }

@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="./assets/css/component/input.css">
 	<link rel="stylesheet" href="./assets/css/component/pxmu.css">
 	<link rel="stylesheet" href="./assets/css/component/loaders.css">
+	<link rel="stylesheet" href="./libs/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -173,7 +174,8 @@
 					</button>
 				</div>
 			</div>
-		</div><div class="popUp" id="popPlugins">
+		</div>
+		<div class="popUp" id="popPlugins">
 			<span class="btnClose" onclick="closePop(popPlugins)"></span>
 			<div class="pTitle">Plugins</div>
 			<div class="pContent">
@@ -181,11 +183,31 @@
 					<li id="DefaultLiInPlugins">您还没有安装插件哦~~~</li>
 				</ul>
 			</div>
-		</div><div class="popUp" id="popPluginsStore">
+		</div>
+		<div class="popUp" id="popPluginsStore">
 			<span class="btnClose" onclick="closePop(popPluginsStore)"></span>
 			<div class="pTitle">PluginsStore</div>
 			<div class="pContent">
 				<ul id="pluginsRemote"></ul>
+			</div>
+		</div>
+		<div class="popUp" id="popLogin">
+			<span class="btnClose" onclick="closePop(popLogin)"></span>
+			<div class="pTitle">Login</div>
+			<div class="pContent">
+				<span class="input input--kaede">
+					<input class="input__field input__field--kaede" type="text" id="cloudUserNameInput">
+					<label class="input__label input__label--kaede" for="cloudUserNameInput">
+						<span class="input__label-content input__label-content--kaede">User Name</span>
+					</label>
+				</span>
+				<span class="input input--kaede">
+					<input class="input__field input__field--kaede" type="text" id="cloudUserPwdInput">
+					<label class="input__label input__label--kaede" for="cloudUserPwdInput">
+						<span class="input__label-content input__label-content--kaede">Password</span>
+					</label>
+				</span>
+				<button class="bigBtn" id="loginBtnSummit" style="width: 100%;">登录</button>
 			</div>
 		</div>
 	</div>
@@ -209,6 +231,12 @@
 			<div id="vditor"></div>
 			<span id="vditorCloseBtn">×</span>
 		</div>
+	</div>
+
+	<div id="cloudUser">
+		<h1 id="userNameCloud">Undefined</h1>
+		<p id="userCloudState">您尚未登陆</p>
+		<button id="cloudUserLoginBtn" class="bigBtn">登录</button>
 	</div>
 
 	<alert></alert>

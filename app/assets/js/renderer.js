@@ -423,10 +423,6 @@ function showPop(thePopUp) {
     }, 100)
   }, 50)
   cover1.style.opacity = '1'
-  cover1.addEventListener('click', () => {
-    cover1.style.transform = 'scale(1.05)'
-    setTimeout(() => (cover1.style.transform = 'scale(1)'), 100)
-  })
 }
 
 function closePop(obj) {
@@ -964,3 +960,46 @@ function importJsCss(url, type) {
     resolve(element)
   })
 }
+
+/**
+ * Login.
+ */
+
+document.querySelector('#cloudUserLoginBtn').addEventListener('click', () => {
+  showPop('popLogin')
+  METHODS.hideElementByFade('#cloudUser')
+})
+
+document.querySelector('#loginBtnSummit').addEventListener('click', () => {
+  document.querySelector('#loginBtnSummit').classList.add('busy')
+  document.querySelector('#loginBtnSummit').textContent = "请稍候..."
+  let aOT = document.querySelector('#cloudUserPwdInput').value
+  let bOT = document.querySelector('#cloudUserNameInput').value
+  let times = 0
+  if (times < 5) {
+    fetch(`https://mongo-dba-pis-on-vercel.vercel.app/api/users?pwd=${aOT}&name=${bOT}`)      
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        if (res.real === true) {
+          METHODS.displayMsg('欢迎登陆， ' + bOT)
+          document.querySelector('#loginBtnSummit').textContent = "✔"
+          closePop(popLogin)
+          store.set('users.cloud.name', bOT)
+        } else {
+          document.querySelector('#loginBtnSummit').textContent = "登录"
+          METHODS.displayMsg('账号或密码错误')
+          times += 1
+        }
+      })
+  } else {
+    METHODS.displayMsg('您已输入超过五次，拒绝请求。')
+  }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (store.get('users.cloud.name')) {
+    METHODS.hideElementByFade('#cloudUser')
+  } 
+})

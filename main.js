@@ -158,8 +158,7 @@ autoUpdater.on('error', (message) => {
 });
 
 app.whenReady().then(() => {
-	createWindow();
-	require('./api/mongodb')
+	createWindow()
 });
 
 app.on("window-all-closed", function () {
