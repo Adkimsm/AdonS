@@ -795,7 +795,7 @@ document.querySelector('#vditorCloseBtn').addEventListener('click', () => {
  * Plugins Manger
  */
 
-window.addEventListener('load', () => {
+document.querySelector('#pluginButton').addEventListener('click', () => {
   let InstalledPluginsObj = store.get('InstalledPlugins') ?? []
   let listObj = document.querySelector('#pluginsList')
   let elementObj = null
@@ -832,9 +832,6 @@ window.addEventListener('load', () => {
       elementObj.append(deleteButtonObj)
     }
   }
-})
-
-document.querySelector('#pluginButton').addEventListener('click', () => {
   showPop('popPlugins')
 })
 
@@ -874,59 +871,60 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
 /**
  * Plugins Store
  */
-;(function () {
-  let dataFetch = new XMLHttpRequest()
-  dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
-  dataFetch.send()
-  dataFetch.onload = function () {
-    if (dataFetch.status == 200) {
-      let data = dataFetch.responseText
-      console.log(data)
-      console.log(data)
-      const newTable = typeof data === 'object' ? data : JSON.parse(data)
-      console.log(newTable)
-      const ulElementObj = document.querySelector('#pluginsRemote')
-      for (const key in newTable) {
-        if (Object.hasOwnProperty.call(newTable, key)) {
-          const element = newTable[key]
-          if (element[0] && element[1] && element[2]) {
-            let a = document.createElement('li')
-            a.textContent = element[0]
-            let b = document.createElement('button')
-            b.textContent = '安装'
-            b.onclick = async function () {
-              let pluginOrigin = await fetch(element[1])
-              let pluginSrc = await pluginOrigin.json()
-              console.log(pluginSrc)
-              let contentObj = pluginSrc
-              let mainJsPathInJson = contentObj.main
-              console.log(contentObj)
-              var items = store.get('InstalledPlugins') ?? []
-              let item = {
-                name: contentObj.name,
-                main: mainJsPathInJson,
-                version: contentObj.version ? contentObj.version : undefined,
-                description: contentObj.description,
+  
+document.querySelector('#storeButton').addEventListener('click', function () {
+  showPop('popPluginsStore')
+    ; (function () {
+      let dataFetch = new XMLHttpRequest()
+      dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
+      dataFetch.send()
+      dataFetch.onload = function () {
+        if (dataFetch.status == 200) {
+          let data = dataFetch.responseText
+          console.log(data)
+          console.log(data)
+          const newTable = typeof data === 'object' ? data : JSON.parse(data)
+          console.log(newTable)
+          let ulElementObj = document.querySelector('#pluginsRemote')
+          ulElementObj.innerHTML = ""
+          for (const key in newTable) {
+            if (Object.hasOwnProperty.call(newTable, key)) {
+              const element = newTable[key]
+              if (element[0] && element[1] && element[2]) {
+                let a = document.createElement('li')
+                a.textContent = element[0]
+                let b = document.createElement('button')
+                b.textContent = '安装'
+                b.onclick = async function () {
+                  let pluginOrigin = await fetch(element[1])
+                  let pluginSrc = await pluginOrigin.json()
+                  console.log(pluginSrc)
+                  let contentObj = pluginSrc
+                  let mainJsPathInJson = contentObj.main
+                  console.log(contentObj)
+                  var items = store.get('InstalledPlugins') ?? []
+                  let item = {
+                    name: contentObj.name,
+                    main: mainJsPathInJson,
+                    version: contentObj.version ? contentObj.version : undefined,
+                    description: contentObj.description,
+                  }
+                  console.log(item)
+                  items.push(item)
+                  store.set('InstalledPlugins', items)
+                  pxmu.toast('已安装插件:' + contentObj.name + ',刷新后自动应用')
+                }
+                let c = document.createElement('p')
+                c.textContent = element[2]
+                ulElementObj.append(a)
+                a.append(b)
+                a.append(c)
               }
-              console.log(item)
-              items.push(item)
-              store.set('InstalledPlugins', items)
-              pxmu.toast('已安装插件:' + contentObj.name + ',刷新后自动应用')
             }
-            let c = document.createElement('p')
-            c.textContent = element[2]
-            ulElementObj.append(a)
-            a.append(b)
-            a.append(c)
           }
         }
       }
-    }
-  }
-})()
-
-document.querySelector('#storeButton').addEventListener('click', function () {
-  showPop('popPluginsStore')
+    })()
 })
 
 /**
