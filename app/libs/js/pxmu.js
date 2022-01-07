@@ -1,4 +1,3 @@
-/*eslint-disable */
 // 不是我写的，别开 lint
 (function (t, e) {
   "function" == typeof define && define.amd

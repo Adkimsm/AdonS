@@ -1,7 +1,3 @@
-/*eslint-disable no-implicit-globals */
-/*eslint-disable new-cap */
-/*eslint-disable no-loop-func */
-/*eslint-disable no-undef */
 /*
       _                __                             ______   
      / \              |  ]                          .' ____ \  
@@ -871,60 +867,60 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
 /**
  * Plugins Store
  */
-  
+
 document.querySelector('#storeButton').addEventListener('click', function () {
   showPop('popPluginsStore')
-    ; (function () {
-      let dataFetch = new XMLHttpRequest()
-      dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
-      dataFetch.send()
-      dataFetch.onload = function () {
-        if (dataFetch.status == 200) {
-          let data = dataFetch.responseText
-          console.log(data)
-          console.log(data)
-          const newTable = typeof data === 'object' ? data : JSON.parse(data)
-          console.log(newTable)
-          let ulElementObj = document.querySelector('#pluginsRemote')
-          ulElementObj.innerHTML = ""
-          for (const key in newTable) {
-            if (Object.hasOwnProperty.call(newTable, key)) {
-              const element = newTable[key]
-              if (element[0] && element[1] && element[2]) {
-                let a = document.createElement('li')
-                a.textContent = element[0]
-                let b = document.createElement('button')
-                b.textContent = '安装'
-                b.onclick = async function () {
-                  let pluginOrigin = await fetch(element[1])
-                  let pluginSrc = await pluginOrigin.json()
-                  console.log(pluginSrc)
-                  let contentObj = pluginSrc
-                  let mainJsPathInJson = contentObj.main
-                  console.log(contentObj)
-                  var items = store.get('InstalledPlugins') ?? []
-                  let item = {
-                    name: contentObj.name,
-                    main: mainJsPathInJson,
-                    version: contentObj.version ? contentObj.version : undefined,
-                    description: contentObj.description,
-                  }
-                  console.log(item)
-                  items.push(item)
-                  store.set('InstalledPlugins', items)
-                  pxmu.toast('已安装插件:' + contentObj.name + ',刷新后自动应用')
+  ;(function () {
+    let dataFetch = new XMLHttpRequest()
+    dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
+    dataFetch.send()
+    dataFetch.onload = function () {
+      if (dataFetch.status == 200) {
+        let data = dataFetch.responseText
+        console.log(data)
+        console.log(data)
+        const newTable = typeof data === 'object' ? data : JSON.parse(data)
+        console.log(newTable)
+        let ulElementObj = document.querySelector('#pluginsRemote')
+        ulElementObj.innerHTML = ''
+        for (const key in newTable) {
+          if (Object.hasOwnProperty.call(newTable, key)) {
+            const element = newTable[key]
+            if (element[0] && element[1] && element[2]) {
+              let a = document.createElement('li')
+              a.textContent = element[0]
+              let b = document.createElement('button')
+              b.textContent = '安装'
+              b.onclick = async function () {
+                let pluginOrigin = await fetch(element[1])
+                let pluginSrc = await pluginOrigin.json()
+                console.log(pluginSrc)
+                let contentObj = pluginSrc
+                let mainJsPathInJson = contentObj.main
+                console.log(contentObj)
+                var items = store.get('InstalledPlugins') ?? []
+                let item = {
+                  name: contentObj.name,
+                  main: mainJsPathInJson,
+                  version: contentObj.version ? contentObj.version : undefined,
+                  description: contentObj.description,
                 }
-                let c = document.createElement('p')
-                c.textContent = element[2]
-                ulElementObj.append(a)
-                a.append(b)
-                a.append(c)
+                console.log(item)
+                items.push(item)
+                store.set('InstalledPlugins', items)
+                pxmu.toast('已安装插件:' + contentObj.name + ',刷新后自动应用')
               }
+              let c = document.createElement('p')
+              c.textContent = element[2]
+              ulElementObj.append(a)
+              a.append(b)
+              a.append(c)
             }
           }
         }
       }
-    })()
+    }
+  })()
 })
 
 /**
@@ -970,23 +966,25 @@ document.querySelector('#cloudUserLoginBtn').addEventListener('click', () => {
 
 document.querySelector('#loginBtnSummit').addEventListener('click', () => {
   document.querySelector('#loginBtnSummit').classList.add('busy')
-  document.querySelector('#loginBtnSummit').textContent = "请稍候..."
+  document.querySelector('#loginBtnSummit').textContent = '请稍候...'
   let aOT = document.querySelector('#cloudUserPwdInput').value
   let bOT = document.querySelector('#cloudUserNameInput').value
   let times = 0
   if (times < 5) {
-    fetch(`https://mongo-dba-pis-on-vercel.vercel.app/api/users?pwd=${aOT}&name=${bOT}`)      
+    fetch(
+      `https://mongo-dba-pis-on-vercel.vercel.app/api/users?pwd=${aOT}&name=${bOT}`
+    )
       .then((res) => {
         return res.json()
       })
       .then((res) => {
         if (res.real === true) {
           METHODS.displayMsg('欢迎登陆， ' + bOT)
-          document.querySelector('#loginBtnSummit').textContent = "✔"
+          document.querySelector('#loginBtnSummit').textContent = '✔'
           closePop(popLogin)
           store.set('users.cloud.name', bOT)
         } else {
-          document.querySelector('#loginBtnSummit').textContent = "登录"
+          document.querySelector('#loginBtnSummit').textContent = '登录'
           METHODS.displayMsg('账号或密码错误')
           times += 1
         }
@@ -999,5 +997,5 @@ document.querySelector('#loginBtnSummit').addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
   if (store.get('users.cloud.name')) {
     METHODS.hideElementByFade('#cloudUser')
-  } 
+  }
 })

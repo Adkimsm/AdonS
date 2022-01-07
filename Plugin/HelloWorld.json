@@ -1,6 +1,6 @@
 {
   "name": "HelloWorld",
   "version": "0.0.0",
-  "description": "A Plugin Demo For AdonS",
+  "description": "A Plugin Demo For AdonS and also be a Example.",
   "main": "https://uazira.github.io/AdonS/Plugin/Plugin-SDK.js"
 }

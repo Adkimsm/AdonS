@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500)
   }
 
-  //eslint-disable-next-line consistent-return
   document.querySelector('#nextSettings').onclick = () => {
     let userName = document.querySelector('#userNameInput').value
     if (!userName) {
