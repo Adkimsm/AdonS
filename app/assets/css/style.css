@@ -653,12 +653,12 @@ alert {
   padding: 15px;
   box-sizing: border-box;
   z-index: 102;
+  max-height: 348.305px;
+  overflow-x: scroll;
 }
 
 #consoleCentre .notificationCon {
   left: 30px;
-  max-height: 348.305px;
-  overflow-x: scroll;
   padding-bottom: 0;
 }
 
@@ -669,6 +669,11 @@ alert {
   width: 48px;
   height: 48px;
   border-radius: 15px;
+}
+
+#consoleCentre .centreItem {
+  display: inline-block;
+  margin: 15px;
 }
 
 #consoleCentre .notificationItem {
