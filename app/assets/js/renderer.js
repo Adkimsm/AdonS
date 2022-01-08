@@ -436,25 +436,25 @@ function closePop(obj) {
   }, 350)
 }
 
-(function () {
-  let oTitles = document.querySelectorAll('.popUp');
+;(function () {
+  let oTitles = document.querySelectorAll('.popUp')
   for (const key in oTitles) {
     if (Object.hasOwnProperty.call(oTitles, key)) {
-      let oTitle = oTitles[key];
-      let offsetX, offsetY;
+      let oTitle = oTitles[key]
+      let offsetX, offsetY
       oTitle.ondragstart = function (e) {
-        offsetX = e.movementX;
-        offsetY = e.movementY;
-      };
+        offsetX = e.movementX
+        offsetY = e.movementY
+      }
       oTitle.ondrag = function (e) {
         if (e.pageX == 0 && e.pageY == 0) {
-          return;
+          return
         }
-        if (((e.pageX - offsetX) < 300) || ((e.pageY - offsetY) < 250)) {
+        if (e.pageX - offsetX < 300 || e.pageY - offsetY < 250) {
           return
         } else {
-          oTitle.style.left = (e.pageX - offsetX) + "px";
-          oTitle.style.top = (e.pageY - offsetY) + "px";
+          oTitle.style.left = e.pageX - offsetX + 'px'
+          oTitle.style.top = e.pageY - offsetY + 'px'
         }
       }
     }
@@ -788,29 +788,40 @@ document
     METHODS.import(
       'https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.min.js',
       'js'
-    ).then((ele) => {
-      document.querySelector('#markdown').prepend(ele)
-      let vdit = new Vditor('vditor', {
-        mode: 'wysiwyg',
-        preview: {
-          markdown: {
-            mark: true,
+    )
+      .then((ele) => {
+        document.querySelector('#markdown').prepend(ele)
+        let vdit = new Vditor('vditor', {
+          mode: 'wysiwyg',
+          preview: {
+            markdown: {
+              mark: true,
+            },
           },
-        },
+        })
       })
-    })
-    METHODS.import(
-      'https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.css',
-      'css'
-    ).then((ele) => {
-      document.querySelector('#markdown').prepend(ele)
-    })
-    METHODS.showElementByFade('#markdown')
+      .then(() => {
+        METHODS.import(
+          'https://cdn.jsdelivr.net/npm/vditor@3.8.7/dist/index.css',
+          'css'
+        ).then((ele) => {
+          document.querySelector('#markdown').prepend(ele)
+        })
+      })
+      .then(() => {
+        METHODS.showElementByFade('#markdown')
+      })
+      .then(() => {
+        document.querySelector('#vditorCloseBtn').addEventListener('click', () => {
+          METHODS.hideElementByFade('#markdown')
+        })
+      })
+      .catch((e) => {
+        e.preventDefault()
+        METHODS.throwError('Office 组件加载失败，请检查网络！')
+      })
   })
 
-document.querySelector('#vditorCloseBtn').addEventListener('click', () => {
-  METHODS.hideElementByFade('#markdown')
-})
 
 /**
  * Plugins Manger
