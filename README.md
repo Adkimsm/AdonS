@@ -1,23 +1,5 @@
-<style>
-    h2 {
-        font-size: 3rem;
-        font-weight: 900;
-    }
-    hhs {
-        font-size: 5rem;
-        font-weight: 1000;
-    }
-    p {
-        font-size: 1.2rem;
-        font-weight: 800;
-    }
-    em {
-        font-weight: 800
-    }
-</style>
-
 <div align="center">
-    <hhs style="font-size: 5rem">Welcome to Easier 👋</hhs><br>
+    <h1 style="font-size: 5rem">Welcome to Easier 👋</hhs><br>
     <em>Easier · Very Easy To Use</em>
 </div>
 
@@ -35,6 +17,8 @@
 Contributions, issues and feature requests are welcome!
 
 Feel free to check [issues page](https://github.com/Uazira/AdonS/issues).
+
+> > If You Want To Contribute Some Plugins, Please See [Docs AdonS](https://docs.emmm.asia/#/adons/)
 
 ## Show your support
 
