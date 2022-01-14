@@ -151,10 +151,15 @@ function showLauPad() {
 function hideLauPad() {
   METHODS.hideElementByFade('#laupad')
   document.querySelector('#dock_time').style.bottom = '25px'
-  document.querySelector('#dock_time').style.left = '466.977px'
+  document.querySelector('#dock_time').style.left = '0px'
   document.querySelector('#dock_time').style.width = '58px'
   document.querySelector('#dock_time').style.borderBottomLeftRadius = '25px'
   document.querySelector('#dock_time').style.borderBottomRightRadius = '25px'
+  setTimeout(() => {
+    console.log(window.getComputedStyle(document.querySelector('#dock_time')).width.replace(/px/, ""))
+    console.log(window.getComputedStyle(document.querySelector('#dock_time')).width)
+    document.querySelector('#dock_time').style.left = `${Number((1000 - window.getComputedStyle(document.querySelector('#dock_time')).width.replace(/px/, ""))) / 2}px`
+  }, 280);
   document.querySelector('#sysIco').onclick = function () {
     showLauPad()
   }
