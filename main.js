@@ -1,4 +1,3 @@
-/*eslint-disable no-undef */
 const { app, BrowserWindow, dialog, ipcMain, globalShortcut, autoUpdater } = require("electron");
 const fs = require("fs");
 
@@ -32,67 +31,6 @@ function createWindow() {
 
 	console.log(app.getVersion());
 
-	/*const template = [
-		{
-			label: "Settings",
-			role: "Settings",
-			submenu: [
-				{
-					label: "Install Plugin",
-					click() {
-						dialog.showMessageBoxSync({
-							title: "注意!",
-							message:
-								"插件安装后拥有系统一切权限，请您确认您的插件提供者不会作恶！",
-						});
-						const files = dialog.showOpenDialogSync(mainWindow, {
-							properties: ["openFile"],
-							filters: [
-								{
-									name: "JSON Files",
-									extensions: ["json"],
-								},
-							],
-						});
-						if (files) {
-							console.log(files[0]);
-							mainWindow.webContents.send(
-								"Plugin-Content",
-								files[0],
-								fs.readFileSync(files[0], { encoding: "utf8" })
-							);
-						}
-					},
-				},
-				{
-					label: "Uninstall All Plugin",
-					click() {
-						mainWindow.webContents.send(channelName, "checked");
-					},
-				},
-			],
-		},
-		{
-			label: "Developer",
-			role: "Developer",
-			submenu: [
-				{
-					label: "Toggle Developer Tools",
-					click() {
-						mainWindow.webContents.toggleDevTools();
-					},
-				},
-				{
-					label: "Reload",
-					click() {
-						mainWindow.webContents.reload();
-					},
-				},
-			],
-		},
-	];
-	Menu.setApplicationMenu(Menu.buildFromTemplate(template));
-	*/
 	//mainWindow.webContents.openDevTools()
 
 	globalShortcut.register('Control+Shift+D', () => {
@@ -132,7 +70,7 @@ if (app.isPackaged) {
 	}
 }
 
-autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+autoUpdater.on('update-downloaded', (_event, releaseNotes, releaseName) => {
 	const dialogOpts = {
 		type: 'info',
 		buttons: [
@@ -166,15 +104,15 @@ app.on("window-all-closed", function () {
 	if (process.platform !== "darwin") app.quit();
 });
 
-ipcMain.on("errorInRenderer", function (sys, msg) {
+ipcMain.on("errorInRenderer", function (_sys, msg) {
 	dialog.showErrorBox("Error", msg);
 });
 
-ipcMain.on("openDevTools", function (sys, msg) {
+ipcMain.on("openDevTools", function () {
 	toogleDevTools();
 });
 
-ipcMain.on("InstallAllPluginsFromJSONFile", function (sys, msg) {
+ipcMain.on("InstallAllPluginsFromJSONFile", function () {
 	dialog.showMessageBoxSync({
 		title: "注意!",
 		message:

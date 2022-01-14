@@ -94,10 +94,10 @@ var METHODS = {
  */
 
 COMMANDS = {
-  echo(cmd, args) {
+  echo(_cmd, args) {
     return args.toString()
   },
-  ech(cmd, args) {
+  ech() {
     return 'dfgdfg'
   },
 }
@@ -370,7 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function showContextmenu() {
     var event = event || window.event
-    //显示菜单
     forRight.style.display = 'block'
     setTimeout(() => {
       forRight.style.opacity = '1'
@@ -780,7 +779,6 @@ document
 /**
  * Office.
  */
-;(function () {})()
 
 document
   .querySelector('#markdownButton')
@@ -791,7 +789,7 @@ document
     )
       .then((ele) => {
         document.querySelector('#markdown').prepend(ele)
-        let vdit = new Vditor('vditor', {
+        let _vdit_ = new Vditor('vditor', {
           mode: 'wysiwyg',
           preview: {
             markdown: {
