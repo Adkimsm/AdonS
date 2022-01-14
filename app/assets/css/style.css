@@ -503,7 +503,7 @@ hr {
   display: none;
   opacity: 0;
   z-index: 31;
-  top: 35px;
+  top: 40px;
   left: 0;
   bottom: 0;
   right: 0;
@@ -639,10 +639,6 @@ alert {
   z-index: 100;
 }
 
-#consoleCentre .centreCon {
-  right: 30px;
-}
-
 #consoleCentre .centreCon,
 #consoleCentre .notificationCon {
   position: absolute;
@@ -650,7 +646,7 @@ alert {
   width: 35%;
   background-color: #181717e3;
   border-radius: 25px;
-  padding: 15px;
+  padding: 15px 30px;
   box-sizing: border-box;
   z-index: 102;
   max-height: 348.305px;
@@ -660,6 +656,11 @@ alert {
 #consoleCentre .notificationCon {
   left: 30px;
   padding-bottom: 0;
+}
+
+#consoleCentre .centreCon {
+  right: 30px;
+  padding: 15px;
 }
 
 #consoleCentre .notificationItem,
@@ -680,7 +681,8 @@ alert {
   width: calc(100% - 30px);
   color: #f3f6f3;
   height: auto;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
+  padding: 15px;
 }
 
 #consoleCentre .notificationItem:only-child {
@@ -711,20 +713,29 @@ hr#showConsoleCentreLine {
   right: 5px;
   margin: 0;
   background: #fff;
+  z-index: 1000;
 }
 
 .dropbtn {
   background-color: black;
   color: white;
-  padding: 10px;
+  padding: 8px 10px;
   font-size: 16px;
-  border: none;
+  border: 1px transparent solid;
+  margin-left: 5px;
+  border-radius: 13px;
+  height: 34.98px;
 }
 
 .dropdown {
-  position: relative;
+  margin-left: 70px;
+  position: absolute;
   display: flex;
   flex-direction: row;
+  z-index: 999;
+  -webkit-app-region: no-drag;
+  top: 0;
+  height: 35px;
 }
 
 .dropdown-content {
@@ -732,7 +743,7 @@ hr#showConsoleCentreLine {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.267);
   min-width: 200px;
-  z-index: 1;
+  z-index: 999;
   border-radius: 5px;
   backdrop-filter: blur(15px);
   color: rgb(255, 255, 255);
@@ -752,6 +763,10 @@ hr#showConsoleCentreLine {
   color: rgb(0, 0, 0);
 }
 
+.dropdown>div {
+  height: 100vh;
+}
+
 .dropdown div:hover .dropbtn ~ .dropdown-content {
   display: block;
 }
@@ -764,12 +779,10 @@ hr#showConsoleCentreLine {
   width: 100%;
   height: 25px;
   padding: 5px;
-  padding-left: 10px;
   background-color: #2a2a2a;
   color: #fff;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-left: 13px;
 }
 
 #markdown {

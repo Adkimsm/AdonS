@@ -576,15 +576,15 @@ document
           case 'shutdown':
             if (args && args[0] == '-t' && args[1]) {
               timeout = setTimeout(() => {
-                window.close()
+                window.location = '././closing.html'
               }, args[1])
               return `Easier Will Close With Time Out ${args[1]} ms.`
             } else if (args && args[0] == '-a') {
               clearTimeout(timeout)
               return 'Shutdown Was Clean.'
+            } else {
+              return "Input \"shutdown -t <ms>\" to shutdown AdonS in <ms> (1000ms = 1s) <br> Input \"shutdown -a\" to stop timeout of shutdown."
             }
-            window.location = '././closing.html'
-            return 'Closed.'
 
           default:
             return customCommandsCheck(cmd, args)
