@@ -16,7 +16,6 @@ function toogleDevTools() {
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1000,
-		resizable: false,
 		height: 618,
 		backgroundColor: "#e0e0e0",
 		frame: false,

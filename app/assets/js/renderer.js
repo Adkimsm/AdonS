@@ -166,9 +166,10 @@ function hideLauPad() {
     console.log(
       window.getComputedStyle(document.querySelector('#dock_time')).width
     )
+    let a = Number(window.getComputedStyle(document.querySelector('html')).width.replace(/px/, ''))
     document.querySelector('#dock_time').style.left = `${
       Number(
-        1000 -
+        a -
           window
             .getComputedStyle(document.querySelector('#dock_time'))
             .width.replace(/px/, '')
