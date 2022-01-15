@@ -160,7 +160,6 @@ hr {
 #TodoList .container h2 {
   text-align: center;
   margin: 0;
-  font-weight: 200;
 }
 
 .plates {
@@ -172,7 +171,6 @@ hr {
 .plates li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 10px 10px;
-  font-weight: 100;
   display: flex;
 }
 
@@ -866,7 +864,6 @@ hr#showConsoleCentreLine {
   padding: 4px 15px;
   color: #212224;
   font-family: Georgia, 'poppin', 'Times New Roman', Times, serif;
-  font-weight: 300;
   font-style: italic;
 }
 
