@@ -369,33 +369,34 @@ document.querySelector('#todo_btnClose').addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   var forRight = document.getElementById('right-menu')
-
   /**
    * @returns {void}
    */
-  function showContextmenu() {
-    var event = event || window.event
+  function showContextmenu(event) {
     forRight.style.display = 'block'
+    let eventC = event || window.event
     setTimeout(() => {
       forRight.style.opacity = '1'
-      forRight.style.transform = 'scale(1.05)'
+      forRight.style.left = eventC.pageX + 5 + 'px'
+      forRight.style.top = eventC.pageY + 5 + 'px'
     }, 50)
-    setTimeout(() => (forRight.style.transform = 'scale(1)'), 200)
-    forRight.style.left = event.pageX + 'px'
-    forRight.style.top = event.pageY + 'px'
+    forRight.style.left = eventC.pageX - 50 + 'px'
+    forRight.style.top = eventC.pageY - 50 + 'px'
   }
 
-  function hideContextMenu() {
-    forRight.style.transform = 'scale(7.5)'
+  function hideContextMenu(event) {
+    let eventC = event || window.event
+    forRight.style.left = eventC.pageX - 150 + 'px'
+    forRight.style.top = eventC.pageY - 150 + 'px'
     forRight.style.opacity = '0'
     setTimeout(() => (forRight.style.display = 'none'), 250)
   }
   window.oncontextmenu = function (event) {
     event.preventDefault()
-    showContextmenu()
+    showContextmenu(event)
   }
-  document.onclick = function () {
-    hideContextMenu()
+  document.onclick = function (event) {
+    hideContextMenu(event)
   }
 })
 
