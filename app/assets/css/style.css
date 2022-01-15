@@ -55,7 +55,7 @@ body {
   height: 58px;
   border-radius: 20px;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
+  box-shadow: 4px 7px 7px #00000042;
 }
 
 hr {
@@ -110,6 +110,7 @@ hr {
   padding: 10px;
   background-color: #2a2a2a;
   border-radius: 5px;
+  box-shadow: 4px 7px 7px #00000042;
 }
 
 #laupad .icon_top {
@@ -913,6 +914,7 @@ hr#showConsoleCentreLine {
 #desktopTime {
   position: absolute;
   margin: 0px 75px;
+  text-shadow: 10px 10px 7px #00000042;
 }
 
 #desktopHours,
