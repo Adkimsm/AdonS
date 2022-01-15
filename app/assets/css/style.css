@@ -507,6 +507,7 @@ hr {
   min-height: 100%;
   position: absolute;
   width: 100%;
+  line-height: 1.5;
 }
 
 .terminal .container {
