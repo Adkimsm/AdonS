@@ -20,20 +20,20 @@ body {
 }
 
 ::-webkit-scrollbar {
-	width: 8px;
-	padding-right: 10px;
-	background-color: rgba(0, 0, 0, 0);
+  width: 8px;
+  padding-right: 10px;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 ::-webkit-scrollbar-track:hover {
-	background-color: rgba(95, 97, 101, 0.3) !important;
-	border-radius: 4px;
+  background-color: rgba(95, 97, 101, 0.3) !important;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-thumb:active {
-	background-color: #6fc1ff !important;
-	border-radius: 4px;
+  background-color: #6fc1ff !important;
+  border-radius: 4px;
 }
 
 #outScreen {
@@ -51,7 +51,7 @@ body {
   bottom: 25px;
   width: 58px;
   padding: 5px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 58px;
   border-radius: 20px;
   justify-content: center;
@@ -75,7 +75,7 @@ hr {
   right: 0;
   left: 0;
   position: absolute;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   object-fit: cover;
   background-size: cover;
 }
@@ -299,7 +299,7 @@ hr {
 
 .right-menu div.list div:hover {
   background-color: #212121;
-  color: #FAFAFA;
+  color: #fafafa;
 }
 
 .right-menu div.list div {
@@ -624,7 +624,7 @@ alert {
   width: 1000px;
   height: 100%;
   padding: 25px;
-  background-color: #212121;;
+  background-color: #212121;
   z-index: 100;
 }
 
@@ -746,12 +746,12 @@ hr#showConsoleCentreLine {
 }
 
 .dropdown-content a:hover {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   color: rgb(0, 0, 0);
 }
 
-.dropdown>div {
-  height: 100vh;
+.dropdown > div {
+  height: auto;
 }
 
 .dropdown div:hover .dropbtn ~ .dropdown-content {
@@ -770,7 +770,7 @@ hr#showConsoleCentreLine {
   color: #fff;
   display: flex;
   padding-left: 13px;
-  align-items: center
+  align-items: center;
 }
 
 #markdown {
@@ -890,11 +890,11 @@ hr#showConsoleCentreLine {
   padding: 5px;
   right: 5px;
   border-width: 0px;
-	border-radius: 3px;
-	background: #1E90FF;
-	cursor: pointer;
-	outline: none;
-	color: white;
+  border-radius: 3px;
+  background: #1e90ff;
+  cursor: pointer;
+  outline: none;
+  color: white;
 }
 
 #pluginsList button:hover,
@@ -959,7 +959,7 @@ hr#showConsoleCentreLine {
   top: 50%;
   right: 0.6em;
   transform: translateY(-50%);
-  content: "»";
+  content: '»';
   font-size: 1.2em;
   transition: all ease 0.3s;
   opacity: 0;
@@ -980,6 +980,36 @@ hr#showConsoleCentreLine {
 .busy {
   background-color: #212121;
   color: #000;
+}
+
+.mdui-textfield-label {
+  margin-left: 10px;
+}
+
+.mdui-appbar {
+  height: 64px;
+  top: 35px;
+  right: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+}
+
+#settings {
+  position: absolute;
+  top: 35px;
+  height: 100vh;
+  background: #fff;
+  width: 100vw;
+  z-index: 31;
+}
+
+#drawer {
+  top: 35px;
+}
+
+#main.mdui-list {
+  margin-top: 75px;
 }
 
 @keyframes fadeInDown {

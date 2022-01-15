@@ -36,6 +36,8 @@ const Terminal = require('dom-terminal')
 
 const pxmu = require('./libs/js/pxmu.js')
 
+const $ = mdui.$
+
 /**
  *
  * @param {string} message
@@ -156,10 +158,23 @@ function hideLauPad() {
   document.querySelector('#dock_time').style.borderBottomLeftRadius = '25px'
   document.querySelector('#dock_time').style.borderBottomRightRadius = '25px'
   setTimeout(() => {
-    console.log(window.getComputedStyle(document.querySelector('#dock_time')).width.replace(/px/, ""))
-    console.log(window.getComputedStyle(document.querySelector('#dock_time')).width)
-    document.querySelector('#dock_time').style.left = `${Number((1000 - window.getComputedStyle(document.querySelector('#dock_time')).width.replace(/px/, ""))) / 2}px`
-  }, 280);
+    console.log(
+      window
+        .getComputedStyle(document.querySelector('#dock_time'))
+        .width.replace(/px/, '')
+    )
+    console.log(
+      window.getComputedStyle(document.querySelector('#dock_time')).width
+    )
+    document.querySelector('#dock_time').style.left = `${
+      Number(
+        1000 -
+          window
+            .getComputedStyle(document.querySelector('#dock_time'))
+            .width.replace(/px/, '')
+      ) / 2
+    }px`
+  }, 280)
   document.querySelector('#sysIco').onclick = function () {
     showLauPad()
   }
@@ -174,7 +189,7 @@ document.querySelector('#showLockScrBtn').addEventListener('click', () => {
 })
 
 document.querySelector('#popSettingsBtn').addEventListener('click', () => {
-  showPop('popSettings')
+  METHODS.showElementByFade('#settings')
 })
 
 document.querySelector('#showTodoListSvg').addEventListener('click', () => {
@@ -319,10 +334,11 @@ document.querySelector('#shutdown_btn').addEventListener('click', () => {
         case 'clearCheck':
           for (var key in items) {
             if (items[key].done === true) {
-              pxmu.toast({
-                msg: '可能会无法一次删除所有，请多次点击',
-                time: 800,
-              })
+              mdui.snackbar({
+                message: '可能会无法一次删除所有，请多次点击',
+                position: 'right-bottom',
+                timeout: 800
+              });
               items.splice(key, 1)
             }
           }
@@ -542,12 +558,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })
 
-document
-  .querySelector('#wallpaperInputSummit')
-  .addEventListener('click', () => {
-    setWallpaper(String(document.querySelector('#wallpaperInput').value))
-  })
-
 /**
  * Terminal
  */
@@ -584,7 +594,7 @@ document
               clearTimeout(timeout)
               return 'Shutdown Was Clean.'
             } else {
-              return "Input \"shutdown -t <ms>\" to shutdown AdonS in <ms> (1000ms = 1s) <br> Input \"shutdown -a\" to stop timeout of shutdown."
+              return 'Input "shutdown -t <ms>" to shutdown AdonS in <ms> (1000ms = 1s) <br> Input "shutdown -a" to stop timeout of shutdown.'
             }
 
           default:
@@ -816,16 +826,17 @@ document
         METHODS.showElementByFade('#markdown')
       })
       .then(() => {
-        document.querySelector('#vditorCloseBtn').addEventListener('click', () => {
-          METHODS.hideElementByFade('#markdown')
-        })
+        document
+          .querySelector('#vditorCloseBtn')
+          .addEventListener('click', () => {
+            METHODS.hideElementByFade('#markdown')
+          })
       })
       .catch((e) => {
         e.preventDefault()
         METHODS.throwError('Office 组件加载失败，请检查网络！')
       })
   })
-
 
 /**
  * Plugins Manger
@@ -859,9 +870,10 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
           )
         )
         elementObj.remove()
-        pxmu.toast(
-          element.name ? '已删除插件:' + element.name : '已删除此匿名插件'
-        )
+        mdui.snackbar({
+          message: element.name ? '已删除插件:' + element.name : '已删除此匿名插件',
+          position: 'right-bottom',
+        });
       }
       elementObj.textContent = element.name
       listObj.append(elementObj)
@@ -948,7 +960,10 @@ document.querySelector('#storeButton').addEventListener('click', function () {
                 console.log(item)
                 items.push(item)
                 store.set('InstalledPlugins', items)
-                pxmu.toast('已安装插件:' + contentObj.name + ',刷新后自动应用')
+                mdui.snackbar({
+                  message: '已安装插件:' + contentObj.name + ',刷新后自动应用',
+                  position: 'right-bottom',
+                });
               }
               let c = document.createElement('p')
               c.textContent = element[2]
@@ -1039,3 +1054,42 @@ document.addEventListener('DOMContentLoaded', () => {
     METHODS.hideElementByFade('#cloudUser')
   }
 })
+
+/**
+ * Material Design Settings.
+ */
+;(function () {
+  let a = new mdui.Drawer('#drawer')
+  let b = document.querySelector('#wallpaperInput')
+  document
+    .querySelector('#settingsToogleDrawerBtn')
+    .addEventListener('click', () => {
+      a.toggle()
+      document.querySelector('.mdui-overlay.mdui-overlay-show').style.left =
+        window.getComputedStyle(document.querySelector('#drawer')).width
+    })
+
+  b.onkeydown = (e) => {
+    mdui.updateTextFields(".mdui-textfield-input#wallpaperInput")
+    if (e.keyCode == 13) {
+      try {
+        setWallpaper(String(b.value))
+        mdui.snackbar({
+          message: '壁纸已设置成功',
+          position: 'right-bottom',
+        });
+      } catch (error) {
+        showError(error.toString())
+      }
+    }
+  }
+
+  document.querySelector('#backToHomeScreen').onclick = () => {
+    a.close()
+    METHODS.hideElementByFade('#settings')
+  }
+
+  $(function () {
+    b.value = getWallpaperInfo() ? getWallpaperInfo() : ""
+  })
+})()

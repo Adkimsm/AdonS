@@ -12317,7 +12317,7 @@ select.mdui-select[multiple] option:last-child {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   min-height: 48px;
-  padding: 0 16px;
+  padding: 0 25px;
   text-decoration: none;
   cursor: pointer;
   -webkit-transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);

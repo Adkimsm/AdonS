@@ -153,27 +153,6 @@
 	</div>
 
 	<div class="cover1" id="cover1">
-		<div class="popUp" id="popSettings" draggable="true">
-			<span class="btnClose" onclick="closePop(popSettings)"></span>
-			<div class="pTitle">Settings</div>
-			<div class="pContent">
-				<div class="popContentLabel">
-					<span class="input input--isao">
-						<input class="input__field input__field--isao" type="text" id="wallpaperInput">
-						<label class="input__label input__label--isao" for="wallpaperInput"
-							data-content="Wallpaper URL">
-							<span style="color: #000000;"
-								class="input__label-content input__label-content--isao">Wallpaper
-								URL</span>
-						</label>
-					</span>
-					<button id="wallpaperInputSummit">提交</button>
-					<button onclick="store.delete('wallpaperSrc');history.go(0)">
-						恢复默认壁纸
-					</button>
-				</div>
-			</div>
-		</div>
 		<div class="popUp" id="popPlugins" draggable="true">
 			<span class="btnClose" onclick="closePop(popPlugins)"></span>
 			<div class="pTitle">Plugins</div>
@@ -239,6 +218,48 @@
 	</div>
 
 	<alert></alert>
+
+	<div id="settings" style="display: none;">
+		<div class="mdui-appbar">
+			<div class="mdui-toolbar mdui-color-teal">
+				<a href="javascript:;" class="mdui-btn mdui-btn-icon" id="settingsToogleDrawerBtn"><i
+						class="mdui-icon material-icons">menu</i></a>
+				<a href="javascript:;" class="mdui-typo-headline">设置</a>
+			</div>
+		</div>
+		
+		<ul class="mdui-list" id="main">
+			<li class="mdui-list-item mdui-ripple">
+				<div class="mdui-list-item-content">
+					关闭
+				</div>
+					<label class="mdui-switch">
+						<input type="checkbox" />
+						<i class="mdui-switch-icon"></i>
+					</label>
+			</li>
+
+			<li class="mdui-list-item mdui-ripple">
+				<div class="mdui-textfield mdui-textfield-floating-label" style="width: 100%;">
+					<i class="mdui-icon material-icons">wallpaper</i>
+					<label class="mdui-textfield-label">壁纸链接</label>
+					<input class="mdui-textfield-input" id="wallpaperInput" type="text" />
+					<div class="mdui-textfield-helper">本地图片可以上传图床。速度起见，建议使用 ImgUrl(https://imgurl.org/) 图床或自建图床.</div>
+				</div>
+			</li>
+		</ul>
+		
+		<div class="mdui-drawer" id="drawer">
+			<ul class="mdui-list">
+				<a>
+					<li class="mdui-list-item mdui-ripple" id="backToHomeScreen">
+						<i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-teal">home</i>
+						<div class="mdui-list-item-content">主屏幕</div>
+					</li>
+				</a>
+			</ul>
+		</div>
+	</div>
 
 	<img src="./assets/images/壁纸01.jpg" id="WallpaperBackGround" />
 </body>
