@@ -1,9 +1,4 @@
 @font-face {
-  font-family: 'AlibabaPuhui';
-  src: url('../images/AlibabaPuHuiTi-2-65-Medium.ttf');
-}
-
-@font-face {
   font-family: 'JetBrains';
   src: url('../images/JetBrainsMono-Regular.ttf');
 }
@@ -12,7 +7,6 @@ html {
   overflow: hidden;
   height: 618px;
   width: 1000px;
-  font-family: "AlibabaPuhui";
   user-select: none;
 }
 
