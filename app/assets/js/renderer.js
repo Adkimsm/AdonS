@@ -927,6 +927,9 @@ document.querySelector('#storeButton').addEventListener('click', function () {
     let dataFetch = new XMLHttpRequest()
     dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
     dataFetch.send()
+    dataFetch.onerror = () => {
+      document.querySelector('#pluginsRemote').textContent = "加载失败"
+    }
     dataFetch.onload = function () {
       if (dataFetch.status == 200) {
         let data = dataFetch.responseText
