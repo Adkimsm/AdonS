@@ -1097,3 +1097,46 @@ document.addEventListener('DOMContentLoaded', () => {
     b.value = getWallpaperInfo() ? getWallpaperInfo() : ""
   })
 })()
+
+/**
+ * Dark Mode
+ */
+
+$(function() {
+  let a = document.querySelector('#darkModeCheckBox')
+  a.onchange = () => {
+    if (a.checked) {
+      toggleMode("dark")
+      store.set('theme', "dark")
+    } else {
+      toggleMode("light")
+      store.set('theme', "light")
+    }
+  }
+  if (store.get('theme') == "dark") {
+    toggleMode("dark")
+  } else if (store.get('theme') == "light") {
+    toggleMode("light")
+  }
+})
+
+function toggleMode(mode) {
+  if (mode) {
+    switch (mode) {
+      case "light":
+        if (document.body.classList.contains("darkMode")) {
+          document.body.classList.remove("darkMode")
+          document.body.classList.add("lightMode")
+        }
+        break
+      case "dark":
+        if (document.body.classList.contains("lightMode")) {
+          document.body.classList.remove("lightMode")
+          document.body.classList.add("darkMode")
+        }
+        break
+    }
+  } else {
+    throw new Error('Must Give A String ("light" | "dark")')
+  }
+}

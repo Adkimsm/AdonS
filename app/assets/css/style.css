@@ -42,7 +42,6 @@ body {
 
 #dock_time {
   z-index: 30;
-  color: #2a2a2a;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -51,11 +50,20 @@ body {
   bottom: 25px;
   width: 58px;
   padding: 5px;
-  background-color: #ffffff;
   height: 58px;
   border-radius: 20px;
   justify-content: center;
   box-shadow: 4px 7px 7px #00000042;
+}
+
+.lightMode #dock_time {
+  color: #2a2a2a;
+  background-color: #ffffff;
+}
+
+.darkMode #dock_time {
+  color: #ffffff;
+  background-color: rgb(24, 24, 24);
 }
 
 hr {
@@ -75,9 +83,17 @@ hr {
   right: 0;
   left: 0;
   position: absolute;
-  background-color: #ffffff;
   object-fit: cover;
   background-size: cover;
+}
+
+.lightMode #laupad {
+  background-color: #ffffff;
+}
+
+.darkMode #laupad {
+  background-color: rgb(24, 24, 24);
+  color: #fff;
 }
 
 #laupad .icon_bottom {
@@ -251,7 +267,6 @@ hr {
 
 #LockScreen,
 #onStart {
-  color: #212121;
   overflow: hidden;
   top: 35px;
   bottom: 0;
@@ -262,7 +277,18 @@ hr {
   object-fit: cover;
   background-size: cover;
   z-index: 999;
+}
+
+.lightMode #LockScreen,
+.lightMode #onStart {
+  color: #212121;
   background-color: #ffffff;
+}
+
+.darkMode #LockScreen,
+.darkMode #onStart {
+  color: #fff;
+  background-color: #212121;
 }
 
 #LockTime {
@@ -289,21 +315,40 @@ hr {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 10px;
   overflow: hidden;
+}
+
+.lightMode .right-menu {
   background-color: white;
 }
 
-.right-menu div.list div:hover {
+.darkMode .right-menu {
+  background: #000;
+}
+
+.lightMode .right-menu div.list div:hover {
   background-color: #212121;
   color: #fafafa;
+}
+
+.darkMode .right-menu div.list div:hover {
+  background-color: #fafafa;
+  color: #212121;
 }
 
 .right-menu div.list div {
   list-style: none;
   padding: 10px 15px;
   border-radius: 5px;
-  color: black;
   font-size: 11px;
   transition: all 0.17s linear;
+}
+
+.lightMode .right-menu div.list div {
+  color: black;
+}
+
+.darkMode .right-menu div.list div {
+  color: #fff;
 }
 
 .cover1 {
@@ -329,7 +374,6 @@ hr {
   margin-top: -250px;
   left: 50%;
   margin-left: -300px;
-  background-color: #fff;
   font-size: small;
   border-radius: 20px;
   overflow: hidden;
@@ -337,6 +381,15 @@ hr {
   transition: all 0.25s;
   display: none;
   box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.lightMode .popUp {
+  background-color: #fff;
+}
+
+.darkMode .popUp {
+  background-color: rgb(12, 12, 12);
+  color: #fff;
 }
 
 .btnClose {
@@ -357,8 +410,15 @@ hr {
   top: 50%;
   left: 0;
   margin-top: -1px;
-  background-color: #b4b4b4;
   transition: all 0.25s;
+}
+
+.lightMode .btnClose::before {
+  background-color: #b4b4b4;
+}
+
+.darkMode .btnClose::before {
+  background-color: #fff;
 }
 
 .btnClose:hover::before {
@@ -447,6 +507,13 @@ hr {
   padding: 25px;
   border: 1px transparent solid;
   border-radius: 18px;
+}
+
+.lightMode .popContentLabel {
+  background-color: #f3f6f3;
+}
+
+.darkMode .popContentLabel {
   background-color: #f3f6f3;
 }
 
@@ -494,7 +561,7 @@ hr {
 }
 
 .terminal ::selection {
-  background: #0080ff;
+  background: #0099ff;
   text-shadow: none !important;
 }
 
@@ -619,8 +686,15 @@ alert {
   width: 100vw;
   height: 100%;
   padding: 25px;
-  background-color: #fff;
   z-index: 100;
+}
+
+.lightMode #consoleCentre {
+  background-color: #fff;
+}
+
+.darkMode #consoleCentre {
+  background-color: rgb(10, 10, 10);
 }
 
 #consoleCentre .centreCon,
@@ -628,13 +702,22 @@ alert {
   position: absolute;
   top: 175px;
   width: 35%;
-  background-color: #181717e3;
   border-radius: 25px;
   padding: 15px;
   box-sizing: border-box;
   z-index: 102;
   max-height: 348.305px;
   overflow-x: scroll;
+}
+
+.lightMode #consoleCentre .centreCon,
+.lightMode #consoleCentre .notificationCon {
+  background-color: #181717e3;
+}
+
+.darkMode #consoleCentre .centreCon,
+.darkMode #consoleCentre .notificationCon {
+  background-color: #e7e7e7e3;
 }
 
 #consoleCentre .notificationCon {
@@ -648,11 +731,22 @@ alert {
 
 #consoleCentre .notificationItem,
 #consoleCentre .centreItem {
-  background-color: #f0f0f0;
   padding: 10px;
   width: 48px;
   height: 48px;
   border-radius: 15px;
+}
+
+.lightMode #consoleCentre .notificationItem,
+.lightMode #consoleCentre .centreItem {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+.darkMode #consoleCentre .notificationItem,
+.darkMode #consoleCentre .centreItem {
+  background-color: #252525;
+  color: #ffffff;
 }
 
 #consoleCentre .centreItem {
@@ -662,7 +756,6 @@ alert {
 
 #consoleCentre .notificationItem {
   width: calc(100% - 30px);
-  color: #000000;
   height: auto;
   margin-bottom: 8px;
   padding: 15px;
@@ -684,9 +777,16 @@ alert {
 
 #controlCentreTime {
   font-size: 4rem;
-  color: rgb(0, 0, 0);
   text-align: center;
   margin-top: 10px;
+}
+
+.lightMode #controlCentreTime {
+  color: rgb(0, 0, 0);
+}
+
+.darkMode #controlCentreTime {
+  color: rgb(255, 255, 255);
 }
 
 hr#showConsoleCentreLine {
@@ -695,19 +795,34 @@ hr#showConsoleCentreLine {
   top: 45px;
   right: 5px;
   margin: 0;
-  background: #fff;
   z-index: 1000;
 }
 
+.lightMode hr#showConsoleCentreLine {
+  background: rgb(0, 0, 0);
+}
+
+.darkMode hr#showConsoleCentreLine {
+  background: rgb(255, 255, 255);
+}
+
 .dropbtn {
-  background-color: black;
-  color: white;
   padding: 8px 10px;
   font-size: 16px;
   border: 1px transparent solid;
   margin-left: 5px;
   border-radius: 13px;
   height: 34.98px;
+}
+
+.lightMode .dropbtn {
+  background-color: black;
+  color: white;
+}
+
+.darkMode .dropbtn {
+  background-color: rgb(236, 236, 236);
+  color: rgb(0, 0, 0);
 }
 
 .dropdown {
@@ -724,12 +839,20 @@ hr#showConsoleCentreLine {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #212121;
   min-width: 200px;
   z-index: 999;
   border-radius: 5px;
-  color: rgb(255, 255, 255);
   transition: display 0.2s;
+}
+
+.lightMode .dropdown-content {
+  background-color: #212121;
+  color: rgb(255, 255, 255);
+}
+
+.darkMode .dropdown-content {
+  background-color: #fffdfd;
+  color: rgb(0, 0, 0);
 }
 
 .dropdown-content a {
@@ -740,9 +863,14 @@ hr#showConsoleCentreLine {
   border-radius: 5px;
 }
 
-.dropdown-content a:hover {
+.lightMode .dropdown-content a:hover {
   background-color: #fafafa;
   color: rgb(0, 0, 0);
+}
+
+.darkMode .dropdown-content a:hover {
+  background-color: #020202;
+  color: rgb(255, 255, 255);
 }
 
 .dropdown > div {
@@ -910,18 +1038,41 @@ hr#showConsoleCentreLine {
 #desktopTime {
   position: absolute;
   margin: 0px 75px;
+}
+
+.lightMode #desktopTime {
   text-shadow: 10px 10px 7px #00000042;
+}
+
+.darkMode #desktopTime {
+  text-shadow: 10px 10px 7px #ebebeb42;
 }
 
 #desktopHours,
 #desktopMinutes {
   font-size: 3rem;
-  color: #fff;
+}
+
+.lightMode #desktopHours,
+.lightMode #desktopMinutes {
+  color: rgb(3, 3, 3);
+}
+
+.darkMode #desktopHours,
+.darkMode #desktopMinutes {
+  color: rgb(255, 255, 255);
 }
 
 #desktopDate {
   font-size: 1.5rem;
-  color: #fff;
+}
+
+.lightMode #desktopDate {
+  color: rgb(0, 0, 0);
+}
+
+.darkMode #desktopDate {
+  color: rgb(255, 255, 255);
 }
 
 #cloudUser {
@@ -994,9 +1145,9 @@ hr#showConsoleCentreLine {
   position: absolute;
   top: 35px;
   height: 100vh;
-  background: #fff;
   width: 100vw;
   z-index: 31;
+  background: #fff;
 }
 
 #drawer {
