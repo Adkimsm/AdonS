@@ -272,15 +272,10 @@ hr {
 }
 
 #onStart {
-  padding-top: 150px;
-}
-
-#onStart .ball-clip-rotate-pulse {
-  margin: auto;
-  width: 30px;
-  height: 30px;
-  top: 30px;
-  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
 }
 
 .right-menu {
