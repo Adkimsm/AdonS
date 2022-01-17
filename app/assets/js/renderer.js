@@ -1140,3 +1140,22 @@ function toggleMode(mode) {
     throw new Error('Must Give A String ("light" | "dark")')
   }
 }
+
+/**
+ * Custom Font Weight.
+ */
+
+document.querySelector('#fontWeightSetRange').onchange = () => {
+  document.querySelector('#fontWeightDemoText').style.fontWeight = document.querySelector('#fontWeightSetRange').value
+  store.set('fontWeight', document.querySelector('#fontWeightSetRange').value)
+  document.body.style.fontWeight = store.get('fontWeight')
+}
+
+$(function () {
+  if (store.get('fontWeight')) {
+    document.body.style.fontWeight = store.get('fontWeight')
+    document.querySelector('#fontWeightSetRange').value = store.get('fontWeight')
+    mdui.updateSliders()
+    document.querySelector('#fontWeightDemoText').style.fontWeight = store.get('fontWeight')
+  }
+})

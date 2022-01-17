@@ -220,16 +220,16 @@
 				<a href="javascript:;" class="mdui-typo-headline">设置</a>
 			</div>
 		</div>
-		
+
 		<ul class="mdui-list" id="main">
 			<li class="mdui-list-item mdui-ripple">
 				<div class="mdui-list-item-content">
 					黑暗模式
 				</div>
-					<label class="mdui-switch">
-						<input id="darkModeCheckBox" type="checkbox" />
-						<i class="mdui-switch-icon"></i>
-					</label>
+				<label class="mdui-switch">
+					<input id="darkModeCheckBox" type="checkbox" />
+					<i class="mdui-switch-icon"></i>
+				</label>
 			</li>
 
 			<li class="mdui-list-item mdui-ripple">
@@ -240,8 +240,22 @@
 					<div class="mdui-textfield-helper">本地图片可以上传图床。速度起见，建议使用 ImgUrl(https://imgurl.org/) 图床或自建图床.</div>
 				</div>
 			</li>
+
+			<li class="mdui-list-item mdui-ripple">
+				<i class="mdui-icon material-icons">font_download</i>
+				<div class="mdui-list-item-content" style="margin-left: 25px;">
+					<div class="mdui-list-item-title mdui-list-item-one-line">字体粗细</div>
+					<div class="mdui-list-item-text mdui-list-item-two-line" id="fontWeightDemoText">You've got to get enough sleep. Other
+						travelling salesmen
+						live a life of luxury. You've got to get enough sleep. Other travelling salesmen live a life of
+						luxury.</div>
+					<label class="mdui-slider mdui-slider-discrete">
+						<input type="range" step="100" min="200" max="900" id="fontWeightSetRange" />
+					</label>
+				</div>
+			</li>
 		</ul>
-		
+
 		<div class="mdui-drawer" id="drawer">
 			<ul class="mdui-list">
 				<a>
