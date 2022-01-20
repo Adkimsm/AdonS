@@ -48,12 +48,13 @@ body {
   align-items: center;
   left: 50%;
   bottom: 25px;
-  width: 58px;
+  width: 70px;
   padding: 5px;
-  height: 58px;
+  height: 70px;
   border-radius: 20px;
   justify-content: center;
   box-shadow: 4px 7px 7px #00000042;
+  box-sizing: border-box;
 }
 
 .lightMode #dock_time {
@@ -1151,7 +1152,8 @@ hr#showConsoleCentreLine {
 }
 
 #drawer {
-  top: 35px;
+  padding-top: 100px;
+  background-color: #fff;
 }
 
 #main.mdui-list {

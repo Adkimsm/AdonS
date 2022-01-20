@@ -140,9 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function showLauPad() {
   hideConsoleCentre()
   METHODS.showElementByFade('#laupad')
-  document.querySelector('#dock_time').style.bottom = 'calc(55%)'
+  document.querySelector('#dock_time').style.bottom = '55%'
   document.querySelector('#dock_time').style.left = '0px'
-  document.querySelector('#dock_time').style.width = '98.69%'
+  document.querySelector('#dock_time').style.width = window.getComputedStyle(document.body).width
   document.querySelector('#dock_time').style.borderBottomLeftRadius = '0px'
   document.querySelector('#dock_time').style.borderBottomRightRadius = '0px'
   document.querySelector('#sysIco').onclick = function () {
@@ -1069,8 +1069,17 @@ document.addEventListener('DOMContentLoaded', () => {
     .querySelector('#settingsToogleDrawerBtn')
     .addEventListener('click', () => {
       a.toggle()
-      document.querySelector('.mdui-overlay.mdui-overlay-show').style.left =
-        window.getComputedStyle(document.querySelector('#drawer')).width
+      if (document.querySelector('.mdui-overlay.mdui-overlay-show')) {
+        document.querySelector('.mdui-overlay.mdui-overlay-show').style.left =
+          window.getComputedStyle(document.querySelector('#drawer')).width
+      }
+      setTimeout(() => {
+        if (document.querySelector('#drawer').classList.contains('mdui-drawer-close')) {
+          document.querySelector('#main').style.width = "100vw"
+        } else {
+          document.querySelector('#main').style.width = `calc(100vw - ${window.getComputedStyle(document.querySelector('#drawer')).width})`
+        }
+      }, 350);
     })
 
   b.onkeydown = (e) => {
@@ -1158,4 +1167,22 @@ $(function () {
     mdui.updateSliders()
     document.querySelector('#fontWeightDemoText').style.fontWeight = store.get('fontWeight')
   }
+})
+
+/**
+ * Enter And Exit Full Screen.
+ */
+
+function fullScreen() {
+  var docElm = document.documentElement;
+  if (docElm.requestFullscreen) {
+    docElm.requestFullscreen();
+  }
+  else if (docElm.webkitRequestFullScreen) {
+    docElm.webkitRequestFullScreen();
+  }
+}
+
+document.body.addEventListener('click', () => {
+  fullScreen()
 })
