@@ -1186,3 +1186,14 @@ function fullScreen() {
 document.body.addEventListener('click', () => {
   fullScreen()
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.resizeTo(screen.availWidth, screen.availHeight)
+  window.moveTo(0, 0)
+})
+
+document.querySelectorAll('*').forEach((e) => {
+  if (!e.classList.contains("mdui-ripple")) {
+    e.classList.add('mdui-ripple')
+  }
+})

@@ -6860,15 +6860,6 @@ th.mdui-table-cell-checkbox .mdui-checkbox {
     background-color: rgba(255, 255, 255, 0.12);
   }
 }
-.mdui-ripple {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 .mdui-ripple-wave {
   position: absolute !important;
   top: 0;
