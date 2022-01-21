@@ -26,15 +26,15 @@
  *
  */
 
-const Store = require('electron-store')
+import Store from 'electron-store'
 
 const store = new Store()
 
-const { ipcRenderer } = require('electron')
+import { ipcRenderer } from 'electron'
 
-const Terminal = require('dom-terminal')
+import Terminal, { clear } from 'dom-terminal'
 
-const pxmu = require('./libs/js/pxmu.js')
+import { diaglog } from './libs/js/pxmu.js'
 
 const $ = mdui.$
 
@@ -142,7 +142,9 @@ function showLauPad() {
   METHODS.showElementByFade('#laupad')
   document.querySelector('#dock_time').style.bottom = '55%'
   document.querySelector('#dock_time').style.left = '0px'
-  document.querySelector('#dock_time').style.width = window.getComputedStyle(document.body).width
+  document.querySelector('#dock_time').style.width = window.getComputedStyle(
+    document.body
+  ).width
   document.querySelector('#dock_time').style.borderBottomLeftRadius = '0px'
   document.querySelector('#dock_time').style.borderBottomRightRadius = '0px'
   document.querySelector('#sysIco').onclick = function () {
@@ -166,7 +168,11 @@ function hideLauPad() {
     console.log(
       window.getComputedStyle(document.querySelector('#dock_time')).width
     )
-    let a = Number(window.getComputedStyle(document.querySelector('html')).width.replace(/px/, ''))
+    let a = Number(
+      window
+        .getComputedStyle(document.querySelector('html'))
+        .width.replace(/px/, '')
+    )
     document.querySelector('#dock_time').style.left = `${
       Number(
         a -
@@ -219,8 +225,7 @@ document.querySelector('#LockScreen').addEventListener('click', () => {
  */
 
 document.querySelector('#shutdown_btn').addEventListener('click', () => {
-  pxmu
-    .diaglog({
+  diaglog({
       title: {
         text: '警告！',
         color: 'red',
@@ -338,8 +343,8 @@ document.querySelector('#shutdown_btn').addEventListener('click', () => {
               mdui.snackbar({
                 message: '可能会无法一次删除所有，请多次点击',
                 position: 'right-bottom',
-                timeout: 800
-              });
+                timeout: 800,
+              })
               items.splice(key, 1)
             }
           }
@@ -575,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
       execute: function (cmd, args) {
         switch (cmd) {
           case 'clear':
-            Terminal.clear()
+            clear()
             return ''
 
           case 'help':
@@ -742,8 +747,7 @@ document
 document
   .querySelector('#dropdownHeaderUninstallAllPluginsBtn')
   .addEventListener('click', () => {
-    pxmu
-      .diaglog({
+    diaglog({
         title: {
           text: '警告！',
           color: 'red',
@@ -872,9 +876,11 @@ document.querySelector('#pluginButton').addEventListener('click', () => {
         )
         elementObj.remove()
         mdui.snackbar({
-          message: element.name ? '已删除插件:' + element.name : '已删除此匿名插件',
+          message: element.name
+            ? '已删除插件:' + element.name
+            : '已删除此匿名插件',
           position: 'right-bottom',
-        });
+        })
       }
       elementObj.textContent = element.name
       listObj.append(elementObj)
@@ -928,7 +934,7 @@ document.querySelector('#storeButton').addEventListener('click', function () {
     dataFetch.open('GET', 'https://uazira.github.io/AdonS-Plugins/plugins.json')
     dataFetch.send()
     dataFetch.onerror = () => {
-      document.querySelector('#pluginsRemote').textContent = "加载失败"
+      document.querySelector('#pluginsRemote').textContent = '加载失败'
     }
     dataFetch.onload = function () {
       if (dataFetch.status == 200) {
@@ -967,7 +973,7 @@ document.querySelector('#storeButton').addEventListener('click', function () {
                 mdui.snackbar({
                   message: '已安装插件:' + contentObj.name + ',刷新后自动应用',
                   position: 'right-bottom',
-                });
+                })
               }
               let c = document.createElement('p')
               c.textContent = element[2]
@@ -1074,23 +1080,29 @@ document.addEventListener('DOMContentLoaded', () => {
           window.getComputedStyle(document.querySelector('#drawer')).width
       }
       setTimeout(() => {
-        if (document.querySelector('#drawer').classList.contains('mdui-drawer-close')) {
-          document.querySelector('#main').style.width = "100vw"
+        if (
+          document
+            .querySelector('#drawer')
+            .classList.contains('mdui-drawer-close')
+        ) {
+          document.querySelector('#main').style.width = '100vw'
         } else {
-          document.querySelector('#main').style.width = `calc(100vw - ${window.getComputedStyle(document.querySelector('#drawer')).width})`
+          document.querySelector('#main').style.width = `calc(100vw - ${
+            window.getComputedStyle(document.querySelector('#drawer')).width
+          })`
         }
-      }, 350);
+      }, 350)
     })
 
   b.onkeydown = (e) => {
-    mdui.updateTextFields(".mdui-textfield-input#wallpaperInput")
+    mdui.updateTextFields('.mdui-textfield-input#wallpaperInput')
     if (e.keyCode == 13) {
       try {
         setWallpaper(String(b.value))
         mdui.snackbar({
           message: '壁纸已设置成功',
           position: 'right-bottom',
-        });
+        })
       } catch (error) {
         showError(error.toString())
       }
@@ -1103,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   $(function () {
-    b.value = getWallpaperInfo() ? getWallpaperInfo() : ""
+    b.value = getWallpaperInfo() ? getWallpaperInfo() : ''
   })
 })()
 
@@ -1111,37 +1123,37 @@ document.addEventListener('DOMContentLoaded', () => {
  * Dark Mode
  */
 
-$(function() {
+$(function () {
   let a = document.querySelector('#darkModeCheckBox')
   a.onchange = () => {
     if (a.checked) {
-      toggleMode("dark")
-      store.set('theme', "dark")
+      toggleMode('dark')
+      store.set('theme', 'dark')
     } else {
-      toggleMode("light")
-      store.set('theme', "light")
+      toggleMode('light')
+      store.set('theme', 'light')
     }
   }
-  if (store.get('theme') == "dark") {
-    toggleMode("dark")
-  } else if (store.get('theme') == "light") {
-    toggleMode("light")
+  if (store.get('theme') == 'dark') {
+    toggleMode('dark')
+  } else if (store.get('theme') == 'light') {
+    toggleMode('light')
   }
 })
 
 function toggleMode(mode) {
   if (mode) {
     switch (mode) {
-      case "light":
-        if (document.body.classList.contains("darkMode")) {
-          document.body.classList.remove("darkMode")
-          document.body.classList.add("lightMode")
+      case 'light':
+        if (document.body.classList.contains('darkMode')) {
+          document.body.classList.remove('darkMode')
+          document.body.classList.add('lightMode')
         }
         break
-      case "dark":
-        if (document.body.classList.contains("lightMode")) {
-          document.body.classList.remove("lightMode")
-          document.body.classList.add("darkMode")
+      case 'dark':
+        if (document.body.classList.contains('lightMode')) {
+          document.body.classList.remove('lightMode')
+          document.body.classList.add('darkMode')
         }
         break
     }
@@ -1155,7 +1167,8 @@ function toggleMode(mode) {
  */
 
 document.querySelector('#fontWeightSetRange').onchange = () => {
-  document.querySelector('#fontWeightDemoText').style.fontWeight = document.querySelector('#fontWeightSetRange').value
+  document.querySelector('#fontWeightDemoText').style.fontWeight =
+    document.querySelector('#fontWeightSetRange').value
   store.set('fontWeight', document.querySelector('#fontWeightSetRange').value)
   document.body.style.fontWeight = store.get('fontWeight')
 }
@@ -1163,9 +1176,11 @@ document.querySelector('#fontWeightSetRange').onchange = () => {
 $(function () {
   if (store.get('fontWeight')) {
     document.body.style.fontWeight = store.get('fontWeight')
-    document.querySelector('#fontWeightSetRange').value = store.get('fontWeight')
+    document.querySelector('#fontWeightSetRange').value =
+      store.get('fontWeight')
     mdui.updateSliders()
-    document.querySelector('#fontWeightDemoText').style.fontWeight = store.get('fontWeight')
+    document.querySelector('#fontWeightDemoText').style.fontWeight =
+      store.get('fontWeight')
   }
 })
 
@@ -1174,12 +1189,11 @@ $(function () {
  */
 
 function fullScreen() {
-  var docElm = document.documentElement;
+  var docElm = document.documentElement
   if (docElm.requestFullscreen) {
-    docElm.requestFullscreen();
-  }
-  else if (docElm.webkitRequestFullScreen) {
-    docElm.webkitRequestFullScreen();
+    docElm.requestFullscreen()
+  } else if (docElm.webkitRequestFullScreen) {
+    docElm.webkitRequestFullScreen()
   }
 }
 
@@ -1193,7 +1207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.querySelectorAll('*').forEach((e) => {
-  if (!e.classList.contains("mdui-ripple")) {
+  if (!e.classList.contains('mdui-ripple')) {
     e.classList.add('mdui-ripple')
   }
 })

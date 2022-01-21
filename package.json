@@ -20,7 +20,8 @@
   "dependencies": {
     "dom-terminal": "1.0.3",
     "electron-squirrel-startup": "1.0.0",
-    "electron-store": "8.0.1"
+    "electron-store": "8.0.1",
+    "yarn": "^1.22.17"
   },
   "devDependencies": {
     "@electron-forge/cli": "6.0.0-beta.61",
@@ -30,7 +31,7 @@
     "gulp-clean-css": "4.3.0",
     "gulp-htmlmin": "5.0.1",
     "gulp-javascript-obfuscator": "1.1.6",
-    "vinyl-sourcemaps-apply": "0.2.1",
-    "prettier": "2.3.2"
+    "prettier": "2.3.2",
+    "vinyl-sourcemaps-apply": "0.2.1"
   }
 }
