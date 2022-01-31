@@ -22,6 +22,8 @@
 }
 
 .dropdown {
+    box-sizing: border-box;
+    height: 45px;
 	margin-left: 70px;
 	position: fixed;
 	display: flex;
@@ -29,7 +31,7 @@
 	z-index: 999;
 	-webkit-app-region: no-drag;
 	top: 0;
-	height: 35px;
+    align-items: center
 }
 
 .dropdown-content {
@@ -38,16 +40,17 @@
 	min-width: 200px;
 	z-index: 999;
 	border-radius: 5px;
-	transition: display 0.2s;
+    opacity: 0;
+	transition: all 0.2s;
+    background-color: rgba(0, 0, 0, 0.534);
+    backdrop-filter: blur(10px);
 }
 
 .lightMode .dropdown-content {
-	background-color: #212121;
 	color: rgb(255, 255, 255);
 }
 
 .darkMode .dropdown-content {
-	background-color: #fffdfd;
 	color: rgb(0, 0, 0);
 }
 
@@ -69,12 +72,14 @@
 	color: rgb(255, 255, 255);
 }
 
+
 .dropdown > div {
 	height: auto;
 }
 
 .dropdown div:hover .dropbtn ~ .dropdown-content {
 	display: block;
+    opacity: 1;
 }
 
 .dropdown .dropbtn:hover {

@@ -37,11 +37,13 @@ header {
     left: 0;
 	width: 100%;
 	height: 25px;
-	padding: 5px;
-	background-color: #2a2a2a;
+	padding: 10px;
+	background-color: #2a2a2adc;
+	backdrop-filter: blur(15px);
 	color: #fff;
 	display: flex;
 	padding-left: 13px;
 	align-items: center;
+	font-weight: 700;
 }
 </style>
