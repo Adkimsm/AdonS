@@ -1,0 +1,82 @@
+* {
+    transition: all .2s;
+}
+
+.dropbtn {
+	padding: 8px 10px;
+	font-size: 16px;
+	border: 1px transparent solid;
+	margin-left: 5px;
+	border-radius: 13px;
+	height: 34.98px;
+}
+
+.lightMode .dropbtn {
+	background-color: black;
+	color: white;
+}
+
+.darkMode .dropbtn {
+	background-color: rgb(236, 236, 236);
+	color: rgb(0, 0, 0);
+}
+
+.dropdown {
+	margin-left: 70px;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	z-index: 999;
+	-webkit-app-region: no-drag;
+	top: 0;
+	height: 35px;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	min-width: 200px;
+	z-index: 999;
+	border-radius: 5px;
+	transition: display 0.2s;
+}
+
+.lightMode .dropdown-content {
+	background-color: #212121;
+	color: rgb(255, 255, 255);
+}
+
+.darkMode .dropdown-content {
+	background-color: #fffdfd;
+	color: rgb(0, 0, 0);
+}
+
+.dropdown-content a {
+	margin: 5px;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	border-radius: 5px;
+}
+
+.lightMode .dropdown-content a:hover {
+	background-color: #fafafa;
+	color: rgb(0, 0, 0);
+}
+
+.darkMode .dropdown-content a:hover {
+	background-color: #020202;
+	color: rgb(255, 255, 255);
+}
+
+.dropdown > div {
+	height: auto;
+}
+
+.dropdown div:hover .dropbtn ~ .dropdown-content {
+	display: block;
+}
+
+.dropdown .dropbtn:hover {
+	background-color: grey;
+}
