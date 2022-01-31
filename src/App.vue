@@ -1,6 +1,7 @@
 <template>
   <Header></Header>
   <Laupad></Laupad>
+  <rightMenu></rightMenu>
   <img alt="Vue logo" src="./assets/logo.png" class="animate__animated animate__bounce">
 	<img src="./assets/images/壁纸01.jpg" bg />
 </template>
@@ -8,11 +9,13 @@
 <script>
 import Header from './components/Header.vue'
 import Laupad from './components/Laupad.vue'
+import RightMenu from './components/RightMenu.vue'
 export default {
   name: 'App',
   components: {
     Header,
-    Laupad
+    Laupad,
+    RightMenu
   }
 }
 </script>
