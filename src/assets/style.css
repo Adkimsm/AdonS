@@ -1,6 +1,19 @@
+/**
+ * All.
+ */
+
 * {
     transition: all .2s;
 }
+
+body {
+    user-select: none;
+    cursor: default;
+}
+
+/**
+ * Dropdown Menu.
+ */
 
 .dropbtn {
 	padding: 8px 10px;
@@ -84,4 +97,39 @@
 
 .dropdown .dropbtn:hover {
 	background-color: grey;
+}
+
+/**
+ * Laupad.
+ */
+
+#laupad .icon_bottom img,
+#laupad .icon_bottom svg {
+  margin-right: 5px;
+}
+
+#laupad .icon_top img,
+#laupad .icon_top svg {
+  margin-right: 5px;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border-radius: 5px;
+  box-shadow: 4px 7px 7px #00000042;
+}
+
+#laupad .icon_top {
+  margin: 2rem;
+}
+
+#laupad .alignRight {
+  position: relative;
+  top: 170px;
+  left: 550px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#laupad .alignRight img {
+  margin-left: 15px;
 }
