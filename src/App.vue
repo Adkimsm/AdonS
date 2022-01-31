@@ -2,18 +2,15 @@
   <Header></Header>
   <Laupad></Laupad>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import Laupad from './components/Laupad.vue'
 export default {
   name: 'App',
   components: {
     Header,
-    HelloWorld,
     Laupad
   }
 }
