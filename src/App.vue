@@ -2,6 +2,7 @@
   <Header></Header>
   <Laupad></Laupad>
   <img alt="Vue logo" src="./assets/logo.png">
+	<img src="./assets/images/壁纸01.jpg" bg />
 </template>
 
 <script>
@@ -23,6 +24,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  width: 100%;
+}
+
+img[bg] {
+  z-index: -9999;
+  top: 0px;
+  left: 0;
+  position: fixed;
+  object-fit: cover;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
 </style>

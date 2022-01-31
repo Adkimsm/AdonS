@@ -109,16 +109,17 @@ div[a] {
   justify-content: center;
   box-shadow: 4px 7px 7px #00000042;
   box-sizing: border-box;
+  backdrop-filter: blur(15px);
 }
 
 .lightMode div[a] {
   color: #2a2a2a;
-  background-color: #ffffff;
+  background-color: #ffffffe5;
 }
 
 .darkMode div[a] {
   color: #ffffff;
-  background-color: rgb(24, 24, 24);
+  background-color: rgba(24, 24, 24, 0.836);
 }
 
 </style>
