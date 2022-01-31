@@ -1,8 +1,8 @@
 <template>
 	<div a>
-		<img />
+		<img toggleLaupadBtn />
 	</div>
-	<section id="laupad" style="display: none">
+	<section id="laupad" class="animate__animated" style="display: none">
 		<hr />
 		<div class="icons">
 			<div class="icon_bottom">
@@ -45,6 +45,8 @@ export default {
 
 <style scoped>
 section {
+  display: none;
+  opacity: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px -10px 20px;
   color: #0e0e0e;
   overflow: hidden;
@@ -55,10 +57,11 @@ section {
   position: fixed;
   object-fit: cover;
   background-size: cover;
+  backdrop-filter: blur(30px);
 }
 
 .lightMode section {
-  background-color: #ffffff;
+  background: #ffffffea;
 }
 
 .darkMode section {

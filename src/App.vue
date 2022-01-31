@@ -1,7 +1,7 @@
 <template>
   <Header></Header>
   <Laupad></Laupad>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <img alt="Vue logo" src="./assets/logo.png" class="animate__animated animate__bounce">
 	<img src="./assets/images/壁纸01.jpg" bg />
 </template>
 
