@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',() => {
+/*document.addEventListener('DOMContentLoaded',() => {
     document.querySelector('div[a]').addEventListener('click', () => {
         let elementObj = document.querySelector('#laupad')
         let toggleLaupadBtn = document.querySelector('div[a]')
@@ -47,4 +47,4 @@ document.addEventListener('DOMContentLoaded',() => {
             }, 1050);
         }
     })
-})
+})*/
