@@ -1,68 +1,61 @@
 <template>
-	<div class="right-menu" id="right-menu">
-		<div class="list">
-			<div id="ExitBtnInRightMenu">退出</div>
+	<transition
+		name="custom-classes-transition"
+		enter-active-class="animate__animated animate__fadeInTopLeft"
+		leave-active-class="animate__animated animate__fadeOutBottomRight"
+	>
+		<div
+			class="right-menu"
+			id="right-menu"
+			v-if="displayRightMenu"
+			:style="rightMenuStyle"
+		>
+			<div class="list">
+				<div id="ExitBtnInRightMenu">退出</div>
+			</div>
 		</div>
-	</div>
+	</transition>
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 export default {
 	name: "RightMenu",
-	setup() {
-		onMounted(() => {
-			let forRight = document.getElementById("right-menu");
-			/**
-			 * @returns {void}
-			 * @param event
-			 */
-			function showContextmenu(event) {
-				forRight.style.display = "block";
-				let eventC = event || window.event;
-				setTimeout(() => {
-					forRight.style.opacity = "1";
-					forRight.style.left = eventC.pageX + 5 + "px";
-					forRight.style.top = eventC.pageY + 5 + "px";
-				}, 50);
-				forRight.style.left = eventC.pageX - 50 + "px";
-				forRight.style.top = eventC.pageY - 50 + "px";
-			}
+	mounted() {
+		let componentThis = this;
 
-			function hideContextMenu(event) {
-				let eventC = event || window.event;
-				forRight.style.left = eventC.pageX - 150 + "px";
-				forRight.style.top = eventC.pageY - 150 + "px";
-				forRight.style.opacity = "0";
-				setTimeout(() => (forRight.style.display = "none"), 250);
-			}
-			window.oncontextmenu = function (event) {
-				event.preventDefault();
-				showContextmenu(event);
-			};
-			document.onclick = function (event) {
-				hideContextMenu(event);
-			};
-
-			document
-				.querySelector("#ExitBtnInRightMenu")
-				.addEventListener("click", () => {
-					process.exit()
-				});
-		});
-	}
+		window.oncontextmenu = (e) => {
+			var evt = window.event || e;
+			e.preventDefault();
+			componentThis.rightMenuStyle.left = evt.pageX + "px";
+			componentThis.rightMenuStyle.top = evt.pageY + "px";
+			console.log(componentThis.rightMenuStyle)
+			componentThis.displayRightMenu = true;
+		};
+		document.onclick = () => {
+			componentThis.displayRightMenu = false;
+		};
+	},
+	data() {
+		return {
+			displayRightMenu: false,
+			rightMenuStyle: {
+				left: "10px",
+				top: "10px",
+			},
+		};
+	},
 };
 </script>
 
 <style>
 .right-menu {
-	width: 170px;
+	width: 150px;
 	position: absolute;
 	z-index: 9998;
 	overflow: hidden;
-	padding: 15px;
+	padding: 10px 12px;
 	font-size: 14px;
-	display: none;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0 2px 10px;
 	overflow: hidden;
