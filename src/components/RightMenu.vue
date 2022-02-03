@@ -31,8 +31,10 @@ export default {
 			componentThis.rightMenuStyle.top = evt.pageY + "px";
 			console.log(componentThis.rightMenuStyle)
 			componentThis.displayRightMenu = true;
+			componentThis.rightMenuStyle.transform = "scale(1.05)";
 		};
 		document.onclick = () => {
+			componentThis.rightMenuStyle.transform = "scale(.5)";
 			componentThis.displayRightMenu = false;
 		};
 	},
@@ -42,6 +44,7 @@ export default {
 			rightMenuStyle: {
 				left: "10px",
 				top: "10px",
+				transform: "scale(1)",
 			},
 		};
 	},
@@ -59,10 +62,13 @@ export default {
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0 2px 10px;
 	overflow: hidden;
+	backdrop-filter: blur(20px);
+	transition: all 0.3s ease;
+	text-align: left;
 }
 
 .lightMode .right-menu {
-	background-color: white;
+	background-color: rgba(255,255,255,.85);
 }
 
 .darkMode .right-menu {
