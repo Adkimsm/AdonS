@@ -74,7 +74,7 @@ export default {
 		return {
 			laupadShow: false,
 		};
-	}
+	},
 };
 </script>
 
@@ -159,10 +159,43 @@ div[a] {
 	background-color: rgba(24, 24, 24, 0.836);
 }
 
-section+div[a] {
+section + div[a] {
 	bottom: 55%;
 	width: 100vw;
 	left: 0;
 	border-radius: 20px 20px 0 0;
+}
+
+section .icon_top {
+	margin: 2rem;
+}
+
+section .alignRight {
+	position: relative;
+	top: 170px;
+	left: 550px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+</style>
+
+<style>
+#laupad .icon_bottom img,
+#laupad .icon_bottom svg {
+	margin-right: 5px;
+}
+
+#laupad .icon_top img,
+#laupad .icon_top svg {
+	margin-right: 5px;
+	padding: 10px;
+	background-color: #2a2a2a;
+	border-radius: 5px;
+	box-shadow: 4px 7px 7px #00000042;
+}
+
+#laupad .alignRight img {
+	margin-left: 15px;
 }
 </style>

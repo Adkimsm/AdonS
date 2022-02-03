@@ -29,7 +29,7 @@ export default {
 			e.preventDefault();
 			componentThis.rightMenuStyle.left = evt.pageX + "px";
 			componentThis.rightMenuStyle.top = evt.pageY + "px";
-			console.log(componentThis.rightMenuStyle)
+			console.log(componentThis.rightMenuStyle);
 			componentThis.displayRightMenu = true;
 			componentThis.rightMenuStyle.transform = "scale(1.05)";
 		};
@@ -68,7 +68,7 @@ export default {
 }
 
 .lightMode .right-menu {
-	background-color: rgba(255,255,255,.85);
+	background-color: rgba(255, 255, 255, 0.85);
 }
 
 .darkMode .right-menu {
