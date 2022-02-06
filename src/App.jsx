@@ -1,11 +1,12 @@
 import React from 'react'
 import './App.css'
 import bg from './bg.jpg'
+import Header from './components/header'
 
 function App() {
   return (
     <div className="App">
-      <header className="dragMoveWindowHeader">Easier</header>
+      <Header />
       <img src={bg} alt="background" />
     </div>
   )
