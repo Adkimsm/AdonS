@@ -1,26 +1,35 @@
 {
-  "name": "easier",
-  "version": "0.1.0",
-  "private": true,
+  "name": "Easier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./public/main.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "electron:build": "vue-cli-service electron:build",
-    "electron:serve": "vue-cli-service electron:serve",
-    "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "electron:start": "electron .",
+    "watch": "webpack --config ./config/webpack.common.js --watch",
+    "start": "concurrently \"yarn watch\" \"yarn electron:start\""
   },
-  "main": "background.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "electron-reload": "^2.0.0-alpha.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "electron": "^13.0.0",
-    "electron-devtools-installer": "^3.1.0",
-    "vue-cli-plugin-electron-builder": "~2.1.1"
+    "@babel/core": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "bable-loader": "^0.0.1-security",
+    "concurrently": "^7.0.0",
+    "css-loader": "^6.5.1",
+    "electron": "^16.0.7",
+    "electron-devtools-installer": "^3.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.49.0",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2"
   }
 }
