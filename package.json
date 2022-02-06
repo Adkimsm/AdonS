@@ -1,35 +1,20 @@
 {
-  "name": "Easier",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./public/main.js",
+  "name": "easier",
+  "version": "0.0.0",
+  "main": "./main.js",
   "scripts": {
-    "electron:start": "electron .",
-    "watch": "webpack --config ./config/webpack.common.js --watch",
-    "start": "concurrently \"yarn watch\" \"yarn electron:start\""
+    "dev": "concurrently \"vite\" \"electron .\"",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "electron-reload": "^2.0.0-alpha.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "babel-loader": "^8.2.3",
-    "bable-loader": "^0.0.1-security",
+    "@vitejs/plugin-react": "^1.0.7",
     "concurrently": "^7.0.0",
-    "css-loader": "^6.5.1",
-    "electron": "^16.0.7",
-    "electron-devtools-installer": "^3.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sass": "^1.49.0",
-    "sass-loader": "^12.4.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.67.0",
-    "webpack-cli": "^4.9.2"
+    "electron": "16.0.4",
+    "vite": "^2.7.2"
   }
 }
