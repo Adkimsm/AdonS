@@ -2,7 +2,7 @@
 node_modules
 /build
 /out
-
+/output
 
 # local env files
 .env.local

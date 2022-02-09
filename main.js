@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require("electron");
 const isDev = !app.isPackaged;
 
+if (require('electron-squirrel-startup')) return;
+
 function createWindow() {
     const win = new BrowserWindow({
         width: 1000,
