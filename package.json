@@ -4,7 +4,8 @@
   "main": "./main.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"electron .\"",
-    "build": "vite build",
+    "prebuild": "vite build",
+    "build": "electron-packager ./ Easier --out ./out --overwrite --platform=win32 --electron-version 16.0.4 -arch=x64 --asar",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "@vitejs/plugin-react": "^1.0.7",
     "concurrently": "^7.0.0",
     "electron": "16.0.4",
+    "electron-packager": "^15.4.0",
     "vite": "^2.7.2"
   }
 }
