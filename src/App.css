@@ -1,7 +1,6 @@
 .App {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 
 .dragMoveWindowHeader {
@@ -32,7 +31,8 @@ img[alt=background] {
   --pink: rgb(255,45,85);
   --blur-background-black-06: rgba(0, 0, 0, 0.6);
   --blur-background-white-06: rgba(255, 255, 255, 0.6);
-  --blur-background-white-089: rgba(255, 255, 255, 0.89)
+  --blur-background-white-089: rgba(255, 255, 255, 0.89);
+  overflow: hidden;
 }
 
 .dock {
