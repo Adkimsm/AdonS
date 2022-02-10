@@ -5,7 +5,8 @@ const formatDate = (str) =>
 		return "0" + $1;
 	});
 
-function Dock({array}) {
+function Dock() {
+	let array = globalThis.array
 	let dateObj = new Date();
 	let dateHour = dateObj.getHours();
 	let amOrPm = dateHour > 12 ? "PM" : "AM";
