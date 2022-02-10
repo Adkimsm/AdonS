@@ -45,11 +45,11 @@ let menus = [{ text: "ddddd", onClick: () => alert('hhhhh')}]
 
 function App() {
   return (
-		<div className="App lightMode">
+		<div className="App coverScreen lightMode">
 			<Header />
 			<RightMenu menus={menus} />
 			<Dock />
-			<img src={bg} alt="background" />
+			<img src={bg} alt="background" className="coverScreen" />
 		</div>
 	);
 }

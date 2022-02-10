@@ -24,7 +24,7 @@ function Dock() {
 	}, 500);
 	return (
 		<div className="dock">
-			<div className="dockIcons">
+			<div className="dockIcons flex xCenter yCenter">
 				{array.map((item, index) => (
 					<div key={index} className="dockItem" onClick={item.onClick}>
 						<img src={ item.src }></img>
