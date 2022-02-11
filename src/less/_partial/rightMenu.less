@@ -1,15 +1,16 @@
-.rightMenuItem {
-	padding: 15px;
-	transition: all 0.3s ease-in-out;
-}
-
 .rightMenu {
 	position: absolute;
 	width: 220px;
 	border-radius: 5px;
 	transition: all 0.3s;
-}
+	z-index: 3000;
 
-.rightMenuItem:hover {
-	border-radius: 5px;
+	.rightMenuItem {
+		padding: 15px;
+		transition: all 0.3s ease-in-out;
+
+		&:hover {
+			border-radius: 5px;
+		}
+	}
 }

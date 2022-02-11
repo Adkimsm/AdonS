@@ -23,7 +23,7 @@ function RightMenu({ menus }) {
 				setShow("none");
 			}, 350);
 		});
-	});
+	},[]);
 	return (
 		<div
 			className="rightMenu"
