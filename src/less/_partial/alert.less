@@ -1,0 +1,23 @@
+.alertCon {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  position: fixed;
+  top: -40px;
+  min-height: 100px;
+  z-index: 9999;
+  transition: all .4s;
+
+  .alert {
+    width: 55%;
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: rgba(255, 255, 255, 0.81);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+  }
+}

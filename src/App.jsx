@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Dock from './components/Dock'
 import RightMenu from './components/RightMenu'
 import OnStart from './components/OnStart'
+import Alert from './components/Alert'
 
 globalThis.array = [
 	{
@@ -51,6 +52,7 @@ function App() {
 			<Header />
 			<RightMenu menus={menus} />
 			<Dock />
+		    <Alert />
 			<img src={bg} alt="background" className="coverScreen" />
 		</div>
 	);
