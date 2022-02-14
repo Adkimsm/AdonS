@@ -10,15 +10,17 @@ function createWindow() {
         frame: false,
         webPreferences: {
             nodeIntegration: true,
+            enableRemoteModule: true,
             contextIsolation: false
         },
     });
 
-    if (isDev) {
-        win.loadURL('http://localhost:3000');
-        win.webContents.openDevTools();
-    } else {
+    if (!isDev) {
         win.loadFile('./dist/index.html')
+    } else if (process.env.ENV) {
+        win.loadFile('./dist/index.html')
+    } else {
+        win.loadURL('http://localhost:3000');
     }
 }
 
