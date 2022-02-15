@@ -6,6 +6,7 @@ import Dock from './components/Dock'
 import RightMenu from './components/RightMenu'
 import OnStart from './components/OnStart'
 import Alert from './components/Alert'
+import Plugins from './components/Plugins'
 
 globalThis.array = [
 	{
@@ -43,7 +44,8 @@ globalThis.array = [
 	},
 ];
 
-let menus = [{ text: "ddddd", onClick: () => alert('hhhhh')}]
+let menus = [{ text: "Install Plugin", onClick: () => alert('hhhhh')}]
+
 
 function App() {
   return (
@@ -54,6 +56,7 @@ function App() {
 			<Dock />
 		    <Alert />
 			<img src={bg} alt="background" className="coverScreen" />
+		  	<Plugins />
 		</div>
 	);
 }

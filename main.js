@@ -8,6 +8,7 @@ function createWindow() {
         width: 1000,
         height: 618,
         frame: false,
+        show: false,
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true,
@@ -22,6 +23,10 @@ function createWindow() {
     } else {
         win.loadURL('http://localhost:3000');
     }
+
+    win.once('ready-to-show', () => {
+        win.show()
+    })
 }
 
 app.whenReady().then(() => {
