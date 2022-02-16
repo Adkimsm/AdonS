@@ -66,13 +66,14 @@ let menus = [
         preConfirm: async (url) => {
           if (url) {
             globalThis.plugins.push(url);
-            return true;
-          } else Swal.showValidationMessage(`请输入一个 URL`);
+            Swal.fire("插件添加完成")
+          } else {
+            Swal.showValidationMessage(`请输入一个 URL`)
+            return false
+          }
         },
         allowOutsideClick: () => !Swal.isLoading(),
-      }).then((bool) => {
-        if (bool) MySwal.fire("插件添加完成");
-      });
+      })
     },
   },
 ];
