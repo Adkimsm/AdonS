@@ -1,10 +1,10 @@
 .lightMode {
 	color: #000;
-	@import url(./_partial/dock.less);
-	@import url(./_partial/header.less);
-	@import url(./_partial/rightMenu.less);
-	@import url(./_partial/onStart.less);
-	@import url(./_partial/alert.less);
+	@import "./_partial/dock.scss";
+	@import "./_partial/header.scss";
+	@import "./_partial/rightMenu.scss";
+	@import "./_partial/onStart.scss";
+	@import "./_partial/alert.scss";
 
 	.dock {
 		background-color: var(--blur-background-white-089);

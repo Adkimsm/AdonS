@@ -18,8 +18,8 @@
 	transition: all .4s ease
 }
 
-@import url(./light.less);
-@import url(./layout.less);
+@import "./light.scss";
+@import "./layout.scss";
 
 @font-face {
 	font-family: "MiSans";
@@ -40,4 +40,6 @@
 
 img[alt="background"] {
 	object-fit: cover;
+	z-index: -1;
+	position: fixed;
 }
