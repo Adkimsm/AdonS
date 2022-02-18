@@ -2,10 +2,23 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 100vw;
 	padding: 8px;
 	-webkit-app-region: drag;
 	backdrop-filter: blur(25px);
 	z-index: 9998;
 	text-align: center;
+
+	button {
+		-webkit-app-region: no-drag;
+		border-radius: 50%;
+		outline: none;
+ 		width: 23px;
+		height: 23px;
+		position: absolute;
+		right: 25px;
+		background: darken(rgb(255, 59, 48), 5);
+		border: var(--red) solid;
+		color: #fff;
+	}
 }

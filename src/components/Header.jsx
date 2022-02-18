@@ -1,6 +1,12 @@
 import React from 'react'
 function Header() {
-    return <header className='dragMoveWindowHeader'>Easier</header>
+    const shutdown = () => window.close()
+    return (
+        <header className='dragMoveWindowHeader'>
+            Easier
+            <button onClick={ shutdown }>×</button>
+        </header>
+    )
 }
 
 export default Header
