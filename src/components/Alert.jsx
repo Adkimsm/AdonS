@@ -5,7 +5,7 @@ export default function () {
     let [alertOpacity, setOpacity] = useState(0)
     let [alertTop, setTop] = useState(-40)
     let [alertDisplay, setDisplay] = useState('none')
-    window.alert = (str, timeout = 2500) => {
+    window.alert = (str, timeout = 1500) => {
         setTextContent(str)
         setDisplay('flex')
         setTimeout(() => {
@@ -18,7 +18,7 @@ export default function () {
             setOpacity(0)
             setTimeout(() => {
                 setDisplay('none')
-            }, 550)
+            }, 130)
         }, timeout)
     }
     return (

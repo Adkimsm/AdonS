@@ -8,6 +8,7 @@ function RightMenu({ menus }) {
 
     useEffect(() => {
         document.querySelector('.App').oncontextmenu = event => {
+            event.preventDefault()
             setShow('block')
             setRightMenuLeft(event.pageX)
             setRightMenuTop(event.pageY)
