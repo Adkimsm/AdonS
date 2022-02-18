@@ -21,4 +21,18 @@
 		border: var(--red) solid;
 		color: #fff;
 	}
+
+	span {
+		display: none;
+		margin-top: 20px;
+		position: absolute;
+		right: 30px;
+		background: #fff;
+		padding: 15px;
+		border-radius: 15px;
+	}
+
+	button:hover ~ span {
+		display: block;
+	}
 }

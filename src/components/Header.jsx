@@ -5,6 +5,7 @@ function Header() {
         <header className='dragMoveWindowHeader'>
             Easier
             <button onClick={ shutdown }>×</button>
+            <span>退出</span>
         </header>
     )
 }
