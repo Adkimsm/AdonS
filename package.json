@@ -8,7 +8,7 @@
     "build": "electron-packager ./ Easier --out ./out --overwrite --platform=win32 --electron-version 16.0.4 -arch=x64 --asar",
     "postbuild": "node ./scripts/windowsInstaller",
     "preview": "vite preview",
-    "beautify": "prettier"
+    "beautify": "prettier ./src/**/*.jsx --config ./.prettierrc --write"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
