@@ -4,6 +4,7 @@
   "main": "./main.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"electron .\"",
+    "run": "",
     "onlyBuild": "yarn prebuild",
     "prebuild": "vite build && node ./scripts/javascriptObfuscator.js",
     "build": "electron-packager ./ Easier --out ./out --overwrite --platform=win32 --electron-version 16.0.4 -arch=x64 --asar",
