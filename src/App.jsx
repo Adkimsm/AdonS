@@ -9,9 +9,14 @@ import Alert from './components/Alert'
 import Plugins from './components/Plugins'
 import SwalOrigin from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+const electronStore = require("electron-store")
 import 'sweetalert2/src/sweetalert2.scss'
 
 const MySwal = withReactContent(SwalOrigin)
+const store = new electronStore() ?? {
+    get() {},
+    set() {}
+}
 
 globalThis.Swal = MySwal
 
@@ -48,7 +53,7 @@ globalThis.array = [
     },
 ]
 
-globalThis.plugins = globalThis.plugins ?? []
+globalThis.plugins = store.get("plugins") ?? globalThis.plugins ?? []
 
 let menus = [
     {
@@ -66,7 +71,12 @@ let menus = [
                 preConfirm: async url => {
                     if (url) {
                         globalThis.plugins.push(url)
-                        Swal.fire('插件添加完成')
+                        store.set("plugins", globalThis.plugins)
+                        Swal.fire({
+                            title: '完成',
+                            text: "插件添加成功，下次启动 Easier 自动生效。",
+                            allowOutsideClick: () => !Swal.isLoading(),
+                        })
                     } else {
                         Swal.showValidationMessage(`请输入一个 URL`)
                         return false

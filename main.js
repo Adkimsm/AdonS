@@ -1,5 +1,7 @@
 const { app, BrowserWindow } = require("electron");
 const isDev = !app.isPackaged;
+const Store = require('electron-store');
+const _store = new Store();
 
 if (require('electron-squirrel-startup')) return;
 
@@ -11,14 +13,11 @@ function createWindow() {
         show: false,
         webPreferences: {
             nodeIntegration: true,
-            enableRemoteModule: true,
             contextIsolation: false
         },
     });
 
     if (!isDev) {
-        win.loadFile('./dist/index.html')
-    } else if (process.env.ENV) {
         win.loadFile('./dist/index.html')
     } else {
         win.loadURL('http://localhost:3000');
