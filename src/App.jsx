@@ -54,10 +54,11 @@ globalThis.array = [
 ]
 
 globalThis.plugins = store.get("plugins") ?? globalThis.plugins ?? []
+globalThis.pythonPlugins = store.get("pythonPlugins") ?? globalThis.pythonPlugins ?? []
 
 let menus = [
     {
-        text: 'Install Plugin',
+        text: '添加 JavaScript 插件',
         onClick: () => {
             Swal.fire({
                 title: '填写插件链接',
@@ -86,6 +87,36 @@ let menus = [
             })
         },
     },
+    {
+        text: '添加 Python 插件',
+        onClick: () => {
+            Swal.fire({
+                title: '填写插件链接',
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                },
+                showCancelButton: true,
+                confirmButtonText: '添加插件',
+                showLoaderOnConfirm: true,
+                preConfirm: async url => {
+                    if (url) {
+                        globalThis.pythonPlugins.push(url)
+                        store.set("pythonPlugins", globalThis.pythonPlugins)
+                        Swal.fire({
+                            title: '完成',
+                            text: "插件添加成功，下次启动 Easier 自动生效。",
+                            allowOutsideClick: () => !Swal.isLoading(),
+                        })
+                    } else {
+                        Swal.showValidationMessage(`请输入一个 URL`)
+                        return false
+                    }
+                },
+                allowOutsideClick: () => !Swal.isLoading(),
+            })
+        },
+    }
 ]
 
 function App() {

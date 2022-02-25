@@ -7,7 +7,7 @@
     "run": "",
     "onlyBuild": "yarn prebuild",
     "prebuild": "vite build && node ./scripts/javascriptObfuscator.js",
-    "build": "electron-packager ./ Easier --out ./out --overwrite --platform=win32 --electron-version 16.0.4 -arch=x64 --asar",
+    "build": "electron-packager ./ Easier --out ./out --overwrite --platform=win32 --electron-version 16.0.4 -arch=x64 --asar --ignore=python/ --ignore=scripts/ --ignore=.prettierrc --ignore=README.md --ignore=src/ --ignore=.git/ --ignore=.github/ --ignore=.idea/ --ignore=vite.config.js  --extra-resource=python/",
     "postbuild": "node ./scripts/windowsInstaller",
     "preview": "vite preview",
     "beautify": "prettier ./src/**/*.jsx --config ./.prettierrc --write"
@@ -15,6 +15,8 @@
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.0.1",
+    "path-browserify": "^1.0.1",
+    "python-shell": "^3.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "sweetalert2": "^11.4.0",
