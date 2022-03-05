@@ -1,7 +1,11 @@
-.flex.xCenter.yCenter {
+.flex.xCenter {
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+
+.flex.yCenter {
+  display: flex;
+  justify-content: center;
 }
 
 .coverScreen {

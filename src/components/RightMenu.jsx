@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 function RightMenu({ menus }) {
-    let [rightMenuShow, setShow] = useState('block'),
+    let [rightMenuShow, setShow] = useState('flex'),
         [rightMenuOp, setMenuOp] = useState(0),
         [rightMenuLeft, setRightMenuLeft] = useState(0),
         [rightMenuTop, setRightMenuTop] = useState(40)
@@ -9,7 +9,7 @@ function RightMenu({ menus }) {
     useEffect(() => {
         document.querySelector('.App').oncontextmenu = event => {
             event.preventDefault()
-            setShow('block')
+            setShow('flex')
             setRightMenuLeft(event.pageX)
             setRightMenuTop(event.pageY)
             setTimeout(() => {

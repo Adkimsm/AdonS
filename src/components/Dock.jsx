@@ -26,7 +26,7 @@ function Dock() {
     }, 500)
     return (
         <div className='dock'>
-            <div className='dockIcons flex xCenter yCenter'>
+            <div className='dockIcons flex xCenter'>
                 {array.map((item, index) => (
                     <div
                         key={index}
