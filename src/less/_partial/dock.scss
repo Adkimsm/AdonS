@@ -25,8 +25,7 @@
 		max-width: 75vw;
 		display: flex;
 		flex-direction: row;
-		overflow-x: scroll;
-		overflow-y: hidden;
+		overflow: scroll hidden;
 		margin-left: 7vw;
 
 		&::-webkit-scrollbar {
