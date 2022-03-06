@@ -9,7 +9,7 @@
     "build": "electron-packager ./ Easier --out ./out --overwrite --platform=win32 --electron-version 16.0.4 -arch=x64 --asar --ignore=python/ --ignore=scripts/ --ignore=.prettierrc --ignore=README.md --ignore=src/ --ignore=.git/ --ignore=.github/ --ignore=.idea/ --ignore=vite.config.js  --extra-resource=python/",
     "postbuild": "node ./scripts/windowsInstaller",
     "preview": "vite preview",
-    "beautify": "prettier ./src/**/*.jsx --config ./.prettierrc --write"
+    "beautify": "prettier ./src/**/*.jsx ./src/**/*.scss --config ./.prettierrc --write"
   },
   "dependencies": {
     "@electron/remote": "^2.0.5",

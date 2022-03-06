@@ -1,39 +1,39 @@
 .onStart {
-	z-index: 9999;
-	background-color: #fff;
-	animation: pageTitleText 2s infinite;
+    z-index: 9999;
+    background-color: #fff;
+    animation: pageTitleText 2s infinite;
     font-size: 3rem;
-	transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 @keyframes pageTitleText {
-	0% {
-		text-shadow: -12px 10px 0 tomato;
-	}
-	10% {
-		text-shadow: -12px -12px 0 gold;
-	}
-	100%,
-	20% {
-		text-shadow: 12px 10px 0 #0f0;
-	}
-	30%,
-	70% {
-		text-shadow: -12px 10px 0 #40e0d0;
-	}
-	40% {
-		text-shadow: 12px 12px 0 tomato;
-	}
-	50% {
-		text-shadow: 10px -12px 10px gold;
-	}
-	60% {
-		text-shadow: 30px 12px 0 #0f0;
-	}
-	80% {
-		text-shadow: 12px -24px 0 tomato;
-	}
-	90% {
-		text-shadow: 12px 12px 0 gold;
-	}
+    0% {
+        text-shadow: -12px 10px 0 tomato;
+    }
+    10% {
+        text-shadow: -12px -12px 0 gold;
+    }
+    100%,
+    20% {
+        text-shadow: 12px 10px 0 #0f0;
+    }
+    30%,
+    70% {
+        text-shadow: -12px 10px 0 #40e0d0;
+    }
+    40% {
+        text-shadow: 12px 12px 0 tomato;
+    }
+    50% {
+        text-shadow: 10px -12px 10px gold;
+    }
+    60% {
+        text-shadow: 30px 12px 0 #0f0;
+    }
+    80% {
+        text-shadow: 12px -24px 0 tomato;
+    }
+    90% {
+        text-shadow: 12px 12px 0 gold;
+    }
 }

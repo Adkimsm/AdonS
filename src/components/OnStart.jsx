@@ -13,7 +13,7 @@ export default function () {
         <div
             className='onStart flex coverScreen xCenter yCenter'
             style={{ opacity: o }}
-            ref={ onStartDiv }
+            ref={onStartDiv}
         >
             <h1>Easier</h1>
         </div>
