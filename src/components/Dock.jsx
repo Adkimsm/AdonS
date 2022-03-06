@@ -26,23 +26,23 @@ function Dock() {
         )
     }, 500)
     return (
-        <div className='dock'>
+        <div className='dock'
+             onWheel={event => {
+               if (
+                 (scrollLeft += event.deltaY) >
+                 window.getComputedStyle(document.body).width.replace(/px/, "").valueOf()
+               ) {
+                 alert('滚动范围超出')
+                 setScrollLeft(0)
+               } else if ((scrollLeft += event.deltaY) < 0) {
+                 alert('滚动范围超出')
+                 setScrollLeft(0)
+               } else {
+                 setScrollLeft((scrollLeft += event.deltaY))
+               }
+             }}>
             <div
                 className='dockIcons flex xCenter'
-                onWheel={event => {
-                    if (
-                        (scrollLeft += event.deltaY) >
-                        window.getComputedStyle(document.body).width.replace(/px/, "").valueOf()
-                    ) {
-                        alert('滚动范围超出')
-                        setScrollLeft(0)
-                    } else if ((scrollLeft += event.deltaY) < 0) {
-                      alert('滚动范围超出')
-                      setScrollLeft(0)
-                    } else {
-                        setScrollLeft((scrollLeft += event.deltaY))
-                    }
-                }}
                 style={{ left: scrollLeft }}
             >
                 {array.map((item, index) => (
