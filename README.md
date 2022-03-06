@@ -1,7 +1,5 @@
 # Easier - AdonS
 
-AdonS v5 is coming. It uses  React.js.
-
 > AdonS is inside core of Easier.
 
 ## Usage
