@@ -78,6 +78,7 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 1000,
         height: 618,
+        fullscreen: true,
         frame: false,
         show: false,
         webPreferences: {
