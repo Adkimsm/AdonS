@@ -20,12 +20,15 @@
         box-shadow: 0 15px 60px rgb(0, 0, 0);
 
         .rightMenuItem {
+
             &:active {
                 background-color: rgb(47, 47, 47);
                 color: #fff;
             }
+
             &:hover {
-                background-color: rgb(233, 233, 233);
+                background-color: #2f2f2f;
+                color: #f0f0f0;
             }
         }
     }
