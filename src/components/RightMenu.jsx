@@ -1,38 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
-function RightMenu({ menus }) {
-    let [rightMenuShow, setShow] = useState('flex'),
-        [rightMenuOp, setMenuOp] = useState(0),
-        [rightMenuLeft, setRightMenuLeft] = useState(0),
-        [rightMenuTop, setRightMenuTop] = useState(40)
-
-    useEffect(() => {
-        document.querySelector('.App').oncontextmenu = event => {
-            event.preventDefault()
-            setShow('flex')
-            setRightMenuLeft(event.pageX)
-            setRightMenuTop(event.pageY)
-            setTimeout(() => {
-                setMenuOp(1)
-            }, 100)
-        }
-        document.addEventListener('click', () => {
-            setRightMenuLeft(0)
-            setRightMenuTop(0)
-            setMenuOp(0)
-            setTimeout(() => {
-                setShow('none')
-            }, 350)
-        })
-    }, [])
+function RightMenu({ menus, show, op, left, top }) {
     return (
         <div
             className='rightMenu'
             style={{
-                display: rightMenuShow,
-                opacity: rightMenuOp,
-                left: rightMenuLeft,
-                top: rightMenuTop,
+                display: show,
+                opacity: op,
+                left: left,
+                top: top,
             }}
         >
             {menus.map((menu, index) => (
