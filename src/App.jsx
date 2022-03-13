@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 import './less/App.scss'
 import bg from './bg.jpg'
 import Header from './components/Header'
@@ -122,9 +122,9 @@ let menus = [
 
 function App() {
     let [rightMenuShow, setShow] = useState('flex'),
-      [rightMenuOp, setMenuOp] = useState(0),
-      [rightMenuLeft, setRightMenuLeft] = useState(0),
-      [rightMenuTop, setRightMenuTop] = useState(40)
+        [rightMenuOp, setMenuOp] = useState(0),
+        [rightMenuLeft, setRightMenuLeft] = useState(0),
+        [rightMenuTop, setRightMenuTop] = useState(40)
 
     function showRightMenu(event) {
         event.preventDefault()
@@ -146,10 +146,22 @@ function App() {
     }
 
     return (
-        <div className='App coverScreen lightMode' onClick={hideRightMenu} onContextMenu={(e) => {showRightMenu(e)}}>
+        <div
+            className='App coverScreen lightMode'
+            onClick={hideRightMenu}
+            onContextMenu={e => {
+                showRightMenu(e)
+            }}
+        >
             <OnStart />
             <Header />
-            <RightMenu left={rightMenuLeft} op={rightMenuOp} show={rightMenuShow} top={rightMenuTop} menus={menus} />
+            <RightMenu
+                left={rightMenuLeft}
+                op={rightMenuOp}
+                show={rightMenuShow}
+                top={rightMenuTop}
+                menus={menus}
+            />
             <Dock />
             <Alert />
             <img src={bg} alt='background' className='coverScreen' />
