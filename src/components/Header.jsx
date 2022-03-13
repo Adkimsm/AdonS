@@ -1,11 +1,14 @@
 import React from 'react'
+import { Tooltip } from "evergreen-ui";
+
 function Header() {
     const shutdown = () => window.close()
     return (
         <header className='dragMoveWindowHeader'>
             Easier
-            <button onClick={shutdown}>×</button>
-            <span>退出</span>
+            <Tooltip content="Exit Easier">
+                <button onClick={shutdown}>×</button>
+            </Tooltip>
         </header>
     )
 }
