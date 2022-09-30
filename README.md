@@ -2,6 +2,8 @@
 
 > AdonS is inside core of Easier.
 
+> v4 is just at the beginning, it is working in progress
+
 ## Usage
 
 1. Click the [Link](https://github.com/Kysolva/AdonS/releases/latest) and download Installer of your computer. MacOS users please download `.dmg`, Windows users download `.exe`, Linux users download `.deb` or `.rpm`.
@@ -41,3 +43,9 @@ yarn
 ```sh
 yarn dev
 ```
+
+## License 
+
+This project is based on [electron-vite-react](https://github.com/electron-vite/electron-vite-react)
+
+It licensed under MIT License.
