@@ -4,18 +4,18 @@
 
 ## Usage
 
-1. Click the [Link](https://github.com/Uazira/AdonS/releases/latest) and download Installer of your computer. MacOS users please download `.dmg`, Windows users download `.exe`, Linux users download `.deb` or `.rpm`.
+1. Click the [Link](https://github.com/Kysolva/AdonS/releases/latest) and download Installer of your computer. MacOS users please download `.dmg`, Windows users download `.exe`, Linux users download `.deb` or `.rpm`.
 
 2. Run the Installer and install Easier on your computer.
 
-3. Run Easier. Okay, you are a Easiner now!
+3. Run Easier. Okay, you are an Easiner now!
 
 ## Develop
 
 1.Clone the repo.
 
 ```sh
-git clone https://github.com/Uazira/AdonS/
+git clone https://github.com/Kysolva/AdonS/
 ```
 
 2.Inter to dictionary of AdonS.
