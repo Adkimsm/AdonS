@@ -2,9 +2,9 @@
  * @see https://www.electron.build/configuration/configuration
  */
 {
-  appId: "YourAppID",
-  productName: "YourAppName",
-  copyright: "Copyright © 2022 ${author}",
+  appId: "net.kysolva.adons",
+  productName: "AdonS",
+  copyright: "Copyright © 2022 Kysolva",
   asar: true,
   directories: {
     output: "release/${version}",
@@ -32,7 +32,7 @@
   },
   linux: {
     icon: "electron/resources/iconset",
-    target: ["AppImage", "deb"],
+    target: ["AppImage"],
     artifactName: "${productName}-Linux-${version}.${ext}",
   },
 }
