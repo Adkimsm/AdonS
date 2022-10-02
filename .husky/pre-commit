@@ -3,3 +3,5 @@
 
 yarn beautify
 git add .
+
+echo "Thanks for your commit!"
