@@ -36,8 +36,10 @@ const indexHtml = join(process.env.DIST, 'index.html')
 
 async function createWindow() {
   win = new BrowserWindow({
-    title: 'Main window',
+    title: 'AdonS',
     icon: join(process.env.PUBLIC, 'favicon.svg'),
+    frame: false,
+    fullscreen: true,
     webPreferences: {
       preload,
       nodeIntegration: true,

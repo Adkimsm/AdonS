@@ -1,36 +1,50 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import electron from '/electron.png'
 import react from '/react.svg'
 import vite from '/vite.svg'
 import styles from 'styles/app.module.scss'
 
+const getTime = () => {
+  const date = new Date(),
+    hours = date.getHours(),
+    mins = date.getMinutes()
+  return `${hours >= 10 ? hours : "0"+hours.toString()}:${mins >= 10 ? mins : "0"+mins.toString()}`
+}
+
 const App: React.FC = () => {
-    const [count, setCount] = useState(0)
+    document.title = "AdonS"
+    const [count, setCount] = useState(0),
+      [time, setTime] = useState(getTime()),
+      [opacity , setOpacity] = useState(0),
+      [display, setDisplay] = useState("none")
+
+  useEffect(() => {
+    let timeout = setInterval(()=> setTime(getTime()), 1000 * 30)
+    return () => {
+      clearInterval(timeout)
+    }
+  })
 
     return (
+      <>
+        <header className={styles.globalHeader}>
+          <span className={styles.logo} onClick={() => {
+            if (opacity === 1) {
+              setOpacity(0)
+              setTimeout(() => setDisplay("none"), 320)
+            } else {
+              setDisplay("block")
+              setTimeout(() => setOpacity(1), 50)
+            }
+          }}>⭕</span>
+          <span>Easier</span>
+          <span className={styles.time}>{time}</span>
+        </header>
+        <div style={{opacity, display}} className={styles.menu}>
+          <div className={styles.menuItem} onClick={() => window.close()}>关机</div>
+        </div>
         <div className={styles.app}>
-            <header className={styles.appHeader}>
-                <div className={styles.logos}>
-                    <div className={styles.imgBox}>
-                        <img
-                            src={electron}
-                            style={{ height: '24vw' }}
-                            className={styles.appLogo}
-                            alt='electron'
-                        />
-                    </div>
-                    <div className={styles.imgBox}>
-                        <img src={vite} style={{ height: '19vw' }} alt='vite' />
-                    </div>
-                    <div className={styles.imgBox}>
-                        <img
-                            src={react}
-                            style={{ maxWidth: '100%' }}
-                            className={styles.appLogo}
-                            alt='logo'
-                        />
-                    </div>
-                </div>
+            <div className={styles.appHeader}>
                 <p>Hello AdonS v4!</p>
                 <p>
                     <button onClick={() => setCount(count => count + 1)}>
@@ -63,8 +77,8 @@ const App: React.FC = () => {
                         <img style={{ width: 77 }} src='./node.png' />
                     </div>
                 </div>
-            </header>
-        </div>
+            </div>
+        </div></>
     )
 }
 
