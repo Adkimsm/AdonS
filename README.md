@@ -6,7 +6,7 @@
 
 ## Usage
 
-1. Click the [Link](https://github.com/Kysolva/AdonS/releases/latest) and download Installer of your computer. MacOS users please download `.dmg`, Windows users download `.exe`, Linux users download `.deb` or `.rpm`.
+1. Click the [Link](https://github.com/Kysolva/AdonS/releases/latest) and download Installer of your computer. MacOS users please download `.dmg`, Windows users download `.exe`, Linux users download `.AppImage`.
 
 2. Run the Installer and install Easier on your computer.
 
