@@ -20,7 +20,7 @@
 git clone https://github.com/Kysolva/AdonS/
 ```
 
-2.Inter to dictionary of AdonS.
+2.Enter to directory of AdonS.
 
 ```sh
 cd adons
