@@ -95,6 +95,13 @@ const App: React.FC = () => {
                     </div>
                 </div>
             </div>
+            <div className={styles.dockCon}>
+                <div className={styles.dock}>
+                    <img src={electron} />
+                    <img src={vite} />
+                    <img src={react} />
+                </div>
+            </div>
         </>
     )
 }

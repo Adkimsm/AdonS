@@ -64,6 +64,40 @@
     }
 }
 
+.dockCon {
+    position: fixed;
+    bottom: 15px;
+    width: 98vw;
+    margin: 1vw;
+    display: inline-flex;
+    justify-content: center;
+
+    .dock {
+        padding: 1vh;
+        display: inline-flex;
+        border: transparent solid;
+        border-radius: 25px;
+        z-index: 9999;
+        backdrop-filter: blur(5px);
+        background: rgba(255, 255, 255, 0.5);
+
+        img {
+            transition: all 0.3s;
+            margin: 1vh;
+            height: 5vh;
+            width: 5vh;
+
+            &:hover {
+                transform: scale(1.1);
+                margin-top: -1.2vmin;
+                top: -1vw;
+                width: 8vh;
+                height: 8vh;
+            }
+        }
+    }
+}
+
 .app {
     position: absolute;
     left: 0;
