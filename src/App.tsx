@@ -19,7 +19,7 @@ const App: React.FC = () => {
         [time, setTime] = useState(getTime()),
         [opacity, setOpacity] = useState(0),
         [display, setDisplay] = useState('none'),
-      [scale, setScale] = useState(0.5)
+        [scale, setScale] = useState(0.5)
 
     useEffect(() => {
         let timeout = setInterval(() => setTime(getTime()), 1000 * 30)
@@ -35,7 +35,7 @@ const App: React.FC = () => {
                     className={styles.logo}
                     onClick={() => {
                         if (opacity === 1) {
-                          setScale(0.5)
+                            setScale(0.5)
                             setOpacity(0)
                             setTimeout(() => setDisplay('none'), 320)
                         } else {
@@ -50,7 +50,10 @@ const App: React.FC = () => {
                 <span>Easier</span>
                 <span className={styles.time}>{time}</span>
             </header>
-            <div style={{ opacity, display, transform: `scale(${scale})` }} className={styles.menu}>
+            <div
+                style={{ opacity, display, transform: `scale(${scale})` }}
+                className={styles.menu}
+            >
                 <div className={styles.menuItem} onClick={() => window.close()}>
                     关机
                 </div>
