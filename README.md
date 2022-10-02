@@ -1,5 +1,7 @@
 # Easier - AdonS
 
+[![Gitter](https://badges.gitter.im/AdonS-Easier/community.svg)](https://gitter.im/AdonS-Easier/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 > AdonS is inside core of Easier.
 
 > v4 is just at the beginning, it is working in progress
