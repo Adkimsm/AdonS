@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from 'styles/app.module.scss'
+import logo from 'images/logo.png'
 
 const getTime = () => {
     const date = new Date(),
@@ -40,7 +41,7 @@ const App: React.FC = () => {
                         }
                     }}
                 >
-                    ⭕
+                    <img src={logo} alt="" />
                 </span>
                 <span>Easier</span>
                 <span className={styles.time}>{time}</span>

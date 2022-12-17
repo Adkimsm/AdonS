@@ -19,14 +19,19 @@
     }
 
     .logo {
-        box-sizing: content-box;
-        padding: 3px;
+        box-sizing: border-box;
         position: absolute;
         top: calc(1vw - 6px);
-        left: 1vw;
+        left: calc(1vw + 1vh);
         transition: all 0.2s;
         border: transparent solid;
         border-radius: 50%;
+        margin: -1vh;
+
+        img {
+            width: 3vw;
+            height: 3vw;
+        }
 
         &:hover {
             background: #d5d5d5;
@@ -134,10 +139,12 @@
                     .appLogo {
                         animation: App-logo-spin infinite 20s linear;
                     }
+
                     @keyframes App-logo-spin {
                         from {
                             transform: rotate(0deg);
                         }
+
                         to {
                             transform: rotate(360deg);
                         }
