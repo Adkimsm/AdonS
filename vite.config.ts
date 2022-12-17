@@ -8,6 +8,7 @@ export default defineConfig({
     alias: {
       '@': path.join(__dirname, 'src'),
       'styles': path.join(__dirname, 'src/assets/styles'),
+      'images': path.join(__dirname, 'src/assets/images')
     },
   },
   plugins: [react()],
