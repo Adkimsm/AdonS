@@ -1,7 +1,7 @@
 import React from 'react'
 import electron from '/tauri.svg'
 import vite from '/vite.svg'
-import styles from 'styles/app.module.scss'
+import styles from 'styles/components/dock.module.scss'
 
 const App: React.FC = () => {
     return (

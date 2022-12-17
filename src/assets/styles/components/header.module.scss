@@ -1,0 +1,40 @@
+.globalHeader {
+    box-sizing: border-box;
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 2vw);
+    padding: 1vw;
+    border-radius: 15px;
+    border: transparent solid 1px;
+    text-align: center;
+    margin: 1vw;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.85);
+
+    .time {
+        position: absolute;
+        right: 1vw;
+    }
+
+    .logo {
+        box-sizing: border-box;
+        position: absolute;
+        top: calc(1vw - 6px);
+        left: calc(1vw + 1vh);
+        transition: all 0.2s;
+        border: transparent solid;
+        border-radius: 50%;
+        margin: -1vh;
+
+        img {
+            width: 3vw;
+            height: 3vw;
+        }
+
+        &:hover {
+            background: #d5d5d5;
+        }
+    }
+}

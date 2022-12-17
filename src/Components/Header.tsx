@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styles from 'styles/app.module.scss'
+import styles from 'styles/components/header.module.scss'
 import logo from 'images/logo.png'
 
 const getTime = () => {
