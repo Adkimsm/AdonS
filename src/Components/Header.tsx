@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styles from 'styles/components/header.module.scss'
 import logo from 'images/logo.png'
+import customConfig from '../custom.config'
 
 const getTime = () => {
     const date = new Date(),
         hours = date.getHours(),
         mins = date.getMinutes()
-    return `${hours >= 10 ? hours : '0' + hours.toString()}:${
-        mins >= 10 ? mins : '0' + mins.toString()
-    }`
+    return `${hours >= 10 ? hours : '0' + hours.toString()}:${mins >= 10 ? mins : '0' + mins.toString()
+        }`
 }
 
 const App: React.FC = () => {
@@ -50,9 +50,11 @@ const App: React.FC = () => {
                 style={{ opacity, display, transform: `scale(${scale})` }}
                 className={styles.menu}
             >
-                <div className={styles.menuItem} onClick={() => window.close()}>
-                    关机
-                </div>
+                {customConfig.logoMenu.map((menuItem, i) => {
+                    return (<div className={styles.menuItem} onClick={menuItem.action}>
+                        {menuItem.text}
+                    </div>)
+                })}
             </div>
         </>
     )
