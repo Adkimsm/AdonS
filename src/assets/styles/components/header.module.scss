@@ -1,4 +1,7 @@
 .globalHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     box-sizing: border-box;
     z-index: 9999;
     position: absolute;
@@ -20,21 +23,21 @@
 
     .logo {
         box-sizing: border-box;
-        position: absolute;
-        top: calc(1vw - 6px);
-        left: calc(1vw + 1vh);
         transition: all 0.2s;
         border: transparent solid;
         border-radius: 50%;
-        margin: -1vh;
+        position: absolute;
+        left: 15px;
 
         img {
             width: 3vw;
             height: 3vw;
-        }
+            border-radius: 50%;
+            transition: all .3s;
 
-        &:hover {
-            background: #d5d5d5;
+            &:hover {
+                box-shadow: 0 15px 30px rgb(0 0 0 / 25%);
+            }
         }
     }
 }
