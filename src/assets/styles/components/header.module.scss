@@ -38,3 +38,30 @@
         }
     }
 }
+
+.menu {
+    position: absolute;
+    left: 1vw;
+    top: calc(70px + 1vw);
+    width: 10vw;
+    min-width: 160px;
+    transition: all .3s;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 15px 30px rgb(0 0 0 / 25%);
+
+    .menuItem {
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 12px;
+        transition: all .25s;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, .1);
+        }
+    }
+}

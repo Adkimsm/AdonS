@@ -2,7 +2,7 @@ body {
     user-select: none;
     overflow: hidden;
     margin: 0;
-    font-size: calc(9pt + 1.7vmin);
+    font-size: calc(9pt + 1.7vmin + 3px);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
         'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
         'Helvetica Neue', sans-serif;
