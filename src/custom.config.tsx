@@ -10,7 +10,7 @@ const customConfig = {
         items: [
             {
                 text: "个性化设置",
-                action: () => {}
+                action: () => {alert("working in progress")}
             }
         ]
     }
