@@ -1,4 +1,5 @@
 .globalHeader {
+    font-size: calc(8pt + 1.2vmin);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -60,7 +61,6 @@
         display: block;
         padding: 10px 15px;
         border-radius: 5px;
-        font-size: 12px;
         transition: all .25s;
 
         &:hover {
