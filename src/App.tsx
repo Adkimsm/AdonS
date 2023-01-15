@@ -1,34 +1,22 @@
 import React from 'react'
 import Header from "@/Components/Header";
 import Dock from '@/Components/Dock'
+import { contextMenu } from 'react-contexify';
 import wallpaper from 'images/wallpaper.png'
-import {
-  Menu,
-  Item,
-  useContextMenu
-} from "react-contexify";
-
-import "react-contexify/dist/ReactContexify.css";
+import ContextMenu from './Components/ContextMenu';
 
 const MENU_ID = "globalMenu";
 
 const App: React.FC = () => {
   document.title = 'AdonS'
-  const { show } = useContextMenu({
-    id: MENU_ID
-  });
 
   return (<>
-    <div onContextMenu={(e) => { show({ event: e }) }}>
+    <div onContextMenu={(e) => contextMenu.show({ id: MENU_ID, event: e })}>
       <Header />
       <img src={wallpaper} alt="" />
       <Dock />
     </div>
-    <Menu id={MENU_ID} animation="scale">
-      <Item>
-        桌面设置
-      </Item>
-    </Menu>
+    <ContextMenu />
   </>
   )
 }
