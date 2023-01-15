@@ -51,7 +51,7 @@ const App: React.FC = () => {
                 className={styles.menu}
             >
                 {customConfig.logoMenu.map((menuItem, i) => {
-                    return (<div className={styles.menuItem} onClick={menuItem.action}>
+                    return (<div className={styles.menuItem} onClick={menuItem.action} key={i}>
                         {menuItem.text}
                     </div>)
                 })}
