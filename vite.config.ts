@@ -6,7 +6,7 @@ import path from 'path'
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.join(__dirname, 'src'),
+      'src': path.join(__dirname, 'src'),
       'styles': path.join(__dirname, 'src/assets/styles'),
       'images': path.join(__dirname, 'src/assets/images')
     },

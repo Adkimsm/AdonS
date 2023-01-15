@@ -1,7 +1,7 @@
 const customConfig = {
     logoMenu: [
         {
-            text: "关机",
+            text: "退出",
             action: () => window.close()
         }
     ],

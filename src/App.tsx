@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from "@/Components/Header";
-import Dock from '@/Components/Dock'
+import Header from "src/Components/Header";
+import Dock from 'src/Components/Dock'
 import { contextMenu } from 'react-contexify';
 import wallpaper from 'images/wallpaper.png'
 import ContextMenu from './Components/ContextMenu';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from 'styles/components/header.module.scss'
 import logo from 'images/logo.png'
-import customConfig from '../custom.config'
+import customConfig from 'src/custom.config'
 
 const getTime = () => {
     const date = new Date(),

@@ -3,7 +3,7 @@ import {
     Item
 } from "react-contexify";
 import "react-contexify/dist/ReactContexify.css";
-import customConfig from "../custom.config";
+import customConfig from "src/custom.config";
 
 const MENU_ID = customConfig.contextMenu.id;
 
