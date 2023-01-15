@@ -4,8 +4,9 @@ import Dock from '@/Components/Dock'
 import { contextMenu } from 'react-contexify';
 import wallpaper from 'images/wallpaper.png'
 import ContextMenu from './Components/ContextMenu';
+import customConfig from './custom.config';
 
-const MENU_ID = "globalMenu";
+const MENU_ID = customConfig.contextMenu.id;
 
 const App: React.FC = () => {
   document.title = 'AdonS'
