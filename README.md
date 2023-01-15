@@ -2,7 +2,7 @@
 
 AdonS(Easier) v6 Edition is rewrited with React.js, Vite.js and Tauri. We didn't use Electron because of the problem of its file size. We think that Tauri will help us provide better UX for our users.
 
-> Progress in work.
+> Work in progress.
 
 ## Usage
 
