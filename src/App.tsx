@@ -3,8 +3,8 @@ import Header from "src/Components/Header";
 import Dock from 'src/Components/Dock'
 import { contextMenu } from 'react-contexify';
 import wallpaper from 'images/wallpaper.png'
-import ContextMenu from './Components/ContextMenu';
-import customConfig from './custom.config';
+import ContextMenu from 'src/Components/ContextMenu';
+import customConfig from 'src/custom.config';
 
 const MENU_ID = customConfig.contextMenu.id;
 
