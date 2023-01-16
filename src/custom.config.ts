@@ -1,3 +1,5 @@
+import store from "src/globalState"
+
 const customConfig = {
     logoMenu: [
         {
@@ -10,7 +12,8 @@ const customConfig = {
         items: [
             {
                 text: "个性化设置",
-                action: () => {alert("working in progress")}
+                action: () => store.func.openSettings()
+
             }
         ]
     }
