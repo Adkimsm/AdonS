@@ -6,6 +6,8 @@ import DesktopSettings from 'src/Components/DesktopSettings'
 import { contextMenu } from 'react-contexify'
 import wallpaper from 'images/wallpaper.png'
 import styles from 'styles/App.module.scss'
+import 'src/i18n/config';
+
 
 import customConfig from 'src/custom.config'
 

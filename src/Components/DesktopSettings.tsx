@@ -10,10 +10,15 @@ import {
     InputGroup,
     InputLeftAddon,
     InputRightAddon,
+    Radio,
+    RadioGroup,
+    Stack,
+    Heading,
     useDisclosure,
     useToast,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import store from 'src/globalState'
 
 type inputEvent = {
@@ -21,10 +26,12 @@ type inputEvent = {
 }
 
 function BasicUsage() {
+    const { t, i18n } = useTranslation()
     const toast = useToast()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [value, setValue] = useState('')
     const handleChange = (event: inputEvent) => setValue(event.target.value)
+    const [language, setLanguage] = useState('zh')
 
     useEffect(() => {
         store.func.openSettings = onOpen
@@ -34,6 +41,10 @@ function BasicUsage() {
         localStorage.getItem('background') &&
             setValue(String(localStorage.getItem('background')))
     }, [])
+
+    useEffect(() => {
+        i18n.changeLanguage(language)
+    }, [language])
     return (
         <>
             {/* DON'T REMOVE THIS LINE! */}
@@ -50,46 +61,61 @@ function BasicUsage() {
             >
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>桌面设置</ModalHeader>
+                    <ModalHeader>{t('DesktopSettings')}</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <InputGroup>
-                            <InputLeftAddon children='桌面壁纸' />
-                            <Input value={value} onChange={handleChange} />
-                            <InputRightAddon
-                                children={
-                                    <span
-                                        onClick={() => {
-                                            localStorage.setItem(
-                                                'background',
-                                                value
-                                            )
-                                            if (value == '') {
-                                                return toast({
-                                                    title: '成功！',
+                        <Stack direction={'column'} spacing='24px'>
+                            <InputGroup>
+                                <InputLeftAddon
+                                    children={t('DesktopBackground')}
+                                />
+                                <Input value={value} onChange={handleChange} />
+                                <InputRightAddon
+                                    children={
+                                        <span
+                                            onClick={() => {
+                                                localStorage.setItem(
+                                                    'background',
+                                                    value
+                                                )
+                                                if (value == '') {
+                                                    return toast({
+                                                        title: t('succeed'),
+                                                        description:
+                                                            t(
+                                                                'defaultBackground'
+                                                            ),
+                                                        status: 'success',
+                                                        duration: 9000,
+                                                        isClosable: true,
+                                                    })
+                                                }
+                                                toast({
+                                                    title: t('succeed'),
                                                     description:
-                                                        '您清除了自定义壁纸，您的壁纸将在下次您进入时更换为默认。',
+                                                        t('customBackground'),
                                                     status: 'success',
                                                     duration: 9000,
                                                     isClosable: true,
                                                 })
-                                            }
-                                            toast({
-                                                title: '成功！',
-                                                description:
-                                                    '您的更改将在下次进入时生效。',
-                                                status: 'success',
-                                                duration: 9000,
-                                                isClosable: true,
-                                            })
-                                        }}
-                                        color='green.500'
-                                    >
-                                        确定
-                                    </span>
-                                }
-                            />
-                        </InputGroup>
+                                            }}
+                                            color='green.500'
+                                        >
+                                            {t('save')}
+                                        </span>
+                                    }
+                                />
+                            </InputGroup>
+                            <Heading as='h6' size='md'>
+                                {t('language')}
+                            </Heading>
+                            <RadioGroup onChange={setLanguage} value={language}>
+                                <Stack direction='row'>
+                                    <Radio value='zh'>简体中文</Radio>
+                                    <Radio value='en'>English</Radio>
+                                </Stack>
+                            </RadioGroup>
+                        </Stack>
                     </ModalBody>
 
                     <ModalFooter></ModalFooter>
