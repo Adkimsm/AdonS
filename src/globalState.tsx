@@ -6,8 +6,10 @@ type store = {
 
 const store: store = proxy({
     func: {
-        openSettings: () => { alert("working in progress") }
-    }
+        openSettings: () => {
+            alert('working in progress')
+        },
+    },
 })
 
 export default store

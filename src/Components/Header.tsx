@@ -7,8 +7,9 @@ const getTime = () => {
     const date = new Date(),
         hours = date.getHours(),
         mins = date.getMinutes()
-    return `${hours >= 10 ? hours : '0' + hours.toString()}:${mins >= 10 ? mins : '0' + mins.toString()
-        }`
+    return `${hours >= 10 ? hours : '0' + hours.toString()}:${
+        mins >= 10 ? mins : '0' + mins.toString()
+    }`
 }
 
 const App: React.FC = () => {
@@ -41,7 +42,7 @@ const App: React.FC = () => {
                         }
                     }}
                 >
-                    <img src={logo} alt="" />
+                    <img src={logo} alt='' />
                 </span>
                 <span>Easier</span>
                 <span className={styles.time}>{time}</span>
@@ -51,9 +52,15 @@ const App: React.FC = () => {
                 className={styles.menu}
             >
                 {customConfig.logoMenu.map((menuItem, i) => {
-                    return (<div className={styles.menuItem} onClick={menuItem.action} key={i}>
-                        {menuItem.text}
-                    </div>)
+                    return (
+                        <div
+                            className={styles.menuItem}
+                            onClick={menuItem.action}
+                            key={i}
+                        >
+                            {menuItem.text}
+                        </div>
+                    )
                 })}
             </div>
         </>
