@@ -20,6 +20,7 @@ import {
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import store from 'src/globalState'
+import storage from 'src/utils/functions/storage'
 
 type inputEvent = {
     target: HTMLInputElement
@@ -38,8 +39,8 @@ function BasicUsage() {
     }, [])
 
     useEffect(() => {
-        localStorage.getItem('background') &&
-            setValue(String(localStorage.getItem('background')))
+        storage.getItem('background') &&
+            setValue(String(storage.getItem('background')))
     }, [])
 
     useEffect(() => {
@@ -74,7 +75,7 @@ function BasicUsage() {
                                     children={
                                         <span
                                             onClick={() => {
-                                                localStorage.setItem(
+                                                storage.setItem(
                                                     'background',
                                                     value
                                                 )
