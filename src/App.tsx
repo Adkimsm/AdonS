@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from 'src/Components/Header'
 import Dock from 'src/Components/Dock'
 import ContextMenu from 'src/Components/ContextMenu'
@@ -11,7 +11,9 @@ import customConfig from 'src/custom.config'
 const MENU_ID = customConfig.contextMenu.id
 
 const App: React.FC = () => {
-    document.title = 'AdonS'
+    useEffect(() => {
+        document.title = 'AdonS'
+    }, [])
 
     return (
         <>
