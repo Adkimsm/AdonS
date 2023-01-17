@@ -1,9 +1,9 @@
-import { EncryptStorage } from 'encrypt-storage';
+import { EncryptStorage } from 'encrypt-storage'
 
 const options = {
-    prefix: "AdonS-DB"
+    prefix: 'AdonS-DB',
 }
 
-const encryptStorage = new EncryptStorage("AdonS-Easier-DB-crypto", options);
+const encryptStorage = new EncryptStorage('AdonS-Easier-DB-crypto', options)
 
 export default encryptStorage
