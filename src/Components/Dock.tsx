@@ -1,14 +1,14 @@
 import React from 'react'
-import electron from '/tauri.svg'
-import vite from '/vite.svg'
 import styles from 'styles/components/dock.module.scss'
+import customConfig from 'src/custom.config'
 
 const App: React.FC = () => {
     return (
         <div className={styles.dockCon}>
             <div className={styles.dock}>
-                <img src={electron} alt='Electron' />
-                <img src={vite} alt='Vite.js' />
+                {customConfig.dockIcons.map((icon, i) => {
+                    return <img src={icon.src} onClick={icon.action} key={i} />
+                })}
             </div>
         </div>
     )
