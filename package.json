@@ -1,26 +1,37 @@
 {
-  "name": "adons",
+  "name": "AdonS-v7",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "beautify": "prettier ./src/**/*.tsx ./src/**/*.ts ./src/**/*.scss ./src/**/*.css --config ./.prettierrc --write"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.4.8",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "encrypt-storage": "^2.12.14",
+    "framer-motion": "^8.4.3",
+    "i18next": "^22.4.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-contexify": "^6.0.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.1.4",
+    "valtio": "^1.9.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^4.0.0",
-    "eslint": "^8.38.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4",
-    "vite": "^4.3.9"
-  }
+    "@types/node": "^18.7.10",
+    "@types/prettier": "^2",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.0",
+    "prettier": "2.8.3",
+    "sass": "^1.55.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.2"
+  },
+  "packageManager": "yarn@3.3.1"
 }
