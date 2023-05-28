@@ -18,14 +18,14 @@ const customConfig = {
     },
     dockIcons: [
         {
-            src: "/vite.svg",
-            action: () => {}
+            src: '/vite.svg',
+            action: () => {},
         },
         {
-            src: "/tauri.svg",
-            action: () => {}
+            src: '/tauri.svg',
+            action: () => {},
         },
-    ]
+    ],
 }
 
 export default customConfig
