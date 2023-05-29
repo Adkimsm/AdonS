@@ -38,6 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vitejs/plugin-react", "virtual:e61d54914d072a57ff07db96743632adada795ec8d35c4f9e0cfb994c15bc297cd05f2727563c80be8f228d3acc169d19f9ef1737863a7864b2d4806ffbcfabc#npm:2.2.0"],\
             ["encrypt-storage", "npm:2.12.16"],\
             ["framer-motion", "virtual:e61d54914d072a57ff07db96743632adada795ec8d35c4f9e0cfb994c15bc297cd05f2727563c80be8f228d3acc169d19f9ef1737863a7864b2d4806ffbcfabc#npm:8.5.5"],\
+            ["husky", "npm:8.0.3"],\
             ["i18next", "npm:22.5.1"],\
             ["prettier", "npm:2.8.3"],\
             ["react", "npm:18.2.0"],\
@@ -3356,6 +3357,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vitejs/plugin-react", "virtual:e61d54914d072a57ff07db96743632adada795ec8d35c4f9e0cfb994c15bc297cd05f2727563c80be8f228d3acc169d19f9ef1737863a7864b2d4806ffbcfabc#npm:2.2.0"],\
             ["encrypt-storage", "npm:2.12.16"],\
             ["framer-motion", "virtual:e61d54914d072a57ff07db96743632adada795ec8d35c4f9e0cfb994c15bc297cd05f2727563c80be8f228d3acc169d19f9ef1737863a7864b2d4806ffbcfabc#npm:8.5.5"],\
+            ["husky", "npm:8.0.3"],\
             ["i18next", "npm:22.5.1"],\
             ["prettier", "npm:2.8.3"],\
             ["react", "npm:18.2.0"],\
@@ -4688,6 +4690,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["humanize-ms", "npm:1.2.1"],\
             ["ms", "npm:2.1.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["husky", [\
+        ["npm:8.0.3", {\
+          "packageLocation": "./.yarn/cache/husky-npm-8.0.3-b0b59c5127-837bc7e441.zip/node_modules/husky/",\
+          "packageDependencies": [\
+            ["husky", "npm:8.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\

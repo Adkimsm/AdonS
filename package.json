@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "beautify": "prettier ./src/**/*.tsx ./src/**/*.ts ./src/**/*.scss ./src/**/*.css --config ./.prettierrc --write"
+    "beautify": "prettier ./src/**/*.tsx ./src/**/*.ts ./src/**/*.scss ./src/**/*.css --config ./.prettierrc --write",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.4.8",
@@ -28,6 +29,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.0",
+    "husky": "^8.0.0",
     "prettier": "2.8.3",
     "sass": "^1.55.0",
     "typescript": "^4.6.4",
