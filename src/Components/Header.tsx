@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { Menu, Item, Separator, Submenu, useContextMenu } from 'react-contexify'
+import 'react-contexify/dist/ReactContexify.css'
 import styles from 'styles/components/header.module.scss'
 import logo from 'images/logo.png'
 import customConfig from 'src/custom.config'
+
+const MENU_ID = 'logoMenu'
+const { show } = useContextMenu({
+    id: MENU_ID,
+})
 
 const getTime = () => {
     const date = new Date(),
@@ -13,10 +20,7 @@ const getTime = () => {
 }
 
 const App: React.FC = () => {
-    const [time, setTime] = useState(getTime()),
-        [opacity, setOpacity] = useState(0),
-        [display, setDisplay] = useState('none'),
-        [scale, setScale] = useState(0.5)
+    const [time, setTime] = useState(getTime())
 
     useEffect(() => {
         let timeout = setInterval(() => setTime(getTime()), 1000 * 30)
@@ -30,39 +34,27 @@ const App: React.FC = () => {
             <header className={styles.globalHeader}>
                 <span
                     className={styles.logo}
-                    onClick={() => {
-                        if (opacity === 1) {
-                            setScale(0.5)
-                            setOpacity(0)
-                            setTimeout(() => setDisplay('none'), 320)
-                        } else {
-                            setDisplay('block')
-                            setTimeout(() => setOpacity(1), 50)
-                            setTimeout(() => setScale(1), 100)
-                        }
-                    }}
+                    onClick={e =>
+                        show({
+                            event: e,
+                        })
+                    }
                 >
                     <img src={logo} alt='' />
                 </span>
                 <span>Easier</span>
                 <span className={styles.time}>{time}</span>
             </header>
-            <div
-                style={{ opacity, display, transform: `scale(${scale})` }}
-                className={styles.menu}
-            >
+
+            <Menu id={MENU_ID}>
                 {customConfig.logoMenu.map((menuItem, i) => {
                     return (
-                        <div
-                            className={styles.menuItem}
-                            onClick={menuItem.action}
-                            key={i}
-                        >
+                        <Item onClick={menuItem.action} key={i}>
                             {menuItem.text}
-                        </div>
+                        </Item>
                     )
                 })}
-            </div>
+            </Menu>
         </>
     )
 }
