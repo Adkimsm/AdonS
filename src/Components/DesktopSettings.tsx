@@ -30,26 +30,34 @@ function BasicUsage() {
     const { t, i18n } = useTranslation()
     const toast = useToast()
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState(storage.getItem('background') ?? '')
     const handleChange = (event: inputEvent) => setValue(event.target.value)
-    const [language, setLanguage] = useState('zh')
+    const [language, setLanguage] = useState(
+        storage.getItem('language') ?? 'zh'
+    )
 
-    useEffect(() => {
-        store.func.openSettings = onOpen
-    }, [])
+    const setLanguageIntoStorage = (language: string) => {
+        setLanguage(language)
+        storage.setItem('language', language)
+    }
+
+    useEffect(() => (store.func.openSettings = onOpen), [])
 
     useEffect(() => {
         storage.getItem('background') &&
             setValue(String(storage.getItem('background')))
+        storage.getItem('language') &&
+            setLanguage(String(storage.getItem('language')))
     }, [])
-
+    // DON'T RETURN A PROMISE IN A EFFECT
     useEffect(() => {
         i18n.changeLanguage(language)
     }, [language])
+
     return (
         <>
             {/* DON'T REMOVE THIS LINE! */}
-            {/* THIS IS NOT JUNK CODE, IF THERE IS NOT A LINE LIKE THIS, THE sETTINGS COMPONENT WILL NOT RENNDERED. */}
+            {/* THIS IS NOT JUNK CODE, IF THERE IS NOT A LINE LIKE THIS, THE SETTINGS COMPONENT WILL NOT BE RENDERED. */}
             <p style={{ display: 'none' }} onClick={store.func.openSettings}>
                 Open Modal
             </p>
@@ -110,7 +118,10 @@ function BasicUsage() {
                             <Heading as='h6' size='md'>
                                 {t('language')}
                             </Heading>
-                            <RadioGroup onChange={setLanguage} value={language}>
+                            <RadioGroup
+                                onChange={setLanguageIntoStorage}
+                                value={language}
+                            >
                                 <Stack direction='row'>
                                     <Radio value='zh'>简体中文</Radio>
                                     <Radio value='en'>English</Radio>
