@@ -4,6 +4,7 @@ import 'react-contexify/dist/ReactContexify.css'
 import styles from 'styles/components/header.module.scss'
 import logo from 'images/logo.png'
 import customConfig from 'src/custom.config'
+import menuStyle from 'styles/components/menu.module.scss'
 
 const MENU_ID = 'logoMenu'
 const { show } = useContextMenu({
@@ -46,7 +47,7 @@ const App: React.FC = () => {
                 <span className={styles.time}>{time}</span>
             </header>
 
-            <Menu id={MENU_ID}>
+            <Menu id={MENU_ID} className={menuStyle.contexify}>
                 {customConfig.logoMenu.map((menuItem, i) => {
                     return (
                         <Item onClick={menuItem.action} key={i}>

@@ -21,6 +21,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import store from 'src/globalState'
 import storage from 'src/utils/functions/storage'
+import 'styles/components/menu.module.scss'
 
 type inputEvent = {
     target: HTMLInputElement
