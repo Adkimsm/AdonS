@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Menu, Item, Separator, Submenu, useContextMenu } from 'react-contexify'
+import { Menu, Item, useContextMenu } from 'react-contexify'
 import 'react-contexify/dist/ReactContexify.css'
 import styles from 'styles/components/header.module.scss'
 import logo from 'images/logo.png'

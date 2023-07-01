@@ -16,12 +16,14 @@ import {
     Heading,
     useDisclosure,
     useToast,
+    transition,
 } from '@chakra-ui/react'
+import { AddIcon, MinusIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import store from 'src/globalState'
 import storage from 'src/utils/functions/storage'
-import 'styles/components/menu.module.scss'
+import modelStyles from 'styles/components/model.module.scss'
 
 type inputEvent = {
     target: HTMLInputElement
@@ -36,6 +38,7 @@ function BasicUsage() {
     const [language, setLanguage] = useState(
         storage.getItem('language') ?? 'zh'
     )
+    const [size, setSize] = useState('md')
 
     const setLanguageIntoStorage = (language: string) => {
         setLanguage(language)
@@ -68,10 +71,20 @@ function BasicUsage() {
                 scrollBehavior='inside'
                 isOpen={isOpen}
                 onClose={onClose}
+                size={size}
             >
                 <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>{t('DesktopSettings')}</ModalHeader>
+                <ModalContent style={{ transition: 'all .35s' }}>
+                    <ModalHeader className={modelStyles.header}>
+                        {t('DesktopSettings')}
+                    </ModalHeader>
+
+                    <div
+                        className={modelStyles.maxButton}
+                        onClick={() => setSize(size == 'full' ? 'md' : 'full')}
+                    >
+                        {size === 'md' ? <AddIcon /> : <MinusIcon />}
+                    </div>
                     <ModalCloseButton />
                     <ModalBody>
                         <Stack direction={'column'} spacing='24px'>

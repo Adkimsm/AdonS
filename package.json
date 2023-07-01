@@ -11,7 +11,9 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.4.8",
+    "@chakra-ui/system": "^2.5.8",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "encrypt-storage": "^2.12.14",
@@ -20,6 +22,7 @@
     "react": "^18.2.0",
     "react-contexify": "^6.0.0",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.5",
     "react-i18next": "^12.1.4",
     "valtio": "^1.9.0"
   },

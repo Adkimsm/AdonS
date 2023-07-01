@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+}
+
+.maxButton {
+    width: 2rem;
+    height: 2rem;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    border-radius: var(--chakra-radii-md);
+    transition-property: var(--chakra-transition-property-common);
+    transition-duration: var(--chakra-transition-duration-normal);
+    background: var(--close-button-bg);
+    --close-button-size: var(--chakra-sizes-8);
+    font-size: var(--chakra-fontSizes-xs);
+    position: absolute;
+    top: 0.5rem;
+    right: 3rem;
+
+    &:hover {
+        background: var(--chakra-colors-blackAlpha-100);
+    }
+}
