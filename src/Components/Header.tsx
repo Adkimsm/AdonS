@@ -47,7 +47,7 @@ const App: React.FC = () => {
                 <span className={styles.time}>{time}</span>
             </header>
 
-            <Menu id={MENU_ID} className={menuStyle.contexify}>
+            <Menu id={MENU_ID} className={menuStyle.contexify} animation='flip'>
                 {customConfig.logoMenu.map((menuItem, i) => {
                     return (
                         <Item onClick={menuItem.action} key={i}>
