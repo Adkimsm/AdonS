@@ -24,7 +24,6 @@ import Draggable from 'react-draggable'
 import store from 'src/globalState'
 import storage from 'src/utils/functions/storage'
 import modelStyles from 'styles/components/model.module.scss'
-import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 
 type inputEvent = {
     target: HTMLInputElement
@@ -91,6 +90,8 @@ function BasicUsage() {
                         <ModalContent
                             style={{
                                 transition: 'all .35s',
+                                background: 'rgba(255,255,255,0.87)',
+                                backdropFilter: 'blur(15px)',
                             }}
                         >
                             <ModalHeader className={modelStyles.header}>
