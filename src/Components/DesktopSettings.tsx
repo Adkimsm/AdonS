@@ -77,7 +77,7 @@ function BasicUsage() {
                 size={size}
             >
                 <ModalOverlay />
-                <Draggable handle={modelStyles.header}>
+                <Draggable handle='header'>
                     <div
                         style={{
                             position: 'absolute',
