@@ -19,12 +19,13 @@ import {
     transition,
 } from '@chakra-ui/react'
 import { AddIcon, MinusIcon } from '@chakra-ui/icons'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Draggable from 'react-draggable'
 import store from 'src/globalState'
 import storage from 'src/utils/functions/storage'
 import modelStyles from 'styles/components/model.module.scss'
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
 
 type inputEvent = {
     target: HTMLInputElement
@@ -40,6 +41,7 @@ function BasicUsage() {
         storage.getItem('language') ?? 'zh'
     )
     const [size, setSize] = useState('md')
+    const settingsRef = useRef<HTMLDivElement>()
 
     const setLanguageIntoStorage = (language: string) => {
         setLanguage(language)
@@ -79,6 +81,7 @@ function BasicUsage() {
                 <ModalOverlay />
                 <Draggable handle='header'>
                     <div
+                        ref={settingsRef}
                         style={{
                             position: 'absolute',
                             top: 0,
@@ -97,9 +100,14 @@ function BasicUsage() {
 
                             <div
                                 className={modelStyles.maxButton}
-                                onClick={() =>
-                                    setSize(size == 'full' ? 'md' : 'full')
-                                }
+                                onClick={() => {
+                                    if (size == 'full') setSize('md')
+                                    else {
+                                        setSize('full')
+                                        settingsRef.current.style.transform =
+                                            'translate(0px, 0px)'
+                                    }
+                                }}
                             >
                                 {size === 'md' ? <AddIcon /> : <MinusIcon />}
                             </div>
