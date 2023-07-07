@@ -1,5 +1,4 @@
 :root {
-    --contexify-menu-bgColor: rgba(255, 255, 255, 0.85);
     --contexify-separator-color: #eee;
     --contexify-item-color: #000000;
     --contexify-activeItem-color: #000000;
@@ -11,6 +10,5 @@
 }
 
 .contexify {
-    backdrop-filter: blur(15px);
     transition: all 0.2s;
 }

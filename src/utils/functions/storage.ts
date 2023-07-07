@@ -6,4 +6,4 @@ const options = {
 
 const encryptStorage = new EncryptStorage('AdonS-Easier-DB-crypto', options)
 
-export default encryptStorage
+export default localStorage

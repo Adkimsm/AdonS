@@ -14,6 +14,7 @@ import {
     RadioGroup,
     Stack,
     Heading,
+    Checkbox,
     useDisclosure,
     useToast,
 } from '@chakra-ui/react'
@@ -40,6 +41,7 @@ function BasicUsage() {
     )
     const [size, setSize] = useState('md')
     const settingsRef = useRef<HTMLDivElement>()
+    const [checked, setChecked] = useState(true)
 
     const setLanguageIntoStorage = (language: string) => {
         setLanguage(language)
@@ -55,7 +57,10 @@ function BasicUsage() {
             setValue(String(storage.getItem('background')))
         storage.getItem('language') &&
             setLanguage(String(storage.getItem('language')))
+        storage.getItem('enableBlur') &&
+            setChecked(storage.getItem('enableBlur') === 'true')
     }, [])
+
     // DON'T RETURN A PROMISE IN A EFFECT
     useEffect(() => {
         i18n.changeLanguage(language)
@@ -90,8 +95,14 @@ function BasicUsage() {
                         <ModalContent
                             style={{
                                 transition: 'all .35s',
-                                background: 'rgba(255,255,255,0.87)',
-                                backdropFilter: 'blur(15px)',
+                                background:
+                                    storage.getItem('enableBlur') === 'true'
+                                        ? 'rgba(255,255,255,0.87)'
+                                        : '#fff',
+                                backdropFilter:
+                                    storage.getItem('enableBlur') === 'true'
+                                        ? 'blur(15px)'
+                                        : 'none',
                             }}
                         >
                             <ModalHeader className={modelStyles.header}>
@@ -175,6 +186,32 @@ function BasicUsage() {
                                             <Radio value='en'>English</Radio>
                                         </Stack>
                                     </RadioGroup>
+                                    <Checkbox
+                                        defaultChecked
+                                        onChange={e => {
+                                            if (
+                                                Number(
+                                                    sessionStorage.getItem('i')
+                                                ) === 0
+                                            ) {
+                                                sessionStorage.setItem('i', '1')
+                                            } else if (
+                                                Number(
+                                                    sessionStorage.getItem('i')
+                                                ) === 1
+                                            ) {
+                                                setChecked(e.target.checked)
+                                                storage.setItem(
+                                                    'enableBlur',
+                                                    String(!checked)
+                                                )
+                                                store.func.reload(Math.random())
+                                            }
+                                        }}
+                                        isChecked={checked}
+                                    >
+                                        {t('blurEffectPower')}
+                                    </Checkbox>
                                 </Stack>
                             </ModalBody>
 

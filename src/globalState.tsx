@@ -6,9 +6,8 @@ type store = {
 
 const store: store = proxy({
     func: {
-        openSettings: () => {
-            alert('working in progress')
-        },
+        openSettings: () => {},
+        reload: () => {},
     },
 })
 

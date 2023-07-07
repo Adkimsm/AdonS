@@ -5,5 +5,6 @@
     "defaultBackground": "You removed custom background image and your background image will be the default when you enter to AdonS next time.",
     "customBackground": "Your changes will take effect the next time you enter.",
     "save": "Save",
-    "language": "Language"
+    "language": "Language",
+    "blurEffectPower": "Enable Blur Effect"
 }

@@ -7,12 +7,16 @@ import BG from './Components/Background'
 import { contextMenu } from 'react-contexify'
 import 'src/i18n/config'
 import customConfig from 'src/custom.config'
+import store from 'src/globalState'
 
 const MENU_ID = customConfig.contextMenu.id
 
 const App: React.FC = () => {
+    const [, reload] = React.useState(0)
+
     useEffect(() => {
         document.title = 'AdonS'
+        store.func.reload = reload
     }, [])
 
     return (
