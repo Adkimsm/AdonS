@@ -45,7 +45,9 @@ function BasicUsage() {
         storage.setItem('language', language)
     }
 
-    useEffect(() => (store.func.openSettings = onOpen), [])
+    useEffect(() => {
+        store.func.openSettings = onOpen
+    }, [])
 
     useEffect(() => {
         storage.getItem('background') &&
